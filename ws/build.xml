@@ -4,7 +4,8 @@
 
 
   </target>
-  <target name="jar">
+  <target name="compile">
+    <javac>rufnsdfsqo </javac>
 
 
   </target>
