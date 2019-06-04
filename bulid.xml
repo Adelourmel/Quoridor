@@ -1,0 +1,27 @@
+<project basedir="." default="all">
+	
+	<target name="compile">
+		<javac srcdir="../src" destdir="../class"/>
+	</target>
+	
+	<target name="manifest">
+		<manifest file="../class/MANFIEST.MF">
+			<attribute name="Main-Class" value="GameLauncher"/>
+		</manifest>
+	</target>
+	
+	<target name="archive" depends="manifest">
+		<jar jarfile="../Reversi.jar" basedir="../class"/>
+	</target>
+	
+	<target name="run">
+		<java jar="../Reversi.jar" fork="true"/>
+	</target>
+	
+	<target name="doc">
+		<javadoc sourcepath="../src" destdir="../javadoc/"/>
+	</target>
+	
+	<target name="all" depends="compile,archive,run"/>
+		
+</project>
