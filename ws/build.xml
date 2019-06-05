@@ -1,12 +1,28 @@
-<project>
+<project basedir="." default="all">
 
-  <target name="clean">
+	<target name="compile">
+		<javac srcdir="../src" destdir="../class" includeAntRuntime="no"/>
+	</target>
 
+	<target name="manifest">
+		<manifest file="../class/MANIFEST.MF">
+			<attribute name="Main-Class" value="GameLauncher"/>
+		</manifest>
+	</target>
 
-  </target>
-  <target name="compile">
-    <javac>rufnsdfsqo </javac>
+	<target name="archive" depends="manifest">
+		<jar jarfile="../Reversi.jar" basedir="../class" manifest="../class/MANIFEST.MF"/>
 
+	</target>
 
-  </target>
+	<target name="run">
+		<java jar="../Reversi.jar" fork="true"/>
+	</target>
+
+	<target name="doc">
+		<javadoc sourcepath="../src" destdir="../javadoc/"/>
+	</target>
+
+	<target name="all" depends="compile,archive,run"/>
+
 </project>
