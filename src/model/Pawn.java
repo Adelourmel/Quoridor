@@ -3,7 +3,7 @@ package quoridor.model;
 public class Pawn extends Square {
 
 	/**
-	 * 
+	 *
 	 * @param posInitX
 	 * @param posInitY
 	 */
