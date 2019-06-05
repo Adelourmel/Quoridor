@@ -19,7 +19,8 @@ public class QuoridorSettings {
 	}
 
 	public void menuQuoridor() {
-
+		// TODO - implement QuoridorSettings.menuQuoridor
+		throw new UnsupportedOperationException();
 	}
 
 	public void saveGame() {

@@ -2,6 +2,7 @@ package quoridor.model;
 
 public abstract class Player {
 
+	private Pawn pawn;
 	private Board board;
 	private String playerName;
 	private Color color;
@@ -9,13 +10,11 @@ public abstract class Player {
 
 	/**
 	 * 
-	 * @param posX
-	 * @param posY
 	 * @param name
 	 * @param color
 	 * @param board
 	 */
-	public Player(int posX, int posY, String name, Color color, Board board) {
+	public Player(String name, Color color, Board board) {
 		// TODO - implement Player.Player
 		throw new UnsupportedOperationException();
 	}
@@ -58,6 +57,10 @@ public abstract class Player {
 	public String toString() {
 		// TODO - implement Player.toString
 		throw new UnsupportedOperationException();
+	}
+
+	public Pawn getPawn() {
+		return this.pawn;
 	}
 
 }

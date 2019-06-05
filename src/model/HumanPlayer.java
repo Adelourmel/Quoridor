@@ -6,13 +6,11 @@ public class HumanPlayer extends Player {
 
 	/**
 	 * 
-	 * @param posX
-	 * @param posY
 	 * @param name
 	 * @param color
 	 * @param board
 	 */
-	public HumanPlayer(int posX, int posY, String name, Color color, Board board) {
+	public HumanPlayer(String name, Color color, Board board) {
 		// TODO - implement HumanPlayer.HumanPlayer
 		throw new UnsupportedOperationException();
 	}

@@ -2,8 +2,6 @@ package quoridor.model;
 
 public class Pawn extends Square {
 
-	private Player joueur;
-
 	/**
 	 * 
 	 * @param posInitX
@@ -11,11 +9,6 @@ public class Pawn extends Square {
 	 */
 	public Pawn(int posInitX, int posInitY) {
 		// TODO - implement Pawn.Pawn
-		throw new UnsupportedOperationException();
-	}
-
-	public Player getPlayer() {
-		// TODO - implement Pawn.getPlayer
 		throw new UnsupportedOperationException();
 	}
 
