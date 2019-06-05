@@ -2,7 +2,7 @@ package quoridor.model;
 
 public class Wall extends Square {
 
-	private Player joueur;
+	private Player player;
 
 	/**
 	 * 

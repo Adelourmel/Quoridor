@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Game {
 
-	private Collection<Player> joueurs;
+	private Collection<Player> players;
 	private Board board;
 
 	/**

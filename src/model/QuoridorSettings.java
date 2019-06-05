@@ -18,19 +18,17 @@ public class QuoridorSettings {
 		throw new UnsupportedOperationException();
 	}
 
-	public void menuQuoridor() {
-		// TODO - implement QuoridorSettings.menuQuoridor
-		throw new UnsupportedOperationException();
-	}
-
 	public void saveGame() {
 		// TODO - implement QuoridorSettings.saveGame
 		throw new UnsupportedOperationException();
 	}
 
-	public void loadGame() {
-		// TODO - implement QuoridorSettings.loadGame
-		throw new UnsupportedOperationException();
+	/**
+	 * 
+	 * @param fileName
+	 */
+	public void loadGame(String fileName) {
+
 	}
 
 }

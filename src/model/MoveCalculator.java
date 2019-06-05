@@ -7,6 +7,7 @@ public class MoveCalculator {
 	private ArrayList<Pair> possibleMovesPlayer2;
 	private Player player1;
 	private Player player2;
+	private ArrayList<Pair> wallsList;
 
 	/**
 	 * 
@@ -81,6 +82,10 @@ public class MoveCalculator {
 
 	public ArrayList<Pair> getPossibleWalls() {
 		return this.possibleWalls;
+	}
+
+	public ArrayList<Pair> getWallsList() {
+		return this.wallsList;
 	}
 
 }
