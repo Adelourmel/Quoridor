@@ -15,6 +15,7 @@ public class PlayerTest {
 
   @After
   public void setup() {
+
     Board board;
 
 
@@ -25,7 +26,7 @@ public class PlayerTest {
   }
 
   @Test
-  public void decWallsNbTest() {
+  public void TesDecWalls() {
 
 
     while (this.player1.getWallsNb() != 1) {
@@ -34,9 +35,9 @@ public class PlayerTest {
 
       this.player1.decWallsNbTest();
 
-      int tmp2 =  player2.getWallsNb();
+      int tmp =  player2.getWallsNb();
 
-      assertEquals(tmp, tmp2 -1);
+      assertEquals(i, tmp2 -1);
     }
 
     int tmp = decWallsNbTest();
