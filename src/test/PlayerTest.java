@@ -37,7 +37,7 @@ public class PlayerTest {
 
       int tmp =  player2.getWallsNb();
 
-      assertEquals(i, tmp2 -1);
+      assertEquals(i, tmp -1);
     }
 
     int tmp = decWallsNbTest();
