@@ -60,7 +60,7 @@ public class PlayerTest {
 
   @Test
   public void TestGetPlayerName() {
-    assertEquals(this.player1, "Test1");
-    assertEquals(this.player2, "Test2");
+    assertEquals("Test1", this.player1.getPlayerName());
+    assertEquals("Test2", this.player2.getPlayerName());
   }
 }
