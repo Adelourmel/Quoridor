@@ -20,7 +20,7 @@ public class SquareTest {
     assertNotNull("Instance non creee", square);
     assertSame(5, square2.getPosX());
     assertSame(2, square2.getPosY());
-    assertEquals(squareType.WALL_ONLY, square2.getSquareType())
+    assertEquals(squareType.WALL_ONLY, square2.getSquareType());
   }
 
   @Test
@@ -49,16 +49,32 @@ public class SquareTest {
     assertSame(6, square.getY());
   }
 
+
+  @Test
+  public final void testGetSquareType(){
+    Square square = new Square(3, 2, squareType.PAWN_ONLY);
+    assertEquals(squareType.WALL_ONLY, square.getSquareType());
+  }
+
+
   @Test
   public final void testSetSquareType(){
     Square square = new Square(3, 2, squareType.PAWN_ONLY);
-    Square square.testSetSquareType( square);
-    assertSame(6, square.getY());
+    Square square.setSquareType( square.WALL_ONLY);
+    assertEquals(squareType.WALL_ONLY, square.getSquareType());
   }
+
+
+
 
   @Test
   public final void testToString(){
-    Pawn pawn1 = new Pawn(1, 2);
-    assertEquals("PAWN", pawn1.toString());
+    // TODO - Modifier le toString en fonction
+    Square square1 = new Square(3, 2, squareType.PAWN_ONLY);
+    assertEquals("[]", square1.toString());
+
+    // TODO - Modifier le toString en fonction
+    Square square2 = new Square(3, 2, squareType.WALL_ONLY);
+    assertEquals("", square2.toString());
   }
 }
