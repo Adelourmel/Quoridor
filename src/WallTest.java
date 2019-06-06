@@ -32,7 +32,7 @@ public class WallTest {
   public final void testGetPlayer(){
 
     assertNotNull("Instance non creee", this.wall);
-    assertSame(1, this.wall.getPosX());
+    assertEquals(this.player1, this.wall.getPosX());
     assertSame(2, this.wall.getPosY());
   }
 

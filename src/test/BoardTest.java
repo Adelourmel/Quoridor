@@ -26,28 +26,11 @@ public class BoardTest {
 
 
   @Test
-  public void testGetGrid() {
-    Square grid =  board.getGrid();
-    assertSame(11, this.grid.length);
-    assertSame(11, this.grid[0].length);
-
-  }
-
-  @Test
   public void testGetSize() {
     assertSame(11, player1.getSize());
   }
 
 
-<<<<<<< HEAD
-  @Test
-  public void testSetSize() {
-    int tmp = (int)(Math.random() * 20;
-    board.setSize(tmp);
-    assertEquals(tmp, board.getSize());
-  }
-=======
->>>>>>> 197a0ee061fade674cb887033286ebc583662cf7
 
   @Test
   public void setNewMove() {
