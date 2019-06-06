@@ -13,7 +13,7 @@ public class PlayerTest {
   private Player player1;
   private Player player2;
 
-  @After
+  @Before
   public void setup() {
 
     Board board;
@@ -26,8 +26,15 @@ public class PlayerTest {
   }
 
   @Test
-  public void TesDecWalls() {
+  public void TestPlayer() {
+    assertNotNull(this.player1);
+    assertNotNull(this.player2);
+  }
 
+  @Test
+  public void TestDecWalls() {
+
+    assertEquals(10, this.player1.getWallsNb());
 
     while (this.player1.getWallsNb() != 1) {
 
@@ -44,5 +51,16 @@ public class PlayerTest {
 
     assertEquals(0, tmp);
 
+  }
+
+  @Test
+  public void TestgetPawn() {
+    assertNotNull(this.player1.getPawn());
+  }
+
+  @Test
+  public void TestGetPlayerName() {
+    assertEquals(this.player1, "Test1");
+    assertEquals(this.player2, "Test2");
   }
 }
