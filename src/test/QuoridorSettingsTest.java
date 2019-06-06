@@ -11,7 +11,7 @@ public class QuoridorSettingsTest {
 
 
   @Before
-  public final void initialize(){
+  public final void setUp(){
     settings = new QuoridorSettings("a", "b");
   }
 

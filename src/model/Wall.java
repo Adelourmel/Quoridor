@@ -5,7 +5,7 @@ public class Wall extends Square {
 	private Player player;
 
 	/**
-	 * 
+	 *
 	 * @param posX
 	 * @param posY
 	 */

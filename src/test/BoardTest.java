@@ -37,7 +37,7 @@ public class BoardTest {
     board.setSize(tmp);
     assertEquals(tmp, board.getSize());
   }
-  
+
   @Test
   public void setNewMove() {
     assertFalse(this.board.setNewMove(-1, -1, player1));
