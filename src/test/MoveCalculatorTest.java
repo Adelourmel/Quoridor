@@ -14,11 +14,12 @@ public class MoveCalculator {
 
   @Before
   private setup() {
-    this.board =   
+    this.board =
   }
   private Board
+  
   @Test
-  testIsLegalPawn() {
+  private void testIsLegalPawn() {
 
   }
 
