@@ -39,15 +39,6 @@ public class BoardTest {
   }
 
 
-<<<<<<< HEAD
-  @Test
-  public void testSetSize() {
-    int tmp = (int)(Math.random() * 20;
-    board.setSize(tmp);
-    assertEquals(tmp, board.getSize());
-  }
-=======
->>>>>>> 197a0ee061fade674cb887033286ebc583662cf7
 
   @Test
   public void setNewMove() {
