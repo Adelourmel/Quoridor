@@ -31,7 +31,7 @@ public class WallTest {
 
   @Test
   public final void testGetPlayer(){
-    assertEquals(this.player1, this.wall.getPosX());
+    assertEquals(this.player1, this.wall.getPlayer());
   }
 
   @Test

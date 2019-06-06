@@ -11,16 +11,20 @@ public class MoveCalculator {
   private Player player1;
   private Player player2;
   private Board board;
+  private MoveCalculator calcul;
 
   @Before
   private setup() {
-    this.board =
+    this.calcul = new MoveCalculator(player1, player2);
   }
-  private Board
-  
+
+
   @Test
   private void testIsLegalPawn() {
 
   }
+
+  @Test
+  p
 
 }
