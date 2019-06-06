@@ -14,17 +14,20 @@ public class MoveCalculator {
   private MoveCalculator calcul;
 
   @Before
-  private setup() {
+  public setup() {
     this.calcul = new MoveCalculator(player1, player2);
   }
 
-
   @Test
-  private void testIsLegalPawn() {
-
+  public void testGetPossibleMovesPlayer1() {
+    insertNotNull(this.calcul.getPossibleMovesPlayer1())
   }
-
   @Test
-  p
-
+  public void testGetPossibleMovesPlayer2() {
+    insertNotNull(this.calcul.getPossibleMovesPlayer2())
+  }
+  @Test
+  public void testGetPossibleWalls() {
+    insertNotNull(this.calcul.getPossibleMovesWalls())
+  }
 }
