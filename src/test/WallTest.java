@@ -31,20 +31,24 @@ public class WallTest {
 
   @Test
   public final void testGetPlayer(){
-    assertEquals(this.player1, this.wall.getPlayer());
+    assertEquals(this.player1, this.wall.getPosX());
   }
 
   @Test
   public final void testSetPlayer(){
     this.wall = new Wall(1, 2, player1);
-    assertEquals(this.player1, this.wall.getPosX());
+    this.wall.setPlayer(player2);
+    assertEquals(this.player2, this.wall.getPlayer());
   }
-
-
 
 
   @Test
+  // TODO - Modifier le toString en fonction.
   public final void testToString(){
-    Player player
+    assertEquals("", this.wall.toString());
   }
+
+
+
+
 }
