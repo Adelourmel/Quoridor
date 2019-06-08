@@ -19,6 +19,11 @@ public class MoveCalculator {
   }
 
   @Test
+  public void testMoveCalculator() {
+    insertNotNull(this.calcul);
+  }
+
+  @Test
   public void testGetPossibleMovesPlayer1() {
     insertNotNull(this.calcul.getPossibleMovesPlayer1())
   }
@@ -30,4 +35,5 @@ public class MoveCalculator {
   public void testGetPossibleWalls() {
     insertNotNull(this.calcul.getPossibleMovesWalls())
   }
+
 }
