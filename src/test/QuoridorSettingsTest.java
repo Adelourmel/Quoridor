@@ -10,31 +10,32 @@ public class QuoridorSettingsTest {
 
 
 
-  @Before
-  public final void setUp(){
-    settings = new QuoridorSettings("a", "b");
-  }
-
   @Test
-  public final void testQuoridorSettings(){
+	public final void testQuoridorSettings() {
+    Quoridorsettings settings = new QuoridorSettings();
     assertNotNull("instance non creee", settings);
-  }
-
-
-
-  @Test
-  public final void testSaveGame(){
-    //settings.saveGame();
-  }
+	}
 
 
   @Test
-  public final void testLoadGame(){
-    // TODO - spécifier le nom du fichier de sauvegarde.
-    settings.saveGame();
-    QuoridorSettings settings2;
-    settings2.loadGame("nom du fichier");
+	public final void testSetPlayerName1(String playerName1) {
+    Quoridorsettings settings = new QuoridorSettings();
+    settings.setPlayerName1("a");
+    assertEquals("a", settings.getPlayerName1());
 
-    assertEquals(settings, settings2);
-  }
+	}
+
+  @Test
+	public final void testSetPlayerName2(String playerName2) {
+    Quoridorsettings settings = new QuoridorSettings();
+    settings.setPlayerName2("b");
+    assertEquals("b", settings.getPlayerName2());
+	}
+
+  @Test
+	public final void testSetGamemode(Gamemode gamemode) {
+		Quoridorsettings settings = new QuoridorSettings();
+    settings.setGamemode(Gamemode.HH);
+    assertEquals(Gamemode.HH, settings.getGameMode());
+	}
 }
