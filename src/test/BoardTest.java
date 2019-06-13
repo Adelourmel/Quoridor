@@ -5,6 +5,7 @@ import quoridor.model.*;
 
 import org.junit.Assert.*;
 import org.junit.*;
+import junit.framework.*;
 
 
 
