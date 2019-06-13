@@ -47,6 +47,7 @@ public class MoveCalculator {
 	 */
 	public boolean isLegalWall(int x, int y) {
 		// TODO - implement MoveCalculator.isLegalWall
+		return false;
 	}
 
 	/**
@@ -58,6 +59,7 @@ public class MoveCalculator {
 	 */
 	public boolean isLegalPawn(int x, int y, Player player) {
 		// TODO - implement MoveCalculator.isLegalPawn
+		return false;
 	}
 
 	/**
@@ -69,6 +71,7 @@ public class MoveCalculator {
 	 */
 	public boolean checkMove(int x, int y, Player player) {
 		// TODO - implement MoveCalculator.checkMove
+		return false;
 	}
 
 	/**
@@ -79,6 +82,7 @@ public class MoveCalculator {
 	 */
 	public boolean checkWall(int x, int y) {
 		// TODO - implement MoveCalculator.checkWall
+		return false;
 	}
 
 	/**

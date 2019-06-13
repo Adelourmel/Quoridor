@@ -18,7 +18,8 @@ public class HumanPlayer extends Player {
 	 * @param color the player color (it is used for the pawn color, for example)
 	 * @param board the game board
 	 */
-	public HumanPlayer(String name, Color color) {
+	public HumanPlayer(String name, Color color, Board board) {
+		super(name, color, board);
 		// TODO - implement HumanPlayer.HumanPlayer
 	}
 

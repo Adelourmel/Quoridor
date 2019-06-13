@@ -59,6 +59,7 @@ public class Square {
 	 */
 	public String toString() {
 		// TODO - implement Square.toString
+		return "he";
 	}
 
 	/**

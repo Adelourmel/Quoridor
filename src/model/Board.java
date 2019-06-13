@@ -41,10 +41,11 @@ public class Board {
 	 * Returns the 2-dimension array of Square that represents the game grid.
 	 * @return the game grid
 	 */
-	public Square[][] getGrid() {
+	/*public Square[][] getGrid() {
 		// TODO - implement Board.getGrid
-	}
 
+	}
+*/
 	/**
 	 * Checks if the move at the given coordinates is correct. If it is, this method changes the grid to apply the changes.
 	 * This method is only used when the player that made the move is a HumanPlayer.
@@ -55,6 +56,7 @@ public class Board {
 	 */
 	public boolean setNewMove(int x, int y, HumanPlayer player) {
 		// TODO - implement Board.setNewMove
+		return true;
 	}
 
 	/**
@@ -73,9 +75,9 @@ public class Board {
 	 * Returns the MoveCalculator object.
 	 * @return the MoveCalculator object
 	 */
-	public MoveCalculator getCalculator() {
+/*	public MoveCalculator getCalculator() {
 		// TODO - implement Board.getCalculator
-	}
+	}*/
 
 	/**
 	 * Returns a String representation of the game grid. This method can be used for displaying the grid in the console version of game.
@@ -83,6 +85,7 @@ public class Board {
 	 */
 	public String toString() {
 		// TODO
+		return "HE";
 	}
 
 }

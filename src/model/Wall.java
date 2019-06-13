@@ -16,6 +16,7 @@ public class Wall extends Square {
 	 * @param player the player that placed the wall
 	 */
 	public Wall(int posX, int posY, Player player) {
+		super(posX, posY, SquareType.WALL_ONLY);
 		// TODO - implement Wall.Wall
 	}
 
@@ -23,9 +24,9 @@ public class Wall extends Square {
 	 * Returns the player that placed this wall.
 	 * @return the player that placed this wall
 	 */
-	public Player getPlayer() {
+	/*public Player getPlayer() {
 		// TODO - implement Wall.getPlayer
-	}
+	}*/
 
 	/**
 	 * Returns a String representation of this wall, containing its coordinates on the game grid.
@@ -33,6 +34,7 @@ public class Wall extends Square {
 	 */
 	public String toString() {
 		// TODO - implement Wall.toString
+		return "HE";
 	}
 
 }

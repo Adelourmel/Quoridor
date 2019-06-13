@@ -15,6 +15,7 @@ public class AIPlayer extends Player {
 	 * @param board the game board
 	 */
 	public AIPlayer(String name, Color color, Board board) {
+		super(name, color, board);
 		// TODO - implement AIPlayer.AIPlayer
 	}
 
@@ -24,6 +25,7 @@ public class AIPlayer extends Player {
 	 */
 	public Pair computeNextMove() {
 		// TODO - implement AIPlayer.computeNextMove
+		return new Pair(0, 0);
 	}
 
 	/**

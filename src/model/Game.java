@@ -11,7 +11,7 @@ public class Game {
 	private Board board;
 
 	/**
-	 * Game constructor. Creates the two players with their names according to the given gamemode. 
+	 * Game constructor. Creates the two players with their names according to the given gamemode.
 	 * Also initialises the game board with the newly created players.
 	 * @param size the grid size
 	 * @param playerName1 the player1 name
@@ -35,6 +35,7 @@ public class Game {
 	 */
 	public boolean endOfGame() {
 		// TODO
+		return false;
 	}
 
 	/**

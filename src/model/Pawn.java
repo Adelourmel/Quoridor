@@ -17,6 +17,7 @@ public class Pawn extends Square {
 	 * @param color the player color
 	 */
 	public Pawn(int posInitX, int posInitY, Color color) {
+		super(posInitX, posInitY, SquareType.PAWN_ONLY);
 		// TODO - implement Pawn.Pawn
 	}
 
@@ -26,6 +27,7 @@ public class Pawn extends Square {
 	 */
 	public String toString() {
 		// TODO - implement Pawn.toString
+		return "he";
 	}
 
 	/**
