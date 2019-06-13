@@ -1,8 +1,8 @@
 <project basedir="." default="all">
 
-	<target name = "unittest">
+	<target name = "unittest" depends="compile">
 	   <junit haltonfailure = "true" printsummary = "true">
-	      <test name = "java org.junit.runner.JUnitCore Test"/>
+	      <test name = "java ../src/Test/*"/>
 	   </junit>
 	</target>
 
