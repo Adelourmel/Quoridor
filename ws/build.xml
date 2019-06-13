@@ -7,7 +7,7 @@
 	</target>
 
 	<target name="compile">
-		<javac srcdir="../src" destdir="../class" includeAntRuntime="no"/>
+		<javac srcdir="../src/model" destdir="../class" includeAntRuntime="no"/>
 	</target>
 
 	<target name="manifest">

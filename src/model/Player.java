@@ -21,7 +21,7 @@ public abstract class Player {
 	 * @param color the player color (it is used for the pawn color, for example)
 	 * @param board the game board
 	 */
-	public Player(String name, Color color, Board board) {
+	public Player(String name, Color color) {
 		// TODO - implement Player.Player
 	}
 

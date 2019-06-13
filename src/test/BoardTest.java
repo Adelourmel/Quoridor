@@ -3,7 +3,9 @@ import org.junit.Before;
 import org.junit.Test;
 import quoridor.model.*;
 
-import static org.junit.Assert.*;
+import org.junit.Assert.*;
+import org.junit.*;
+
 
 
 @Ignore
