@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+@Ignore
 public class WallTest {
 
   private Wall wall;

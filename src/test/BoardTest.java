@@ -5,6 +5,8 @@ import quoridor.model.*;
 
 import static org.junit.Assert.*;
 
+
+@Ignore
 public class BoardTest {
   public Board board;
   public Player player1;

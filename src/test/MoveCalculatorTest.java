@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-
+@Ignore
 public class MoveCalculator {
   private Player player1;
   private Player player2;
