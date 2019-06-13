@@ -18,9 +18,18 @@ public class Board {
 	 * @param player2 the player2 object (HumanPlayer or AIPlayer)
 	 */
 	public Board(int size, Player player1, Player player2) {
-		// TODO - implement Board.Board
+
+		this.size = size;
 	}
 
+	/**
+	 * Initialise the grid
+	 */
+	private void initGrid() {
+		this.grid = new Square[this.size][this.size];
+
+
+	}
 	/**
 	 * Returns the grid size.
 	 * @return the grid size
@@ -84,8 +93,15 @@ public class Board {
 	 * @return a String representation of the game grid
 	 */
 	public String toString() {
-		// TODO
-		return "HE";
+		String ret = "";
+
+		for (int i = 0 ; i < this.grid.length ; i++) {
+			for (int p = 0 ; p < this.grid[i].length ; i++) {
+				ret += this.grid[i][p].toString();
+			}
+			ret += "\n";
+		}
+		return ret;
 	}
 
 }

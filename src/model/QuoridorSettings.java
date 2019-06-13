@@ -2,7 +2,7 @@ package quoridor.model;
 
 import java.util.Scanner;
 import java.io.File;
-
+import java.util.InputMismatchException;
 /**
  * QuoridorSettings class. This class gathers and sets the game settings. It is also responsible for saving and loading save files of unfinished games.
  */
@@ -28,7 +28,7 @@ public class QuoridorSettings {
 		Scanner sc = new Scanner(System.in);
 
 		do {
-			int choice = sc.nextLine();
+			String choice = sc.nextLine();
 
 			if (choice.equals("y")) {
 				choiceGame();
@@ -88,12 +88,13 @@ public class QuoridorSettings {
 
 		String ret = "";
 
-		File folder = new File("path");
+		File folder = new File("../data");
 		File[] listOfGames = folder.listFiles();
 		System.out.println("Chose file : ");
+
 		for(int i = 0 ; i < listOfGames.length ; i++) {
 			if (listOfGames[i].isFile()) {
-				System.out.println(i + ". " + listOfGames[i].getName());
+				System.out.println((i + 1) + ". " + listOfGames[i].getName());
 			}
 		}
 
@@ -102,13 +103,19 @@ public class QuoridorSettings {
 		Scanner sc = new Scanner(System.in);
 
 		do {
-			int choice = sc.nextInt();
+			int choice = -1;
+			try {
+				choice = sc.nextInt();
+			} catch(InputMismatchException e) {
 
-			if (choice < listOfGames.length && choice > listOfGames.length) {
-				ret = listOfGames[choice].getName();
+			}
+
+			if (choice <= listOfGames.length && choice > 0) {
+				ret = listOfGames[choice - 1].getName();
 				valide = true;
 			}
 			else {
+				System.out.println("Invalid choice ! Enter your choice :");
 				valide = false;
 			}
 		} while(!valide);

@@ -17,7 +17,6 @@ public class Wall extends Square {
 	 */
 	public Wall(int posX, int posY, Player player) {
 		super(posX, posY, SquareType.WALL_ONLY);
-		// TODO - implement Wall.Wall
 	}
 
 	/**
@@ -33,8 +32,7 @@ public class Wall extends Square {
 	 * @return a String representation of this wall
 	 */
 	public String toString() {
-		// TODO - implement Wall.toString
-		return "HE";
+		return "|";
 	}
 
 }
