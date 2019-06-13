@@ -1,5 +1,11 @@
 <project basedir="." default="all">
 
+	<target name = "unittest">
+	   <junit haltonfailure = "true" printsummary = "true">
+	      <test name = "java org.junit.runner.JUnitCore Test"/>
+	   </junit>
+	</target>
+
 	<target name="compile">
 		<javac srcdir="../src" destdir="../class" includeAntRuntime="no"/>
 	</target>
