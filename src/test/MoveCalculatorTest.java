@@ -1,11 +1,11 @@
-package quoridor.test;
+package test;
 
-
+import quoridor.model.*;
 import static org.junit.Assert.*;
 import org.junit.*;
 
 @Ignore
-public class MoveCalculator {
+public class MoveCalculatorTest {
   private Player player1;
   private Player player2;
   private Board board;
@@ -18,20 +18,20 @@ public class MoveCalculator {
 
   @Test
   public void testMoveCalculator() {
-    insertNotNull(this.calcul);
+    assertNotNull(this.calcul);
   }
 
   @Test
   public void testGetPossibleMovesPlayer1() {
-    insertNotNull(this.calcul.getPossibleMovesPlayer1());
+    assertNotNull(this.calcul.getPossibleMovesPlayer1());
   }
   @Test
   public void testGetPossibleMovesPlayer2() {
-    insertNotNull(this.calcul.getPossibleMovesPlayer2());
+    assertNotNull(this.calcul.getPossibleMovesPlayer2());
   }
   @Test
   public void testGetPossibleWalls() {
-    insertNotNull(this.calcul.getPossibleMovesWalls());
+    assertNotNull(this.calcul.getPossibleWalls());
   }
 
 }

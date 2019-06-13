@@ -1,60 +1,57 @@
-<project basedir="." default="all">
+<project basedir="." default="dist" >
 
 
-	<path id="classpath.test">
-    <pathelement location="../lib/junit-4.12.jar"/>
-    <pathelement location="../lib/hamcrest-core-1.3.jar"/>
-
-  </path>
-
+  <description>
+    simple example build file
+  </description>
 
 
 
-	<target name="compile">
-		<javac srcdir="../src/model/" destdir="../class" includeAntRuntime="no"/>
-	</target>
+  <!-- set global properties for this build -->
+  <property name="src" location="../src"/>
+  <property name="class" location="../class"/>
+  <property name="dist" location="../dist"/>
 
 
-	<target name="test-compile" depends="compile">
-    <javac srcdir="../src/" destdir="../class" includeantruntime="false">
-        <classpath refid="classpath.test"/>
-    </javac>
+
+
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${class}"/>
   </target>
 
 
-	<target name="test" depends="test-compile">
-	 <junit printsummary="on" haltonfailure="yes" fork="true">
-			 <classpath>
-				 <path refid="classpath.test"/>
-				 <pathelement location="../class"/>
-			 </classpath>
-			 <formatter type="brief" usefile="false" />
-			 <batchtest>
-					 <fileset dir="../src/test/" includes="../src/*Test.java" />
-			 </batchtest>
-	 </junit>
- </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+    <!-- Compile the Java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${class}"/>
+  </target>
 
 
-	<target name="manifest">
-		<manifest file="../class/MANIFEST.MF">
-			<attribute name="Main-Class" value="Launcher"/>
-		</manifest>
-	</target>
 
-	<target name="archive" depends="manifest">
-		<jar jarfile="../Quoridor.jar" basedir="../class" manifest="../class/MANIFEST.MF"/>
 
-	</target>
 
-	<target name="run">
-		<java jar="../Quoridor.jar" fork="true"/>
-	</target>
+  <target name="dist" depends="compile"
+        description="generate the distribution">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
 
-	<target name="doc">
-		<javadoc sourcepath="../src/*.java" destdir="../javadoc/"/>
-	</target>
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/Quoridor-${DSTAMP}.jar" basedir="${class}"/>
+		<manifest>
+      <attribute name="Main-Class" value="GameLauncher"/>
+    </manifest>
+  </target>
 
-	<target name="all" depends="compile,archive,run"/>
+  <target name="clean"
+        description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
 
 </project>

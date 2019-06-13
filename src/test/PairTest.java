@@ -1,4 +1,4 @@
-package quoridor.test;
+package test;
 import quoridor.model.*;
 
 import static org.junit.Assert.*;
@@ -11,24 +11,24 @@ public class PairTest {
 
   @Test
   public final void testPair(){
-    Pair paire = new Pair(5,2);
-    assertNotNull("Instance non creee", paire1);
+    Pair pair1 = new Pair(5,2);
+    assertNotNull("Instance non creee", pair1);
     assertSame(5, pair1.getX());
-    assertSame(2,square.getY());
+    assertSame(2, pair1.getY());
   }
 
 
   @Test
   public final void testGetX(){
     Pair pair = new Pair(1,2);
-    assertSame(1,getX());
+    assertSame(1, pair.getX());
   }
 
 
   @Test
   public final void testGetY(){
     Pair pair = new Pair(3,4);
-    assertSame(4,getY());
+    assertSame(4,pair.getY());
   }
 
 
@@ -36,13 +36,13 @@ public class PairTest {
   public final void testSetX(){
     Pair pair = new Pair(5,6);
     pair.setX(7);
-    assertSame(7,getX());
+    assertSame(7,pair.getX());
   }
 
   @Test
   public final void testSetY(){
     Pair pair = new Pair(8,9);
     pair.setY(10);
-    assertSame(10,getY());
+    assertSame(10,pair.getY());
   }
 }

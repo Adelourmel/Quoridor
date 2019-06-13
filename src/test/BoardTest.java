@@ -1,25 +1,25 @@
-package quoridor.test;
+package test;
 
-
+import java.awt.Color;
 import org.junit.Test;
 import quoridor.model.*;
 
-//import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 import org.junit.*;
-import junit.framework.*;
+
 
 
 
 @Ignore
 public class BoardTest {
   public Board board;
-  public Player player1;
+  public HumanPlayer player1;
 
 
   @Before
   public void setup() {
 
-    this.player1 =  new HumanPlayer();
+    this.player1 =  new HumanPlayer("dvdfv", Color.BLACK, this.board);
 
     this.board = new Board(11, player1, player1);
 
@@ -33,13 +33,14 @@ public class BoardTest {
 
   @Test
   public void testGetSize() {
-    assertSame(11, player1.getSize());
+    assertSame(11, this.board.getSize());
   }
 
 
 
   @Test
   public void setNewMove() {
+
     assertFalse(this.board.setNewMove(-1, -1, player1));
 
   }

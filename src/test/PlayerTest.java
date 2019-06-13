@@ -1,4 +1,4 @@
-package quoridor.test;
+package test;
 
 import quoridor.model.*;
 
@@ -24,7 +24,7 @@ public class PlayerTest {
     this.player1 =  new AIPlayer("Test1", Color.BLACK, board);
     this.player2 =  new AIPlayer("Test2", Color.WHITE, board);
 
-    board = new Board(this.player1, this.player2);
+    board = new Board(11, this.player1, this.player2);
   }
 
   @Test
@@ -42,14 +42,14 @@ public class PlayerTest {
 
       int i = this.player1.getWallsNb();
 
-      this.player1.decWallsNbTest();
+      this.player1.decWallsNb();
 
-      int tmp =  player2.getWallsNb();
+      int tmp =  player1.getWallsNb();
 
       assertEquals(i, tmp -1);
     }
 
-    int tmp = decWallsNbTest();
+    int tmp = this.player1.getWallsNb();
 
     assertEquals(0, tmp);
 

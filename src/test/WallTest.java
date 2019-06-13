@@ -1,4 +1,4 @@
-package quoridor.test;
+package test;
 
 import quoridor.model.*;
 
