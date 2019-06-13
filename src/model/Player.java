@@ -1,9 +1,10 @@
+
 package quoridor.model;
 
 import java.awt.Color;
 
 /**
- * Player abstract class. Represents a player (Human or AI) that can play against another player (Human or AI). 
+ * Player abstract class. Represents a player (Human or AI) that can play against another player (Human or AI).
  * This class has abstract methods that defines the basic player actions.
  */
 public abstract class Player {
@@ -25,7 +26,7 @@ public abstract class Player {
 	}
 
 	/**
-	 * Manages the player actions during his turn. 
+	 * Manages the player actions during his turn.
 	 */
 	public abstract void play();
 
@@ -61,7 +62,7 @@ public abstract class Player {
 		this.color = color;
 	}
 
-	/** 
+	/**
 	 * Returns the player's pawn
 	 * @return the player's pawn
 	 */
@@ -77,7 +78,7 @@ public abstract class Player {
 		return this.wallsNb;
 	}
 
-	/** 
+	/**
 	 * Decrements the number of walls by one unit. This method is used when a player place a wall on the grid.
 	 */
 	public void decWalls() {

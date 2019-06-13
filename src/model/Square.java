@@ -1,7 +1,8 @@
+
 package quoridor.model;
 
 /**
- * Square class. This class represents the object that fill the game grid. 
+ * Square class. This class represents the object that fill the game grid.
  * A Square has a SquareType attribute which defines if the Square can host a wall or a pawn on the game grid.
  */
 public class Square {
@@ -12,7 +13,7 @@ public class Square {
 
 	/**
 	 * Square constructor. Initialises the coordinates of the Square as well as the SquareType, which defines what kind of game object the Square can host during the game.
-	 * @param posX the x-coordinate of this Square on the game grid 
+	 * @param posX the x-coordinate of this Square on the game grid
 	 * @param posY the y-coordinate of this Square on the game grid
 	 * @param squareType the SquareType object that defines if the Square can hosts either a wall or a pawn
 	 */
@@ -23,7 +24,7 @@ public class Square {
 	/**
 	 * Returns the Square x-coordinate on the game grid.
 	 * @return the x-coordinate
-	 */ 
+	 */
 	public int getPosX() {
 		return this.posX;
 	}
@@ -61,7 +62,7 @@ public class Square {
 	}
 
 	/**
-	 * Sets the x-coordinate of this Square on the game grid. 
+	 * Sets the x-coordinate of this Square on the game grid.
 	 * @param posX the new x-coordinate of this Square
 	 */
 	public void setPosX(int posX) {
@@ -69,7 +70,7 @@ public class Square {
 	}
 
 	/**
-	 * Sets the y-coordinate of this Square on the game grid. 
+	 * Sets the y-coordinate of this Square on the game grid.
 	 * @param posY the new y-coordinate of this Square
 	 */
 	public void setPosY(int posY) {

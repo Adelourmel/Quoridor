@@ -14,7 +14,7 @@ public class MoveCalculator {
   private MoveCalculator calcul;
 
   @Before
-  public setup() {
+  public void setup() {
     this.calcul = new MoveCalculator(player1, player2);
   }
 
@@ -25,15 +25,15 @@ public class MoveCalculator {
 
   @Test
   public void testGetPossibleMovesPlayer1() {
-    insertNotNull(this.calcul.getPossibleMovesPlayer1())
+    insertNotNull(this.calcul.getPossibleMovesPlayer1());
   }
   @Test
   public void testGetPossibleMovesPlayer2() {
-    insertNotNull(this.calcul.getPossibleMovesPlayer2())
+    insertNotNull(this.calcul.getPossibleMovesPlayer2());
   }
   @Test
   public void testGetPossibleWalls() {
-    insertNotNull(this.calcul.getPossibleMovesWalls())
+    insertNotNull(this.calcul.getPossibleMovesWalls());
   }
 
 }

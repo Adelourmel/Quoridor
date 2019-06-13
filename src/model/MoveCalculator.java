@@ -1,9 +1,10 @@
+
 package quoridor.model;
 
 import java.util.ArrayList;
 
 /**
- * MoveCalculator class. Contains all the useful methods of the game that manage the players moves, by determining if they are legal. 
+ * MoveCalculator class. Contains all the useful methods of the game that manage the players moves, by determining if they are legal.
  * This class contains the browsing algorithm which ensure that moves fit the game's rules.
  */
 public class MoveCalculator {

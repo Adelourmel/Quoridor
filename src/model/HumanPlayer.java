@@ -1,10 +1,11 @@
+
 package quoridor.model;
 
 import java.awt.Color;
 import java.util.Scanner;
 
 /**
- * HumanPlayer class. Represents a human player that can play against another human player or an AI player. 
+ * HumanPlayer class. Represents a human player that can play against another human player or an AI player.
  * This class gathers user input and manages the general player actions.
  */
 public class HumanPlayer extends Player {

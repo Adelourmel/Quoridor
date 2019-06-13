@@ -1,7 +1,8 @@
+
 package quoridor.model;
 
 /**
- * Board class. Stores the 2-dimension array of Squares that represents the game grid, on which the players place their pawn and walls. 
+ * Board class. Stores the 2-dimension array of Squares that represents the game grid, on which the players place their pawn and walls.
  * This class is charged of managing the grid during the course of the game.
  */
 public class Board {
@@ -81,7 +82,7 @@ public class Board {
 	 * @return a String representation of the game grid
 	 */
 	public String toString() {
-		// TODO 
+		// TODO
 	}
 
 }

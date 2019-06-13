@@ -1,7 +1,8 @@
+
 package quoridor.model;
 
 /**
- * Pair class. This class provides a means of representing pairs of coordinates (x and y). 
+ * Pair class. This class provides a means of representing pairs of coordinates (x and y).
  * This coordinates are widely used for specifying moves locations on the grid.
  */
 public class Pair {

@@ -1,3 +1,4 @@
+
 package quoridor.model;
 
 import java.awt.Color;
@@ -11,7 +12,7 @@ public class Pawn extends Square {
 
 	/**
 	 * Pawn constructor. Initialises the initial coordinates by calling the super-class constructor.
-	 * @param posInitX the x-coordinate of the initial position of the pawn on the grid 
+	 * @param posInitX the x-coordinate of the initial position of the pawn on the grid
 	 * @param posInitY the y-coordinate of the initial position of the pawn on the grid
 	 * @param color the player color
 	 */
@@ -19,7 +20,7 @@ public class Pawn extends Square {
 		// TODO - implement Pawn.Pawn
 	}
 
-	/** 
+	/**
 	 * Returns a String representation of the Pawn, with his coordinates and his color.
 	 * @return a String representation of the Pawn
 	 */

@@ -6,21 +6,21 @@
 
 	<target name="manifest">
 		<manifest file="../class/MANIFEST.MF">
-			<attribute name="Main-Class" value="GameLauncher"/>
+			<attribute name="Main-Class" value="Launcher"/>
 		</manifest>
 	</target>
 
 	<target name="archive" depends="manifest">
-		<jar jarfile="../Reversi.jar" basedir="../class" manifest="../class/MANIFEST.MF"/>
+		<jar jarfile="../Quoridor.jar" basedir="../class" manifest="../class/MANIFEST.MF"/>
 
 	</target>
 
 	<target name="run">
-		<java jar="../Reversi.jar" fork="true"/>
+		<java jar="../Quoridor.jar" fork="true"/>
 	</target>
 
 	<target name="doc">
-		<javadoc sourcepath="../src" destdir="../javadoc/"/>
+		<javadoc sourcepath="../src/*.java" destdir="../javadoc/"/>
 	</target>
 
 	<target name="all" depends="compile,archive,run"/>

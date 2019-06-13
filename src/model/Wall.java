@@ -1,7 +1,8 @@
+
 package quoridor.model;
 
 /**
- * Wall class, extends from Square. This class represents a special kind of Square, 
+ * Wall class, extends from Square. This class represents a special kind of Square,
  * that players can place on the grid to block other player's pawn to move freely on the grid.
  */
 public class Wall extends Square {
@@ -10,8 +11,8 @@ public class Wall extends Square {
 
 	/**
 	 * Wall constructor. Initialises the initial coordinates by calling the super-class constructor.
-	 * @param posX the x-coordinate of the wall on the grid 
-	 * @param posY the y-coordinate of the wall on the grid 
+	 * @param posX the x-coordinate of the wall on the grid
+	 * @param posY the y-coordinate of the wall on the grid
 	 * @param player the player that placed the wall
 	 */
 	public Wall(int posX, int posY, Player player) {

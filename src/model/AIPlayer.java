@@ -1,3 +1,4 @@
+
 package quoridor.model;
 
 import java.awt.Color;
@@ -26,7 +27,7 @@ public class AIPlayer extends Player {
 	}
 
 	/**
-	 * Manages the player actions during his turn. 
+	 * Manages the player actions during his turn.
 	 */
 	public void play() {
 		// TODO - implement AIPlayer.play
