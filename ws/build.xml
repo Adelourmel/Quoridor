@@ -7,8 +7,24 @@
 	</target>
 
 	<target name="compile">
-		<javac srcdir="../src/model" destdir="../class" includeAntRuntime="no"/>
+		<javac srcdir="../src/" destdir="../class" includeAntRuntime="no"/>
 	</target>
+
+	<target name="test" depends="compil" description="Executer les tests avec JUnit">
+		<junit fork="yes" haltonerror="true" haltonfailure="on" printsummary="on">
+			<formatter type="plain" usefile="false" />
+			<test name="ExecuterLesTests"/>
+			<classpath>
+				<pathelement location="${bin}"/>
+
+				<pathelement location="${junit_path}"/>
+
+			</classpath>
+
+		</junit>
+
+	</target>
+
 
 	<target name="manifest">
 		<manifest file="../class/MANIFEST.MF">
