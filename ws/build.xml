@@ -16,11 +16,7 @@
 	</target>
 
 	<target name="compile">
-<<<<<<< HEAD
-		<javac srcdir="../src/" destdir="../class" includeAntRuntime="no"/>
-=======
 		<javac srcdir="../src" destdir="../class" includeAntRuntime="no"/>
->>>>>>> 4e39bb5acf3b44a75dcce630bff28ff430f2f563
 	</target>
 
 	<target name="test" depends="compil" description="Executer les tests avec JUnit">
