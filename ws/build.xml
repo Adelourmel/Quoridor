@@ -1,4 +1,13 @@
 <project basedir="." default="all">
+	<property name="test.build.dir" value="build/test"/>
+  <property name="test.src.dir" value="src/test/java"/>
+
+	<path id="classpath.test">
+    <pathelement location="lib/junit-4.12.jar"/>
+    <pathelement location="lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${main.build.dir}"/>
+  </path>
+
 
 	<target name = "unittest" depends="compile">
 	   <junit haltonfailure = "true" printsummary = "true">
@@ -7,7 +16,11 @@
 	</target>
 
 	<target name="compile">
+<<<<<<< HEAD
 		<javac srcdir="../src/" destdir="../class" includeAntRuntime="no"/>
+=======
+		<javac srcdir="../src" destdir="../class" includeAntRuntime="no"/>
+>>>>>>> 4e39bb5acf3b44a75dcce630bff28ff430f2f563
 	</target>
 
 	<target name="test" depends="compil" description="Executer les tests avec JUnit">
