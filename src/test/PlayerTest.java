@@ -42,7 +42,7 @@ public class PlayerTest {
 
       int i = this.player1.getWallsNb();
 
-      this.player1.decWallsNb();
+      this.player1.decWalls();
 
       int tmp =  player1.getWallsNb();
 

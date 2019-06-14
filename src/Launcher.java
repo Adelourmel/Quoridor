@@ -1,4 +1,7 @@
 package quoridor;
+
+import quoridor.model.QuoridorSettings;
+
 public class Launcher {
 
 	/**
@@ -6,8 +9,7 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO - implement Launcher.main
-		System.out.println("Hello World");
+		QuoridorSettings quori = new QuoridorSettings();
 	}
 
 }

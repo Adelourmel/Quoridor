@@ -2,7 +2,7 @@ package test;
 
 import quoridor.model.*;
 
-
+import java.awt.Color;
 import static org.junit.Assert.*;
 import org.junit.*;
 
@@ -12,6 +12,7 @@ public class WallTest {
 
   private Wall wall;
   private Player player1;
+  private Player player2;
 
   @Before
   public void setup() {

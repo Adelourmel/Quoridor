@@ -18,7 +18,11 @@ public class Square {
 	 * @param squareType the SquareType object that defines if the Square can hosts either a wall or a pawn
 	 */
 	public Square(int posX, int posY, SquareType squareType) {
-		// TODO - implement Square.Square
+		this.posX = posX;
+		this.posY = posY;
+
+		this.squareType = squareType;
+
 	}
 
 	/**
@@ -58,8 +62,7 @@ public class Square {
 	 * @return a String representation of this Square
 	 */
 	public String toString() {
-		// TODO - implement Square.toString
-		return "he";
+		return this.squareType.toString();
 	}
 
 	/**
