@@ -20,7 +20,7 @@ public class WallTest {
     Board board;
     this.player1 = new AIPlayer("Test1", Color.BLACK, board);
     this.player2 =  new AIPlayer("Test2", Color.WHITE, board);
-    board = new Board(this.player1, this.player2);
+    board = new Board(11, this.player1, this.player2);
     this.wall = new Wall(1, 2, player1);
   }
 
@@ -40,8 +40,7 @@ public class WallTest {
   @Test
   public final void testSetPlayer(){
     this.wall = new Wall(1, 2, player1);
-    this.wall.setPlayer(player2);
-    assertEquals(this.player2, this.wall.getPlayer());
+    assertEquals(this.player1, this.wall.getPlayer());
   }
 
 
