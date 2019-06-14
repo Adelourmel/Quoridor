@@ -114,7 +114,7 @@ public class Board {
 	 * @return a String representation of the game grid
 	 */
 	public String toString() {
-		String ret = "";
+		String ret = "\n";
 
 		for (int i = 0 ; i < this.grid.length ; i++) {
 			for (int p = 0 ; p < this.grid[i].length ; p++) {
