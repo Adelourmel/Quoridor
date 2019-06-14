@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package quoridor.model;
-=======
 package test;
->>>>>>> 370a9a4665ca6d8f1964d413af1d682546b826de
 
 import quoridor.model.*;
 
