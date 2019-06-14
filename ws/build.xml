@@ -42,8 +42,9 @@
 
     <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
     <jar jarfile="${dist}/lib/Quoridor-${DSTAMP}.jar" basedir="${class}"/>
-		<manifest>
+		<manifest file="${dist}/lib/MANIFEST.MF" >
       <attribute name="Main-Class" value="GameLauncher"/>
+
     </manifest>
   </target>
 
