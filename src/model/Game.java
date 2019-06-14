@@ -40,6 +40,7 @@ public class Game {
 			this.player1.play();
 			this.player2.play();
 		}
+		this.endOfGame();
 	}
 
 	/**
@@ -47,9 +48,16 @@ public class Game {
 	 * @return true if the game has ended, false otherwise
 	 */
 	public boolean endOfGame() {
-
-
-		return false;
+		boolean ret = false;
+		if (player1.getPawn().getPosY() == this.board.getSize()-1) {
+			System.out.println("Le gagnant est "+player1.toString());
+			ret = true;
+		}
+		else if (player2.getPawn().getPosY() == 0) {
+			System.out.println("Le gagnant est "+player2.toString());
+			ret = true;
+		}
+		return ret;
 	}
 
 	/**
