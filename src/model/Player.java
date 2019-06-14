@@ -9,10 +9,10 @@ import java.awt.Color;
  */
 public abstract class Player {
 
-	private Pawn pawn;
-	private Board board;
-	private String playerName;
-	private Color color;
+	protected Pawn pawn;
+	protected Board board;
+	protected String playerName;
+	protected Color color;
 	private int wallsNb;
 
 	/**
