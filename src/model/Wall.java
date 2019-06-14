@@ -35,4 +35,12 @@ public class Wall extends Square {
 		return "|";
 	}
 
+	/**
+	 * Return the owner of the wall
+	 * @return the owner of the wall
+	 */
+	public Player getPlayer() {
+		return this.player;
+	}
+
 }
