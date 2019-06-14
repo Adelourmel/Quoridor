@@ -13,7 +13,7 @@ public class Pair {
 	/**
 	 * Pair constructor. Initialises the attributes with the given coordinates.
 	 * @param x the x-coordinate
-	 * @param y the y-coordinate 
+	 * @param y the y-coordinate
 	 */
 	public Pair(int x, int y) {
 		// TODO - implement Pair.Pair
