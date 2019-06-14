@@ -99,10 +99,9 @@ public class Board {
 
 		if (true) {
 			if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
-				if (x%2 == 0) {
-					System.out.println("YOp");
-					setWalls(x, y, player);
-				}
+
+				setWalls(x, y, player);
+
 			}
 			else {
 
@@ -118,18 +117,12 @@ public class Board {
 			}
 
 
-
-
 		}
 
 		return true;
 	}
 
-	private boolean isWall(int x, int y) {
-			return x%2 != 0 && y%2 != 0;
-	}
 	private void setWalls(int x, int y, Player player) {
-		System.out.println("fdf");
 		int coeffX = 0;
 		int coeffY = 0;
 

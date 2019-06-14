@@ -22,7 +22,8 @@ public class MoveCalculator {
 	 * @param player2 the player2 object
 	 */
 	public MoveCalculator(Player player1, Player player2) {
-		// TODO - implement MoveCalculator.MoveCalculator
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 
 	/**
@@ -46,8 +47,13 @@ public class MoveCalculator {
 	 * @return true is the wall move is possible, false otherwise
 	 */
 	public boolean isLegalWall(int x, int y) {
-		// TODO - implement MoveCalculator.isLegalWall
-		return false;
+		boolean ret = false;
+		for (Pair elem : possibleWalls) {
+			if (elem.getX() == x && elem.getY() == y) {
+				ret = true;
+			}
+		}
+		return ret;
 	}
 
 	/**
