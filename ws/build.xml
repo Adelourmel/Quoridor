@@ -13,16 +13,26 @@
   <property name="dist" location="../dist"/>
 
 
+  <path id="application" location="${dist/lib}/*.jar"/>
+  <path id="classpath" location="${class}"/>
 
 
 
-  <target name="init">
+
+
+  <target name="init" depends="clean">
     <!-- Create the time stamp -->
     <tstamp/>
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${class}"/>
   </target>
 
+  <target name="clean"
+        description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
 
 
   <target name="compile" depends="init"
@@ -48,11 +58,19 @@
     </manifest>
   </target>
 
-  <target name="clean"
-        description="clean up">
-    <!-- Delete the ${build} and ${dist} directory trees -->
-    <delete dir="${build}"/>
-    <delete dir="${dist}"/>
-  </target>
+
+
+  <target name="test" depends="dist">
+        <junit fork="yes" errorproperty="yes" failureproperty="yes" filtertrace="yes" printsummary="yes">
+            <classpath>
+                <path refid="classpath"/>
+                <path refid="application"/>
+            </classpath>
+
+            <batchtest fork="yes">
+                <fileset dir="${src}" includes="**/*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
 
 </project>
