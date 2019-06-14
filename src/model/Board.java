@@ -10,6 +10,8 @@ public class Board {
 	private Square[][] grid;
 	private MoveCalculator calculator;
 	private int size;
+	private Player player1;
+	private Player player2;
 
 	/**
 	 * Board constructor. Initialises the game grid at the given size, and creates a MoveCalculator object with the two given players.
@@ -19,15 +21,18 @@ public class Board {
 	 */
 	public Board(int size, Player player1, Player player2) {
 
+		this.player1 = player1;
+		this.player2 = player2;
 		this.size = size;
-		initGrid();
+
+//		initGrid();
 		System.out.println(toString());
 	}
 
 	/**
 	 * Initialise the grid
 	 */
-	private void initGrid() {
+	public void initGrid() {
 		this.grid = new Square[this.size][this.size];
 
 		for (int i = 0 ; i < grid.length ; i++) {
@@ -49,6 +54,13 @@ public class Board {
 
 		}
 
+		int x = this.player1.getPawn().getPosX();
+		int y = this.player1.getPawn().getPosY();
+		this.grid[x][y] = this.player1.getPawn();
+
+		x = this.player2.getPawn().getPosX();
+		y = this.player2.getPawn().getPosY();
+		this.grid[x][y] = this.player2.getPawn();
 
 	}
 	/**

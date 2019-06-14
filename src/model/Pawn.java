@@ -18,7 +18,6 @@ public class Pawn extends Square {
 	 */
 	public Pawn(int posInitX, int posInitY, Color color) {
 		super(posInitX, posInitY, SquareType.PAWN_ONLY);
-		// TODO - implement Pawn.Pawn
 	}
 
 	/**
@@ -45,5 +44,7 @@ public class Pawn extends Square {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+
+
 
 }

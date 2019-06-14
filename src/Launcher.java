@@ -15,7 +15,7 @@ public class Launcher {
 		Player player2 = null;
 
 		Board board = new Board(11, player1, player2);
-		
+		board.initGrid();
 	//	Player player1= new Player
 	}
 
