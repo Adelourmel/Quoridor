@@ -1,6 +1,6 @@
 package quoridor;
 
-import quoridor.model.*;
+import quoridor.model.QuoridorSettings;
 
 public class Launcher {
 
@@ -10,13 +10,6 @@ public class Launcher {
 	 */
 	public static void main(String[] args) {
 		QuoridorSettings quori = new QuoridorSettings();
-
-		/*Player player1 = null;
-		Player player2 = null;
-
-		Board board = new Board(11, player1, player2);
-		board.initGrid();*/
-	//	Player player1= new Player
 	}
 
 }

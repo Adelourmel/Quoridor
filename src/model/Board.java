@@ -83,11 +83,10 @@ public class Board {
 	 * Returns the 2-dimension array of Square that represents the game grid.
 	 * @return the game grid
 	 */
-	/*public Square[][] getGrid() {
-		// TODO - implement Board.getGrid
-
+	public Square[][] getGrid() {
+		return this.grid;
 	}
-*/
+
 	/**
 	 * Checks if the move at the given coordinates is correct. If it is, this method changes the grid to apply the changes.
 	 * This method is only used when the player that made the move is a HumanPlayer.
@@ -97,7 +96,24 @@ public class Board {
 	 * @return true if the move is correct and has been applied to the grid, false otherwise
 	 */
 	public boolean setNewMove(int x, int y, HumanPlayer player) {
-		// TODO - implement Board.setNewMove
+
+		if (true) {
+
+			this.grid[x][y] = player.getPawn();
+
+			int lastX = player.getPawn().getPosX();
+			int lastY = player.getPawn().getPosY();
+
+			player.getPawn().setPosX(x);
+			player.getPawn().setPosY(y);
+
+			this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
+
+
+
+		}
+
+		// TODO - implement Board.setNewMove with move calculator
 		return true;
 	}
 
