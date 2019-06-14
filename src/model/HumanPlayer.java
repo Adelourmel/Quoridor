@@ -32,7 +32,7 @@ public class HumanPlayer extends Player {
 
       int x = 0;
       int y = 0;
-
+			this.board.toString();
       boolean b ;
       do {
         System.out.println("Entrez la position en X du pion");
