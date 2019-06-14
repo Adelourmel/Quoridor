@@ -21,7 +21,7 @@ public class Board {
 
 		this.size = size;
 		initGrid();
-		toString();
+		System.out.println(toString());
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class Board {
 
 		for (int i = 0 ; i < this.grid.length ; i++) {
 			for (int p = 0 ; p < this.grid[i].length ; p++) {
-				ret += this.grid[i][p].toString();
+				ret += "\t" + this.grid[i][p].toString();
 			}
 			ret += "\n";
 		}
