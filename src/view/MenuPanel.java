@@ -21,6 +21,8 @@ public class MenuPanel extends JPanel {
 
     this.logoLabel = new JLabel(new ImageIcon(this.PATH+"/logoQuoridor.png"));
     this.add(this.logoLabel);
+    
+
 
 
 
