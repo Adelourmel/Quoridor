@@ -19,7 +19,7 @@ public class BoardTest {
   @Before
   public void setup() {
 
-    this.player1 =  new HumanPlayer("dvdfv", Color.BLACK, this.board);
+    this.player1 =  new HumanPlayer("dvdfv", Color.BLACK, this.board, PlayerPos.TOP);
 
     this.board = new Board(11, player1, player1);
 
