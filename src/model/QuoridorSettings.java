@@ -162,4 +162,32 @@ public class QuoridorSettings {
 	public void setGamemode(Gamemode gamemode) {
 		this.gamemode = gamemode;
 	}
+
+
+	/**
+	 * Gets the player1 name.
+	 * @return the player1 name
+	 */
+	public String getPlayerName1() {
+		return this.playerName1;
+	}
+
+	/**
+	 * Gets the player2 name.
+	 * @return the player2 name
+	 */
+	public String getPlayerName2() {
+		return this.playerName2;
+	}
+
+
+	/**
+	 * Gets the game mode
+	 * @return the game mode
+	 */
+	public Gamemode getGameMode() {
+		return this.gamemode;
+	}
+
+
 }
