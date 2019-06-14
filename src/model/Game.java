@@ -1,5 +1,5 @@
 package quoridor.model;
-
+import java.awt.Color;
 
 /**
  * Game class. This class starts the game with the correct settings (grid size, gamemode, players) and manages the game's progress.
@@ -19,14 +19,27 @@ public class Game {
 	 * @param mode the gamemode
 	 */
 	public Game(int size, String playerName1, String playerName2, Gamemode mode) {
-		// TODO - implement Game.Game
+		this.board = new Board(size, this.player1, this.player2);
+
+		if (mode == Gamemode.HH) {
+			this.player1 = new HumanPlayer(playerName1, Color.BLACK, this.board, PlayerPos.TOP);
+			this.player2 = new HumanPlayer(playerName2, Color.WHITE, this.board, PlayerPos.BOTTOM);
+		}
+		else if (mode == Gamemode.HA) {
+			this.player1 = new HumanPlayer(playerName1, Color.BLACK, this.board, PlayerPos.TOP);
+			this.player2 = new AIPlayer(playerName2, Color.WHITE, this.board, PlayerPos.BOTTOM);
+		}
+		this.board.initGrid();
 	}
 
 	/**
 	 * Starts the game and manages the game's progress.
 	 */
 	public void startGame() {
-		// TODO - implement Game.startGame
+		while (!this.endOfGame()){
+			this.player1.play();
+			this.player2.play();
+		}
 	}
 
 	/**
@@ -34,7 +47,8 @@ public class Game {
 	 * @return true if the game has ended, false otherwise
 	 */
 	public boolean endOfGame() {
-		// TODO
+
+
 		return false;
 	}
 
