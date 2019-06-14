@@ -21,8 +21,8 @@ public class PlayerTest {
 
 
 
-    this.player1 =  new AIPlayer("Test1", Color.BLACK, this.board);
-    this.player2 =  new AIPlayer("Test2", Color.WHITE, this.board);
+    this.player1 =  new AIPlayer("Test1", Color.BLACK, this.board, PlayerPos.TOP);
+    this.player2 =  new AIPlayer("Test2", Color.WHITE, this.board, PlayerPos.BOTTOM);
 
     this.board = new Board(11, this.player1, this.player2);
   }
