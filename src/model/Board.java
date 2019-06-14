@@ -20,6 +20,8 @@ public class Board {
 	public Board(int size, Player player1, Player player2) {
 
 		this.size = size;
+		initGrid();
+		toString();
 	}
 
 	/**
@@ -27,6 +29,24 @@ public class Board {
 	 */
 	private void initGrid() {
 		this.grid = new Square[this.size][this.size];
+
+		for (int i = 0 ; i < grid.length ; i++) {
+			for (int p = 0 ; p < grid[i].length ; i++) {
+
+				if (p%2 != 0) {
+					this.grid[i][p] = new Square(i, p, SquareType.WALL_ONLY);
+				}
+				else {
+					if (i%2 == 0) {
+						this.grid[i][p] = new Square(i, p, SquareType.PAWN_ONLY);
+					}
+					else {
+						this.grid[i][p] = new Square(i, p, SquareType.WALL_ONLY);
+					}
+				}
+
+			}
+		}
 
 
 	}

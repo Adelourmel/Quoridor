@@ -73,13 +73,14 @@ public class QuoridorSettings {
 			}
 		} while(!valide);
 
-
 		// -----------------------Choice player name -----------------------
-		System.out.print("Player 1 name : ");
+		System.out.println("Player 1 name : ");
 		this.playerName1 = sc.nextLine();
 
-		System.out.print("Player 2 name : ");
+		System.out.println("Player 2 name : ");
 		this.playerName2 = sc.nextLine();
+
+		System.out.println("playerName 1 : " + this.playerName1 + " playerName2 : " + this.playerName2);
 
 
 	}
@@ -100,14 +101,14 @@ public class QuoridorSettings {
 
 		boolean valide = false;
 
-		Scanner sc = new Scanner(System.in);
 
 		do {
-			int choice = -1;
+			Scanner sc = new Scanner(System.in);
+			int choice;
 			try {
 				choice = sc.nextInt();
 			} catch(InputMismatchException e) {
-
+					choice = -1;
 			}
 
 			if (choice <= listOfGames.length && choice > 0) {
