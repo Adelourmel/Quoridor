@@ -25,8 +25,7 @@ public class Board {
 		this.player2 = player2;
 		this.size = size;
 
-//		initGrid();
-		System.out.println(toString());
+
 	}
 
 	/**
@@ -117,6 +116,11 @@ public class Board {
 		return true;
 	}
 
+	
+	public void setPlayers(Player p1, Player p2) {
+		this.player1 = p1;
+		this.player2 = p2;
+	}
 	/**
 	 * Changes the grid to apply the changes made by the given move.
 	 * Warning : this method does not check if the given move is correct. It assumes that this checking has been done by the AIPlayer itself.

@@ -42,7 +42,6 @@ public class QuoridorSettings {
 				valide = false;
 			}
 		} while (!valide);
-
 		this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
 	}
 
@@ -74,6 +73,8 @@ public class QuoridorSettings {
 		} while(!valide);
 
 		// -----------------------Choice player name -----------------------
+		sc = new Scanner(System.in);
+
 		System.out.println("Player 1 name : ");
 		this.playerName1 = sc.nextLine();
 

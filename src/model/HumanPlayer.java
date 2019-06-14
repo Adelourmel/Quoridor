@@ -21,6 +21,7 @@ public class HumanPlayer extends Player {
 	 */
 	public HumanPlayer(String name, Color color, Board board, PlayerPos pos) {
 		super(name, color, board, pos);
+		this.scan = new Scanner(System.in);
 	}
 
 	/**
@@ -32,11 +33,13 @@ public class HumanPlayer extends Player {
 
       int x = 0;
       int y = 0;
-			this.board.toString();
+			System.out.println(this.board.toString());
+			System.out.println("gfdg");
       boolean b ;
       do {
         System.out.println("Entrez la position en X du pion");
         try {
+					this.scan = new Scanner(System.in);
           x = scan.nextInt();
         } catch(InputMismatchException e) {
           b= false ;
@@ -44,6 +47,7 @@ public class HumanPlayer extends Player {
 
         System.out.println("Entrez la position en Y du pion");
         try {
+					this.scan = new Scanner(System.in);
           y = scan.nextInt();
         } catch(InputMismatchException e) {
           b= false ;

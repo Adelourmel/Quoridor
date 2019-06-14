@@ -29,7 +29,9 @@ public class Game {
 			this.player1 = new HumanPlayer(playerName1, Color.BLACK, this.board, PlayerPos.TOP);
 			this.player2 = new AIPlayer(playerName2, Color.WHITE, this.board, PlayerPos.BOTTOM);
 		}
+		this.board.setPlayers(this.player1, this.player2);
 		this.board.initGrid();
+		startGame();
 	}
 
 	/**
@@ -38,9 +40,10 @@ public class Game {
 	public void startGame() {
 		while (!this.endOfGame()){
 			this.player1.play();
-			this.player2.play();
+			if (!this.endOfGame()) {
+				this.player2.play();
+			}
 		}
-		this.endOfGame();
 	}
 
 	/**
