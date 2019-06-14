@@ -27,10 +27,10 @@ public abstract class Player {
 		this.board = board;
 		this.wallsNb = 10;
 		if (pos == PlayerPos.TOP) {
-			this.pawn = new Pawn((this.board.getSize()+1)/2, 0, this.color);
+			this.pawn = new Pawn((this.board.getSize())/2, 0, this.color);
 		}
 		else if(pos == PlayerPos.BOTTOM){
-			this.pawn = new Pawn((this.board.getSize()+1)/2, this.board.getSize()-1, this.color);
+			this.pawn = new Pawn((this.board.getSize())/2, this.board.getSize()-1, this.color);
 		}
 	}
 

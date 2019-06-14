@@ -12,6 +12,7 @@ public class Board {
 	private int size;
 	private Player player1;
 	private Player player2;
+	private final int SIZEWALL = 3;
 
 	/**
 	 * Board constructor. Initialises the game grid at the given size, and creates a MoveCalculator object with the two given players.
@@ -97,26 +98,58 @@ public class Board {
 	public boolean setNewMove(int x, int y, HumanPlayer player) {
 
 		if (true) {
+			if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
+				if (x%2 == 0) {
+					System.out.println("YOp");
+					setWalls(x, y, player);
+				}
+			}
+			else {
 
-			this.grid[x][y] = player.getPawn();
+				int lastX = player.getPawn().getPosX();
+				int lastY = player.getPawn().getPosY();
 
-			int lastX = player.getPawn().getPosX();
-			int lastY = player.getPawn().getPosY();
+				this.grid[x][y] = player.getPawn();
+				player.getPawn().setPosX(x);
+				player.getPawn().setPosY(y);
 
-			player.getPawn().setPosX(x);
-			player.getPawn().setPosY(y);
+				this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
 
-			this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
+			}
+
 
 
 
 		}
 
-		// TODO - implement Board.setNewMove with move calculator
 		return true;
 	}
 
-	
+	private boolean isWall(int x, int y) {
+			return x%2 != 0 && y%2 != 0;
+	}
+	private void setWalls(int x, int y, Player player) {
+		System.out.println("fdf");
+		int coeffX = 0;
+		int coeffY = 0;
+
+		int posX = x;
+		int posY = y;
+
+		if (x%2 == 0) {
+			coeffX = 1;
+		}
+		else if (y%2 == 0) {
+			coeffY = 1;
+		}
+
+		for (int i = 0 ; i < this.SIZEWALL ; i++) {
+			this.grid[posX][posY] = new Wall(posX, posY, player);
+			posX += coeffX;
+			posY += coeffY;
+		}
+		player.decWalls();
+	}
 	public void setPlayers(Player p1, Player p2) {
 		this.player1 = p1;
 		this.player2 = p2;
@@ -147,13 +180,16 @@ public class Board {
 	 */
 	public String toString() {
 		String ret = "\n";
-
+		String tmp = "   ";
 		for (int i = 0 ; i < this.grid.length ; i++) {
+			ret += i + "  ";
 			for (int p = 0 ; p < this.grid[i].length ; p++) {
-				ret += "\t" + this.grid[i][p].toString();
+				ret += this.grid[p][i].toString() + " ";
 			}
+			tmp += i + " ";
 			ret += "\n";
 		}
+		ret += tmp;
 		return ret;
 	}
 

@@ -32,7 +32,7 @@ public class Wall extends Square {
 	 * @return a String representation of this wall
 	 */
 	public String toString() {
-		return "|";
+		return "X";
 	}
 
 	/**

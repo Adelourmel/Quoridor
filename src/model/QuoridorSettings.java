@@ -49,15 +49,21 @@ public class QuoridorSettings {
 	 * Gathers input from the user to set game settings, like gamemode, players names, etc...
 	 */
 	public void configure() {
-		Scanner sc = new Scanner(System.in);
 		boolean valide = false;
 
-
+		Scanner sc;
 
 		// -----------------------Human choose Gamemode-----------------------
 		System.out.println("Chose game mode  :\n1. Human VS Machine\n2. Human VS Human");
 		do {
-			int choice = sc.nextInt();
+			int choice;
+			try {
+				sc = new Scanner(System.in);
+				choice = sc.nextInt();
+
+			} catch (Exception e) {
+				choice = -1;
+			}
 			if (choice == 1) {
 				this.gamemode = Gamemode.HA;
 				valide = true;

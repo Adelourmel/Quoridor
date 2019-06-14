@@ -25,8 +25,7 @@ public class Pawn extends Square {
 	 * @return a String representation of the Pawn
 	 */
 	public String toString() {
-		// TODO - implement Pawn.toString
-		return "X";
+		return "P";
 	}
 
 	/**

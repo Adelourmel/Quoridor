@@ -34,8 +34,7 @@ public class HumanPlayer extends Player {
       int x = 0;
       int y = 0;
 			System.out.println(this.board.toString());
-			System.out.println("gfdg");
-      boolean b ;
+      boolean b = true;
       do {
         System.out.println("Entrez la position en X du pion");
         try {
@@ -52,12 +51,12 @@ public class HumanPlayer extends Player {
         } catch(InputMismatchException e) {
           b= false ;
         }
-
-        b = this.board.setNewMove(x, y, this);
+				if (b != false) {
+					b = this.board.setNewMove(x, y, this);
+				}
       } while (!b );
 
 
-    this.board.setNewMove(x, y, this);
 	}
 
 }
