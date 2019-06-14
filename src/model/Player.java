@@ -21,8 +21,17 @@ public abstract class Player {
 	 * @param color the player color (it is used for the pawn color, for example)
 	 * @param board the game board
 	 */
-	public Player(String name, Color color, Board board) {
-		// TODO - implement Player.Player
+	public Player(String name, Color color, Board board, PlayerPos pos) {
+		this.playerName = name;
+		this.color = color;
+		this.board = board;
+		this.wallsNb = 10;
+		if (pos == PlayerPos.TOP) {
+			this.pawn = new Pawn((this.board.getSize()+1)/2, 0, this.color);
+		}
+		else if(pos == PlayerPos.BOTTOM){
+			this.pawn = new Pawn((this.board.getSize()+1)/2, this.board.getSize()-1, this.color);
+		}
 	}
 
 	/**
@@ -82,7 +91,9 @@ public abstract class Player {
 	 * Decrements the number of walls by one unit. This method is used when a player place a wall on the grid.
 	 */
 	public void decWalls() {
-		// TODO - implement Player.decWalls
+		if (this.wallsNb > 0) {
+			this.wallsNb--;
+		}
 	}
 
 	/**
@@ -90,8 +101,8 @@ public abstract class Player {
 	 * @return a String representation of the player
 	 */
 	public String toString() {
-		// TODO - implement Player.toString
-		return "HE";
+		String s =  this.getPlayerName();
+		return s;
 	}
 
 }
