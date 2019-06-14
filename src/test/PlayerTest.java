@@ -19,10 +19,9 @@ public class PlayerTest {
   public void setup() {
 
     Board board;
-
-
-    this.player1 =  new AIPlayer("Test1", Color.BLACK, board);
+    this.player1 = new AIPlayer("Test1", Color.BLACK, board);
     this.player2 =  new AIPlayer("Test2", Color.WHITE, board);
+    
 
     board = new Board(11, this.player1, this.player2);
   }
