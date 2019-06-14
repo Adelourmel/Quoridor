@@ -21,7 +21,7 @@ public class Board {
 
 		this.size = size;
 		initGrid();
-		toString();
+		System.out.println(toString());
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class Board {
 		this.grid = new Square[this.size][this.size];
 
 		for (int i = 0 ; i < grid.length ; i++) {
-			for (int p = 0 ; p < grid[i].length ; i++) {
+			for (int p = 0 ; p < grid[i].length ; p++) {
 
 				if (p%2 != 0) {
 					this.grid[i][p] = new Square(i, p, SquareType.WALL_ONLY);
@@ -46,6 +46,7 @@ public class Board {
 				}
 
 			}
+
 		}
 
 
@@ -116,8 +117,8 @@ public class Board {
 		String ret = "";
 
 		for (int i = 0 ; i < this.grid.length ; i++) {
-			for (int p = 0 ; p < this.grid[i].length ; i++) {
-				ret += this.grid[i][p].toString();
+			for (int p = 0 ; p < this.grid[i].length ; p++) {
+				ret += "\t" + this.grid[i][p].toString();
 			}
 			ret += "\n";
 		}
