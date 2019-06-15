@@ -11,10 +11,13 @@ public class GUI extends JFrame {
 
   public GUI(){
 
-    getContentPane().setLayout(new BorderLayout(15,0));
+    getContentPane().setLayout(new BorderLayout());
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setTitle("QUORIDOR");
-    this.add(new MenuPanel(this));
+    //this.add(new MenuPanel(this));
+    this.add(new ModePanel(this));
+
+    this.setSize(800, 600);
 
 
 
