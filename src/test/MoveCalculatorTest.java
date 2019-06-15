@@ -13,7 +13,7 @@ public class MoveCalculatorTest {
 
   @Before
   public void setup() {
-    this.calcul = new MoveCalculator(player1, player2);
+    this.calcul = new MoveCalculator(player1, player2, null);
   }
 
   @Test
@@ -21,14 +21,7 @@ public class MoveCalculatorTest {
     assertNotNull(this.calcul);
   }
 
-  @Test
-  public void testGetPossibleMovesPlayer1() {
-    assertNotNull(this.calcul.getPossibleMovesPlayer1());
-  }
-  @Test
-  public void testGetPossibleMovesPlayer2() {
-    assertNotNull(this.calcul.getPossibleMovesPlayer2());
-  }
+
   @Test
   public void testGetPossibleWalls() {
     assertNotNull(this.calcul.getPossibleWalls());

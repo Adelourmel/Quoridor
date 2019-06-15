@@ -9,8 +9,8 @@ import java.awt.geom.*;
 public class GridPanel extends JPanel {
   private Square[][] grid;
   private Shape[][] gridGUI;
-  private final double SIZESQUAREPAWN = 50;
-  private final double WIDTHWALL = 50;
+  private final double SIZESQUAREPAWN = 60;
+  private final double WIDTHWALL = 20;
 
   public GridPanel(Square[][] grid) {
     this.grid = grid;
@@ -22,17 +22,21 @@ public class GridPanel extends JPanel {
     for (int i = 0 ; i < this.grid.length ; i++) {
       for (int p = 0 ; p < this.grid[i].length ; p++) {
         if (this.grid[p][i].getSquareType() == SquareType.WALL_ONLY) {
+          double posX = (i/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
+          double posY = (p/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
           if (i%2 == 0) {
+            posY += this.SIZESQUAREPAWN;
+            this.gridGUI[p][i] = new Rectangle2D.Double(posX, posY, this.SIZESQUAREPAWN, this.WIDTHWALL);
 
           }
-          double posX = i*(this.SIZESQUAREPAWN);
-          double posY = p*(this.SIZESQUAREPAWN);
-          this.gridGUI[p][i] = new Rectangle2D.Double(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
-
+          else {
+            posX += this.SIZESQUAREPAWN;
+            this.gridGUI[p][i] = new Rectangle2D.Double(posX, posY, this.WIDTHWALL, this.SIZESQUAREPAWN);
+          }
         }
         else {
-          double posX = i*(this.SIZESQUAREPAWN);
-          double posY = p*(this.SIZESQUAREPAWN);
+          double posX = (i/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
+          double posY = (p/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
           this.gridGUI[p][i] = new Rectangle2D.Double(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
         }
       }
@@ -41,7 +45,6 @@ public class GridPanel extends JPanel {
   protected void paintComponent(Graphics grphcs) {
     super.paintComponent(grphcs);
     Graphics2D g2d = (Graphics2D) grphcs;
-    //g2d.draw(this.gridGUI[0][0]);
     for (int i = 0 ; i < this.gridGUI.length ; i++) {
       for (int j = 0 ; j < this.gridGUI[i].length ; j++) {
         g2d.draw(this.gridGUI[j][i]);
