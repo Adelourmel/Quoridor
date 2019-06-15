@@ -33,8 +33,8 @@ public class MoveCalculator {
 	 * Update all the arrayLsit
 	 */
 	public void updateAll() {
-		updatePossibleMoves(player1);
-		updatePossibleMoves(player2);
+		updatePossibleMoves(this.player1);
+		updatePossibleMoves(this.player2);
 		updatePossibleWalls();
 	}
 
@@ -60,7 +60,8 @@ public class MoveCalculator {
 	 * @return true is the wall move is possible, false otherwise
 	 */
 	public boolean isLegalWall(int x, int y) {
-		return foundInArrayList(x, y, this.possibleWalls);
+		//return foundInArrayList(x, y, this.possibleWalls);
+		return true;
 	}
 
 	/**
@@ -92,7 +93,6 @@ public class MoveCalculator {
 				found = true;
 			}
 		}
-
 		return found;
 	}
 
@@ -115,8 +115,7 @@ public class MoveCalculator {
 				posX += this.COEFF[i][0];
 				posY += this.COEFF[i][1];
 
-				if (isInGrid(posX, posY) && !(Player.class.isInstance(this.grid[posX][posY]))) {
-
+				if (isInGrid(posX, posY) && (Pawn.class.isInstance(this.grid[posX][posY]))) {
 					posX += this.COEFF[i][0];
 					posY += this.COEFF[i][1];
 
@@ -127,12 +126,14 @@ public class MoveCalculator {
 						Pair tmp = new Pair(posX, posY);
 						player.getPossiblePawn().add(tmp);
 						ret = true;
+						System.out.println("pair : " + tmp.toString());
 					}
 				}
 				else {
 					Pair tmp = new Pair(posX, posY);
 					player.getPossiblePawn().add(tmp);
 					ret = true;
+					System.out.println("pair : " + tmp.toString());
 				}
 			}
 
@@ -140,6 +141,12 @@ public class MoveCalculator {
 		return ret;
 	}
 
+	/**
+	* Checks if the given wall move respects the game rules and can be placed. This method contains the algorithm that checks the grid to determines if the wall move fit the rules.
+	* @param x the x-coordinate of the wall move
+	* @param y the y-coordinate of the wall move
+	* @return true is the wall move is possible, false otherwise
+	*/
 	private boolean checkWall(int x, int y) {
 		// TODO - implement MoveCalculator.checkWall
 		return true;
@@ -155,12 +162,6 @@ public class MoveCalculator {
 		return x >= 0 && y >= 0 && x < this.grid.length && y < this.grid.length;
 	}
 
-	/**
-	 * Checks if the given wall move respects the game rules and can be placed. This method contains the algorithm that checks the grid to determines if the wall move fit the rules.
-	 * @param x the x-coordinate of the wall move
-	 * @param y the y-coordinate of the wall move
-	 * @return true is the wall move is possible, false otherwise
-	 */
 
 
 

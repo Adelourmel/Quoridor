@@ -1,6 +1,6 @@
 
 package quoridor.model;
-
+import test.TestGridPanel;
 /**
  * Board class. Stores the 2-dimension array of Squares that represents the game grid, on which the players place their pawn and walls.
  * This class is charged of managing the grid during the course of the game.
@@ -64,6 +64,11 @@ public class Board {
 
 		this.calculator = new MoveCalculator(this.player1, this.player2, this.grid);
 		this.calculator.updateAll();
+
+	
+        new TestGridPanel(this.grid);
+
+
 
 	}
 	/**
@@ -162,10 +167,9 @@ public class Board {
 
 		}
 		else {
-
 			if (this.calculator.isLegalPawn(x, y, player)) {
 				setPawn(x, y, player);
-				ret = false;
+				ret = true;
 
 			}
 

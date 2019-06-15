@@ -16,7 +16,8 @@ public class Pair {
 	 * @param y the y-coordinate
 	 */
 	public Pair(int x, int y) {
-		// TODO - implement Pair.Pair
+		this.x = x;
+		this.y = y;
 	}
 
 	/**
