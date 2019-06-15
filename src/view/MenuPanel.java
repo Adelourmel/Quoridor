@@ -19,11 +19,17 @@ public class MenuPanel extends JPanel {
     this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     this.setBackground(new Color(108,128,154));
 
-    this.logoLabel = new JLabel(new ImageIcon(this.PATH+"/logoQuoridor.png"));
-    this.logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+    ImageIcon imageIcon = new ImageIcon(this.PATH+"/logoQuoridor.png"); // load the image to a imageIcon
+    Image image = imageIcon.getImage(); // transform it
+    Image newimg = image.getScaledInstance(800, 500,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+    imageIcon = new ImageIcon(newimg);
+    this.logoLabel = new JLabel(imageIcon);
+
+    this.logoLabel.setAlignmentX(CENTER_ALIGNMENT);
     this.add(this.logoLabel);
 
-    
 
 
 
@@ -31,15 +37,23 @@ public class MenuPanel extends JPanel {
 
     this.buttonPanel = new JPanel();
     this.buttonPanel.setAlignmentX(CENTER_ALIGNMENT);
-    this.buttonPanel.setLayout(new GridLayout( 2, 1, 0, 25));
+
+    this.buttonPanel.setLayout(new BoxLayout( this.buttonPanel, BoxLayout.Y_AXIS));
     this.buttonPanel.setOpaque(false);
 
     this.newGameButton = new Button("Nouvelle Partie");
     this.loadGameButton = new Button("Charger Partie");
 
+    this.loadGameButton.setAlignmentX(CENTER_ALIGNMENT);
+    this.newGameButton.setAlignmentX(CENTER_ALIGNMENT);
 
+
+
+    this.buttonPanel.add(new SpacePanel());
     this.buttonPanel.add(this.newGameButton);
+    this.buttonPanel.add(new SpacePanel());
     this.buttonPanel.add(this.loadGameButton);
+    this.buttonPanel.add(new SpacePanel());
     this.add(this.buttonPanel);
 
 

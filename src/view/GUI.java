@@ -15,13 +15,14 @@ public class GUI extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setTitle("QUORIDOR");
     //this.add(new MenuPanel(this));
-    this.add(new ModePanel(this));
+    //this.add(new ModePanel(this));
+    this.add(new LoadSavePanel(this));
 
-    this.setSize(800, 600);
+    this.setSize(1300, 900);
 
 
 
-    this.pack();
+    //this.pack();
     this.setVisible(true);
 
   }
