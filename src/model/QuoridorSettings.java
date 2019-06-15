@@ -22,7 +22,7 @@ public class QuoridorSettings {
 
 
 		// -----------------------Play game save choice-----------------------
-		System.out.println("Play old game (y/n)");
+	/*	System.out.println("Play old game (y/n)");
 
 		boolean valide = false;
 
@@ -42,8 +42,10 @@ public class QuoridorSettings {
 			else {
 				valide = false;
 			}
-		} while (!valide);
-		this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
+		} while (!valide);*/
+		//this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
+		this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
+
 	}
 
 	/**

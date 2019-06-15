@@ -38,10 +38,16 @@ public class Game {
 	 * Starts the game and manages the game's progress.
 	 */
 	public void startGame() {
+		boolean player1Play = true;
+
 		while (!this.endOfGame()){
-			this.player1.play();
-			if (!this.endOfGame()) {
+			if (player1Play) {
+				this.player1.play();
+				player1Play = false;
+			}
+			else {
 				this.player2.play();
+				player1Play = true;
 			}
 		}
 	}

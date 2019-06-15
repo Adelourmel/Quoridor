@@ -2,7 +2,7 @@
 package quoridor.model;
 
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  * MoveCalculator class. Contains all the useful methods of the game that manage the players moves, by determining if they are legal.
  * This class contains the browsing algorithm which ensure that moves fit the game's rules.
@@ -47,13 +47,7 @@ public class MoveCalculator {
 	 * @return true is the wall move is possible, false otherwise
 	 */
 	public boolean isLegalWall(int x, int y) {
-		boolean ret = false;
-		for (Pair elem : possibleWalls) {
-			if (elem.getX() == x && elem.getY() == y) {
-				ret = true;
-			}
-		}
-		return ret;
+		return foundInArrayList(x, y, this.possibleWalls);
 	}
 
 	/**
@@ -64,8 +58,31 @@ public class MoveCalculator {
 	 * @return true is the move is possible, false otherwise
 	 */
 	public boolean isLegalPawn(int x, int y, Player player) {
-		// TODO - implement MoveCalculator.isLegalPawn
-		return false;
+		ArrayList<Pair> arraySearch;
+		boolean ret;
+		if (player == this.player1) {
+			ret = foundInArrayList(x, y, possibleMovesPlayer1);
+		}
+		else {
+			ret = foundInArrayList(x, y, possibleMovesPlayer2);
+		}
+
+		return ret;
+
+	}
+
+	private boolean foundInArrayList(int x, int y, ArrayList<Pair> array) {
+		Iterator<Pair> ite = array.iterator();
+		boolean found = false;
+
+		while (ite.hasNext() && !found) {
+			Pair elem = ite.next();
+			if (elem.getX() == x && elem.getY() == y) {
+				found = true;
+			}
+		}
+
+		return found;
 	}
 
 	/**
@@ -75,7 +92,7 @@ public class MoveCalculator {
 	 * @param player the player that made the move
 	 * @return true is the move is possible, false otherwise
 	 */
-	public boolean checkMove(int x, int y, Player player) {
+	private boolean checkMove(int x, int y, Player player) {
 		// TODO - implement MoveCalculator.checkMove
 		return false;
 	}
@@ -86,7 +103,7 @@ public class MoveCalculator {
 	 * @param y the y-coordinate of the wall move
 	 * @return true is the wall move is possible, false otherwise
 	 */
-	public boolean checkWall(int x, int y) {
+	private boolean checkWall(int x, int y) {
 		// TODO - implement MoveCalculator.checkWall
 		return false;
 	}
