@@ -22,6 +22,7 @@ public abstract class Player {
 	 * @param name the player name
 	 * @param color the player color (it is used for the pawn color, for example)
 	 * @param board the game board
+	 * @param pos the player position top, bottom...
 	 */
 	public Player(String name, Color color, Board board, PlayerPos pos) {
 		this.playerName = name;

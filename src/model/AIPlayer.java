@@ -13,10 +13,10 @@ public class AIPlayer extends Player {
 	 * @param name the player name
 	 * @param color the player color (it is used for the pawn color, for example)
 	 * @param board the game board
+	 * @param pos the player position top, bottom...
 	 */
 	public AIPlayer(String name, Color color, Board board, PlayerPos pos) {
 		super(name, color, board, pos);
-		// TODO - implement AIPlayer.AIPlayer
 	}
 
 	/**

@@ -51,4 +51,12 @@ public class Pair {
 		this.y = y;
 	}
 
+/**
+ * Convert object to String
+ * @return the values x and y to String
+ */
+	public String toString() {
+		return "(" + this.x + ";" + this.y + ")";
+	}
+
 }

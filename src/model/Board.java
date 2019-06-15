@@ -26,7 +26,6 @@ public class Board {
 		this.player2 = player2;
 		this.size = size;
 
-		this.calculator = new MoveCalculator(this.player1, this.player2, this.grid);
 
 	}
 
@@ -62,6 +61,9 @@ public class Board {
 		x = this.player2.getPawn().getPosX();
 		y = this.player2.getPawn().getPosY();
 		this.grid[x][y] = this.player2.getPawn();
+
+		this.calculator = new MoveCalculator(this.player1, this.player2, this.grid);
+		this.calculator.updateAll();
 
 	}
 	/**

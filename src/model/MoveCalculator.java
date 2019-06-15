@@ -20,6 +20,7 @@ public class MoveCalculator {
 	 * MoveCalculator constructor. Initialises the two players attributes and all the game-managing ArrayLists.
 	 * @param player1 the player1 object
 	 * @param player2 the player2 object
+	 * @param grid the grid array
 	 */
 	public MoveCalculator(Player player1, Player player2, Square[][] grid) {
 		this.player1 = player1;
@@ -39,9 +40,10 @@ public class MoveCalculator {
 
 	/**
 	 * Updates the possibleMoves ArrayList for both players by browsing through all the grid coordinates to check each move possible.
+	 * @param player the player
 	 */
 	private void updatePossibleMoves(Player player) {
-		// TODO - implement MoveCalculator.updatePossibleMoves
+		checkMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player);
 	}
 
 	/**
@@ -73,6 +75,13 @@ public class MoveCalculator {
 
 	}
 
+/**
+ * Foud if the coordinate are in the array or not
+ * @param  x     x position
+ * @param  y     y position
+ * @param  array the ArrayList
+ * @return       true if found else false
+ */
 	private boolean foundInArrayList(int x, int y, ArrayList<Pair> array) {
 		Iterator<Pair> ite = array.iterator();
 		boolean found = false;
@@ -92,9 +101,12 @@ public class MoveCalculator {
 	 * @param x the x-coordinate of the move
 	 * @param y the y-coordinate of the move
 	 * @param player the player that made the move
-	 * @return true is the move is possible, false otherwise
+	 * @return false if there is no move possible
 	 */
 	private boolean checkMove(int x, int y, Player player) {
+
+		boolean ret = false;
+
 		for (int i = 0 ; i < this.COEFF.length ; i++) {
 			int posX = this.COEFF[i][0] + x;
 			int posY = this.COEFF[i][1] + y;
@@ -114,14 +126,31 @@ public class MoveCalculator {
 
 						Pair tmp = new Pair(posX, posY);
 						player.getPossiblePawn().add(tmp);
+						ret = true;
 					}
+				}
+				else {
+					Pair tmp = new Pair(posX, posY);
+					player.getPossiblePawn().add(tmp);
+					ret = true;
 				}
 			}
 
 		}
+		return ret;
+	}
+
+	private boolean checkWall(int x, int y) {
+		// TODO - implement MoveCalculator.checkWall
 		return true;
 	}
 
+/**
+ * Check if the x,y coordinate are in grid
+ * @param  x coordinate x
+ * @param  y coordinate y
+ * @return   true if the position is good
+ */
 	private boolean isInGrid(int x, int y) {
 		return x >= 0 && y >= 0 && x < this.grid.length && y < this.grid.length;
 	}
@@ -132,10 +161,6 @@ public class MoveCalculator {
 	 * @param y the y-coordinate of the wall move
 	 * @return true is the wall move is possible, false otherwise
 	 */
-	private boolean checkWall(int x, int y) {
-		// TODO - implement MoveCalculator.checkWall
-		return true;
-	}
 
 
 
