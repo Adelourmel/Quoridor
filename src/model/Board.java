@@ -26,6 +26,7 @@ public class Board {
 		this.player2 = player2;
 		this.size = size;
 
+		this.calculator = new MoveCalculator(this.player1, this.player2, this.grid);
 
 	}
 
@@ -87,41 +88,31 @@ public class Board {
 		return this.grid;
 	}
 
+
 	/**
-	 * Checks if the move at the given coordinates is correct. If it is, this method changes the grid to apply the changes.
-	 * This method is only used when the player that made the move is a HumanPlayer.
-	 * @param x the x-coordinate of the move
-	 * @param y the y-coordinate of the move
-	 * @param player the HumanPlayer that made the move
-	 * @return true if the move is correct and has been applied to the grid, false otherwise
+	 * change the position of the pawn
+	 * @param x      the new position x of the pawn
+	 * @param y      the new position y of the pawn
+	 * @param player the owner of the pawn
 	 */
-	public boolean setNewMove(int x, int y, HumanPlayer player) {
+	private void setPawn(int x, int y, Player player) {
+		int lastX = player.getPawn().getPosX();
+		int lastY = player.getPawn().getPosY();
 
-		if (true) {
-			if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
+		this.grid[x][y] = player.getPawn();
+		player.getPawn().setPosX(x);
+		player.getPawn().setPosY(y);
 
-				setWalls(x, y, player);
+		this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
 
-			}
-			else {
-
-				int lastX = player.getPawn().getPosX();
-				int lastY = player.getPawn().getPosY();
-
-				this.grid[x][y] = player.getPawn();
-				player.getPawn().setPosX(x);
-				player.getPawn().setPosY(y);
-
-				this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
-
-			}
-
-
-		}
-
-		return true;
 	}
 
+	/**
+	 * set wall in the grid
+	 * @param x      the position x of the wall
+	 * @param y      the position y of the wall
+	 * @param player the owner of the wall
+	 */
 	private void setWalls(int x, int y, Player player) {
 		int coeffX = 0;
 		int coeffY = 0;
@@ -147,6 +138,44 @@ public class Board {
 		this.player1 = p1;
 		this.player2 = p2;
 	}
+
+
+
+	/**
+	* Checks if the move at the given coordinates is correct. If it is, this method changes the grid to apply the changes.
+	* This method is only used when the player that made the move is a HumanPlayer.
+	* @param x the x-coordinate of the move
+	* @param y the y-coordinate of the move
+	* @param player the HumanPlayer that made the move
+	* @return true if the move is correct and has been applied to the grid, false otherwise
+	*/
+	public boolean setNewMove(int x, int y, HumanPlayer player) {
+		boolean ret = false;
+
+		if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
+			if (this.calculator.isLegalWall(x, y)) {
+				setWalls(x, y, player);
+				ret = true;
+			}
+
+		}
+		else {
+
+			if (this.calculator.isLegalPawn(x, y, player)) {
+				setPawn(x, y, player);
+				ret = false;
+
+			}
+
+		}
+
+		if (ret) {
+			calculator.updateAll();
+		}
+
+		return ret;
+	}
+
 	/**
 	 * Changes the grid to apply the changes made by the given move.
 	 * Warning : this method does not check if the given move is correct. It assumes that this checking has been done by the AIPlayer itself.
@@ -156,16 +185,22 @@ public class Board {
 	 * @param player the AIPlayer that made the move
 	 */
 	public void setNewMove(int x, int y, AIPlayer player) {
-		// TODO - implement Board.setNewMove
+		if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
+				setWalls(x, y, player);
+		}
+		else {
+			setPawn(x, y, player);
+		}
+		calculator.updateAll();
 	}
 
 	/**
 	 * Returns the MoveCalculator object.
 	 * @return the MoveCalculator object
 	 */
-/*	public MoveCalculator getCalculator() {
-		// TODO - implement Board.getCalculator
-	}*/
+	public MoveCalculator getCalculator() {
+		return this.calculator;
+	}
 
 	/**
 	 * Returns a String representation of the game grid. This method can be used for displaying the grid in the console version of game.
@@ -175,14 +210,15 @@ public class Board {
 		String ret = "\n";
 		String tmp = "   ";
 		for (int i = 0 ; i < this.grid.length ; i++) {
-			ret += i + "  ";
+			ret += i + "\t";
+
 			for (int p = 0 ; p < this.grid[i].length ; p++) {
 				ret += this.grid[p][i].toString() + " ";
 			}
 			tmp += i + " ";
 			ret += "\n";
 		}
-		ret += tmp;
+		ret += "\t" + tmp;
 		return ret;
 	}
 

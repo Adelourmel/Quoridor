@@ -10,33 +10,44 @@ import java.util.Iterator;
 public class MoveCalculator {
 
 	private ArrayList<Pair> possibleWalls;
-	private ArrayList<Pair> possibleMovesPlayer1;
-	private ArrayList<Pair> possibleMovesPlayer2;
 	private Player player1;
 	private Player player2;
 	private ArrayList<Pair> wallsList;
+	private Square[][] grid;
+	private final int[][] COEFF = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
 	/**
 	 * MoveCalculator constructor. Initialises the two players attributes and all the game-managing ArrayLists.
 	 * @param player1 the player1 object
 	 * @param player2 the player2 object
 	 */
-	public MoveCalculator(Player player1, Player player2) {
+	public MoveCalculator(Player player1, Player player2, Square[][] grid) {
 		this.player1 = player1;
 		this.player2 = player2;
+
+		this.grid = grid;
+	}
+
+	/**
+	 * Update all the arrayLsit
+	 */
+	public void updateAll() {
+		updatePossibleMoves(player1);
+		updatePossibleMoves(player2);
+		updatePossibleWalls();
 	}
 
 	/**
 	 * Updates the possibleMoves ArrayList for both players by browsing through all the grid coordinates to check each move possible.
 	 */
-	public void updatePossibleMoves() {
+	private void updatePossibleMoves(Player player) {
 		// TODO - implement MoveCalculator.updatePossibleMoves
 	}
 
 	/**
 	 * Updates the possibleWalls ArrayList, used by both players, by browsing through all the grid coordinates to check each possible wall to put on the grid.
 	 */
-	public void updatePossibleWalls() {
+	private void updatePossibleWalls() {
 		// TODO - implement MoveCalculator.updatePossibleWalls
 	}
 
@@ -58,16 +69,7 @@ public class MoveCalculator {
 	 * @return true is the move is possible, false otherwise
 	 */
 	public boolean isLegalPawn(int x, int y, Player player) {
-		ArrayList<Pair> arraySearch;
-		boolean ret;
-		if (player == this.player1) {
-			ret = foundInArrayList(x, y, possibleMovesPlayer1);
-		}
-		else {
-			ret = foundInArrayList(x, y, possibleMovesPlayer2);
-		}
-
-		return ret;
+		return foundInArrayList(x, y, player.getPossiblePawn());
 
 	}
 
@@ -93,8 +95,35 @@ public class MoveCalculator {
 	 * @return true is the move is possible, false otherwise
 	 */
 	private boolean checkMove(int x, int y, Player player) {
-		// TODO - implement MoveCalculator.checkMove
-		return false;
+		for (int i = 0 ; i < this.COEFF.length ; i++) {
+			int posX = this.COEFF[i][0] + x;
+			int posY = this.COEFF[i][1] + y;
+
+			if (isInGrid(posX, posY) && !(Wall.class.isInstance(this.grid[posX][posY]))) {
+				posX += this.COEFF[i][0];
+				posY += this.COEFF[i][1];
+
+				if (isInGrid(posX, posY) && !(Player.class.isInstance(this.grid[posX][posY]))) {
+
+					posX += this.COEFF[i][0];
+					posY += this.COEFF[i][1];
+
+					if (!(Wall.class.isInstance(this.grid[posX][posY]))) {
+						posX += this.COEFF[i][0];
+						posY += this.COEFF[i][1];
+
+						Pair tmp = new Pair(posX, posY);
+						player.getPossiblePawn().add(tmp);
+					}
+				}
+			}
+
+		}
+		return true;
+	}
+
+	private boolean isInGrid(int x, int y) {
+		return x >= 0 && y >= 0 && x < this.grid.length && y < this.grid.length;
 	}
 
 	/**
@@ -105,24 +134,10 @@ public class MoveCalculator {
 	 */
 	private boolean checkWall(int x, int y) {
 		// TODO - implement MoveCalculator.checkWall
-		return false;
+		return true;
 	}
 
-	/**
-	 * Returns the possibleMoves ArrayList for the player 1.
-	 * @return the possibleMovesPlayer1 ArrayList
-	 */
-	public ArrayList<Pair> getPossibleMovesPlayer1() {
-		return this.possibleMovesPlayer1;
-	}
 
-	/**
-	 * Returns the possibleMoves ArrayList for the player 2.
-	 * @return the possibleMovesPlayer2 ArrayList
-	 */
-	public ArrayList<Pair> getPossibleMovesPlayer2() {
-		return this.possibleMovesPlayer2;
-	}
 
 	/**
 	 * Returns the possibleWalls ArrayList.

@@ -2,6 +2,7 @@
 package quoridor.model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  * Player abstract class. Represents a player (Human or AI) that can play against another player (Human or AI).
@@ -14,6 +15,7 @@ public abstract class Player {
 	protected String playerName;
 	protected Color color;
 	private int wallsNb;
+	private ArrayList<Pair> possiblePawn;
 
 	/**
 	 * Player constructor. Initialises the Player attributes with the given parameters.
@@ -26,6 +28,9 @@ public abstract class Player {
 		this.color = color;
 		this.board = board;
 		this.wallsNb = 10;
+
+		this.possiblePawn = new ArrayList<Pair>();
+
 		if (pos == PlayerPos.TOP) {
 			this.pawn = new Pawn((this.board.getSize())/2, 0, this.color);
 		}
@@ -103,6 +108,10 @@ public abstract class Player {
 	public String toString() {
 		String s =  this.getPlayerName();
 		return s;
+	}
+
+	public ArrayList<Pair> getPossiblePawn() {
+		return this.possiblePawn;
 	}
 
 }

@@ -11,7 +11,7 @@ public class QuoridorSettings {
 
 	private Game game;
 	private Gamemode gamemode;
-	private int SIZE = 9;
+	private int SIZE = 17;
 	private String playerName1;
 	private String playerName2;
 
