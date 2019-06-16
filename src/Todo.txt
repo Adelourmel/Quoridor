@@ -1,0 +1,1 @@
+- Diabled boutton si pas de partie sauvegardée
