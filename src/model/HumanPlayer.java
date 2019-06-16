@@ -37,6 +37,7 @@ public class HumanPlayer extends Player {
 			System.out.println(this.board.toString());
       boolean b = true;
       do {
+				b = true;
         System.out.println("Entrez la position en X du pion");
         try {
 					this.scan = new Scanner(System.in);

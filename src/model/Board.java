@@ -13,6 +13,7 @@ public class Board {
 	private Player player1;
 	private Player player2;
 	private final int SIZEWALL = 3;
+	private TestGridPanel test;
 
 	/**
 	 * Board constructor. Initialises the game grid at the given size, and creates a MoveCalculator object with the two given players.
@@ -65,8 +66,8 @@ public class Board {
 		this.calculator = new MoveCalculator(this.player1, this.player2, this.grid);
 		this.calculator.updateAll();
 
-	
-        new TestGridPanel(this.grid);
+
+    this.test = new TestGridPanel(this.grid);
 
 
 
@@ -178,7 +179,7 @@ public class Board {
 		if (ret) {
 			calculator.updateAll();
 		}
-
+		test.gridPane.repaint();
 		return ret;
 	}
 
