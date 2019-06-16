@@ -2,6 +2,7 @@ package quoridor.control;
 
 import java.awt.event.*;
 import java.awt.Rectangle;
+import java.io.ByteArrayInputStream;
 
 public class GridPanelListener extends MouseAdapter {
 
@@ -17,8 +18,24 @@ public class GridPanelListener extends MouseAdapter {
 
   }
   public void mouseReleased(MouseEvent e) {
-    if (this.gridGUI[0][0].contains(e.getPoint()))
-      System.out.println("yop");
+    boolean found = false;
+    int x = 0;
+    int y = 0;
+    while (!found && y < this.gridGUI.length) {
+      x = 0;
+      while (!found && x < this.gridGUI[y].length) {
+        if (this.gridGUI[y][x].contains(e.getPoint())) {
+          found = true;
+          System.out.println(x + ";" + y);
+        }
+        x++;
+      }
+      y++;
+    }
+    /*ByteArrayInputStream in = new ByteArrayInputStream("2".getBytes());
+    System.setIn(in);
+    System.setIn(System.in);
+*/
 
   }
   public void mouseClicked(MouseEvent e) {
