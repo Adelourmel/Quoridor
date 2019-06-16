@@ -9,41 +9,53 @@ import java.awt.geom.*;
 public class GridPanel extends JPanel {
   private Square[][] grid;
   private Rectangle[][] gridGUI;
-  private final int SIZESQUAREPAWN = 60;
-  private final int WIDTHWALL = 20;
+  private final int SIZESQUAREPAWN = 50;
+  private final int WIDTHWALL = 15;
 
   public GridPanel(Square[][] grid) {
     this.grid = grid;
     this.gridGUI = new Rectangle[this.grid.length][this.grid.length];
-    initShape();
+    //initShape();
+    int sizeGrid = ((this.grid.length/2) * (this.WIDTHWALL + this.SIZESQUAREPAWN)) + this.SIZESQUAREPAWN;
+    this.setPreferredSize(new Dimension(sizeGrid, sizeGrid));
   }
 
-  private void initShape() {
+  private void initShape(Graphics2D g2d) {
     for (int i = 0 ; i < this.grid.length ; i++) {
       for (int p = 0 ; p < this.grid[i].length ; p++) {
         if (this.grid[p][i].getSquareType() == SquareType.WALL_ONLY) {
+          g2d.setColor(Color.WHITE);
           int posX = (i/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
           int posY = (p/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
           if (i%2 == 0) {
             posY += this.SIZESQUAREPAWN;
             this.gridGUI[p][i] = new Rectangle(posX, posY, this.SIZESQUAREPAWN, this.WIDTHWALL);
+            g2d.fill(this.gridGUI[p][i]);
 
           }
           else if (p%2 == 0) {
             posX += this.SIZESQUAREPAWN;
             this.gridGUI[p][i] = new Rectangle(posX, posY, this.WIDTHWALL, this.SIZESQUAREPAWN);
+            g2d.fill(this.gridGUI[p][i]);
+
           }
           else {
             posX += this.SIZESQUAREPAWN;
             posY += this.SIZESQUAREPAWN;
             this.gridGUI[p][i] = new Rectangle(posX, posY, this.WIDTHWALL, this.WIDTHWALL);
+            g2d.fill(this.gridGUI[p][i]);
+
           }
 
         }
         else {
+
           int posX = (i/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
           int posY = (p/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
           this.gridGUI[p][i] = new Rectangle(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
+          g2d.setColor(Color.RED);
+          g2d.fill(this.gridGUI[p][i]);
+
         }
       }
     }
@@ -52,15 +64,12 @@ public class GridPanel extends JPanel {
   protected void paintComponent(Graphics grphcs) {
     super.paintComponent(grphcs);
     Graphics2D g2d = (Graphics2D) grphcs;
-    for (int i = 0 ; i < this.gridGUI.length ; i++) {
-      g2d.setColor(Color.RED);
-      for (int j = 0 ; j < this.gridGUI[i].length ; j++) {
+    initShape(g2d);
+    //
 
-        g2d.fill(this.gridGUI[j][i]);
-        g2d.setColor(Color.BLUE);
-      }
-    }
   }
+
+
 
 
 
