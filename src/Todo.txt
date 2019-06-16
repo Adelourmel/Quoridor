@@ -1,1 +1,1 @@
-- Diabled boutton si pas de partie sauvegardée
+- Disabled boutton si pas de partie sauvegardée

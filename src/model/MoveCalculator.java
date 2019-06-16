@@ -43,7 +43,7 @@ public class MoveCalculator {
 	 * @param player the player
 	 */
 	private void updatePossibleMoves(Player player) {
-		checkMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player);
+		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.grid);
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class MoveCalculator {
 	 * @param player the player that made the move
 	 * @return false if there is no move possible
 	 */
-	private boolean checkMove(int x, int y, Player player) {
+	private boolean checkPawnMove(int x, int y, Player player, Square[][] g) {
 
 		boolean ret = false;
 
@@ -111,15 +111,15 @@ public class MoveCalculator {
 			int posX = this.COEFF[i][0] + x;
 			int posY = this.COEFF[i][1] + y;
 
-			if (isInGrid(posX, posY) && !(Wall.class.isInstance(this.grid[posX][posY]))) {
+			if (isInGrid(posX, posY) && !(Wall.class.isInstance(g[posX][posY]))) {
 				posX += this.COEFF[i][0];
 				posY += this.COEFF[i][1];
 
-				if (isInGrid(posX, posY) && (Pawn.class.isInstance(this.grid[posX][posY]))) {
+				if (isInGrid(posX, posY) && (Pawn.class.isInstance(g[posX][posY]))) {
 					posX += this.COEFF[i][0];
 					posY += this.COEFF[i][1];
 
-					if (!(Wall.class.isInstance(this.grid[posX][posY]))) {
+					if (!(Wall.class.isInstance(g[posX][posY]))) {
 						posX += this.COEFF[i][0];
 						posY += this.COEFF[i][1];
 
@@ -148,7 +148,8 @@ public class MoveCalculator {
 	* @return true is the wall move is possible, false otherwise
 	*/
 	private boolean checkWall(int x, int y) {
-		// TODO - implement MoveCalculator.checkWall
+	 	Square[][] gridClone = this.grid.clone();
+		
 		return true;
 	}
 

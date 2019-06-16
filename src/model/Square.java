@@ -5,7 +5,7 @@ package quoridor.model;
  * Square class. This class represents the object that fill the game grid.
  * A Square has a SquareType attribute which defines if the Square can host a wall or a pawn on the game grid.
  */
-public class Square {
+public class Square implements Cloneable {
 
 	private SquareType squareType;
 	private int posX;
@@ -79,6 +79,10 @@ public class Square {
 	 */
 	public void setPosY(int posY) {
 		this.posY = posY;
+	}
+
+	public Square clone() throws CloneNotSupportedException {
+		return (Square) super.clone();
 	}
 
 }
