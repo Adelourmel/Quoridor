@@ -4,11 +4,19 @@ import java.util.Scanner;
 import java.io.File;
 import java.util.InputMismatchException;
 import java.util.ArrayList;
-import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.io.File;
+import java.io.IOException;
 /**
  * QuoridorSettings class. This class gathers and sets the game settings. It is also responsible for saving and loading save files of unfinished games.
  */
-public class QuoridorSettings implements Serializable{
+public class QuoridorSettings {
 
 	private Game game;
 	private Gamemode gamemode;
@@ -23,7 +31,7 @@ public class QuoridorSettings implements Serializable{
 
 
 		// -----------------------Play game save choice-----------------------
-	/*	System.out.println("Play old game (y/n)");
+		System.out.println("Play old game (y/n)");
 
 		boolean valide = false;
 
@@ -43,7 +51,7 @@ public class QuoridorSettings implements Serializable{
 			else {
 				valide = false;
 			}
-		} while (!valide);*/
+		} while (!valide);
 		//this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
 		this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
 
@@ -55,10 +63,10 @@ public class QuoridorSettings implements Serializable{
 	public void configure() {
 		boolean valide = false;
 
-		Scanner sc;
+		Scanner sc = new Scanner(System.in);
 
 		// -----------------------Human choose Gamemode-----------------------
-		System.out.println("Chose game mode  :\n1. Human VS Machine\n2. Human VS Human");
+		System.out.println("Choose game mode  :\n1. Human VS Machine\n2. Human VS Human");
 		do {
 			int choice;
 			try {
@@ -82,12 +90,12 @@ public class QuoridorSettings implements Serializable{
 			}
 		} while(!valide);
 
-		// -----------------------Choice player name -----------------------
+		// -----------------------;
 		sc = new Scanner(System.in);
-
 		System.out.println("Player 1 name : ");
 		this.playerName1 = sc.nextLine();
 
+		sc = new Scanner(System.in);
 		System.out.println("Player 2 name : ");
 		this.playerName2 = sc.nextLine();
 
@@ -117,14 +125,17 @@ public class QuoridorSettings implements Serializable{
 		return ret;
 
 	}
-	private String choiceGame() {
+
+
+
+	private void choiceGame() {
 
 		ArrayList<String> listOfGames = listFile();
 
-		String ret;
-		ret = "";
 
-		System.out.println("Chose file : ");
+
+
+		System.out.println("ChoOse file : ");
 
 		for(int i = 0 ; i < listOfGames.size() ; i++) {
 			System.out.println((i + 1) + ". " + listOfGames.get(i));
@@ -144,7 +155,11 @@ public class QuoridorSettings implements Serializable{
 			}
 
 			if (choice <= listOfGames.size() && choice > 0) {
-				ret = listOfGames.get(choice - 1);
+				try {
+					this.loadGame(listOfGames.get(choice - 1));
+				} catch(Exception e) {
+					System.out.println("Error");
+				}
 				valide = true;
 			}
 			else {
@@ -154,14 +169,22 @@ public class QuoridorSettings implements Serializable{
 		} while(!valide);
 
 
-		return ret;
 	}
 
 	/**
 	 * Saves the current on-going game in a save file, that will allow the user to continue the game later.
 	 */
 	public void saveGame() {
-		// TODO - implement QuoridorSettings.saveGame
+		SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
+    Date date = new Date();
+		File file = new File("../data/"+this.playerName1+"-"+this.playerName2+"-"+formater.format(date)+".ser");
+		ObjectOutputStream oos;
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream(file));
+			oos.writeObject(this.game);
+		} catch(IOException  e) {
+			e.getMessage();
+		}
 	}
 
 	/**
@@ -169,7 +192,17 @@ public class QuoridorSettings implements Serializable{
 	 * @param fileName the save filename
 	 */
 	public void loadGame(String fileName) {
-		// TODO
+		ObjectInputStream ois;
+		try {
+			ois = new ObjectInputStream(new FileInputStream(fileName));
+			try {
+				this.game = (Game)ois.readObject();
+			} catch(ClassNotFoundException e) {
+				e.getMessage();
+			}
+		} catch(IOException e) {
+			e.getMessage();
+		}
 	}
 
 	/**
