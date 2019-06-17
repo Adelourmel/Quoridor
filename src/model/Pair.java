@@ -1,11 +1,12 @@
 
 package quoridor.model;
+import java.io.Serializable;
 
 /**
  * Pair class. This class provides a means of representing pairs of coordinates (x and y).
  * This coordinates are widely used for specifying moves locations on the grid.
  */
-public class Pair {
+public class Pair implements Serializable {
 
 	private int x;
 	private int y;

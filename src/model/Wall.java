@@ -1,11 +1,12 @@
 
 package quoridor.model;
+import java.io.Serializable;
 
 /**
  * Wall class, extends from Square. This class represents a special kind of Square,
  * that players can place on the grid to block other player's pawn to move freely on the grid.
  */
-public class Wall extends Square {
+public class Wall extends Square implements Serializable{
 
 	private Player player;
 
