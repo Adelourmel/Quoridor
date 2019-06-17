@@ -115,6 +115,8 @@ public abstract class Player implements Cloneable {
 		return this.possiblePawn;
 	}
 	public Player clone() throws CloneNotSupportedException {
-		return (Player) super.clone();
+		Player clonePlayer = (Player) super.clone();
+
+		return clonePlayer;
 	}
 }
