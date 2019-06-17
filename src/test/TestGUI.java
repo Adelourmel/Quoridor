@@ -1,5 +1,5 @@
 package test;
-import view.*;
+import quoridor.view.*;
 
 
 

@@ -39,7 +39,9 @@
   <target name="compile" depends="init"
         description="compile the source">
     <!-- Compile the Java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${class}" includeantruntime="yes"/>
+    <javac srcdir="${src}" destdir="${class}" includeantruntime="yes">
+      <compilerarg value="-Xlint:unchecked"/>
+    </javac>
   </target>
 
   <target name="c" depends="init"

@@ -1,4 +1,4 @@
-package view;
+package quoridor.view;
 
 import quoridor.model.*;
 import quoridor.control.GridPanelListener;

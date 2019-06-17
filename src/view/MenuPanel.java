@@ -1,5 +1,6 @@
-package view;
-//import controller.*;
+package quoridor.view;
+
+import quoridor.control.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -42,7 +43,9 @@ public class MenuPanel extends JPanel {
     this.buttonPanel.setOpaque(false);
 
     this.newGameButton = new Button("Nouvelle Partie");
+    this.newGameButton.addActionListener(new MenuListener(this.state));
     this.loadGameButton = new Button("Charger Partie");
+    this.loadGameButton.addActionListener(new MenuListener(this.state));
 
     this.loadGameButton.setAlignmentX(CENTER_ALIGNMENT);
     this.newGameButton.setAlignmentX(CENTER_ALIGNMENT);
@@ -51,14 +54,25 @@ public class MenuPanel extends JPanel {
 
     this.buttonPanel.add(new SpacePanel());
     this.buttonPanel.add(this.newGameButton);
+
     this.buttonPanel.add(new SpacePanel());
     this.buttonPanel.add(this.loadGameButton);
+
     this.buttonPanel.add(new SpacePanel());
     this.add(this.buttonPanel);
 
 
   }
 
+
+
+	public Button getNewGameButton() {
+		return this.newGameButton;
+	}
+
+	public Button getLoadGameButton() {
+		return this.loadGameButton;
+	}
 
 
 }

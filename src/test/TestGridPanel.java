@@ -1,7 +1,7 @@
 package test;
 
 import quoridor.model.*;
-import view.*;
+import quoridor.view.*;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;

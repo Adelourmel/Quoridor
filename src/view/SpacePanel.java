@@ -1,4 +1,4 @@
-package view;
+package quoridor.view;
 //import controller.*;
 import javax.swing.*;
 import java.awt.*;
