@@ -164,9 +164,26 @@ public class MoveCalculator implements Cloneable, Serializable {
 
 		cloneBoard.setWalls(x, y, cloneBoard.getPlayer1());
 
+		ArrayList<Pair> mark = new ArrayList<Pair>();
+
+		//explore(cloneBoard.getPlayer1().getPosX(), cloneBoard.getPlayer1().getPosY(), cloneBoard, mark);
+
 		return true;
 	}
+/*
+	private void explore(int x, int y, Board cloneBoard, ArrayList<Pair> mark) {
+		mark.add(new Pair(x, y));
+		System.out.println(("x :" + x + " | y : " + y));
 
+		ArrayList<Pair> neighboors = cloneBoard.getPlayer().possiblePawn();
+		for (Pair elem : neighboors) {
+			if (foundInArrayList(x, y, elem)) {
+				explore(x, y, cloneBoard, mark);
+			}
+		}
+
+	}
+*/
 /**
  * Check if the x,y coordinate are in grid
  * @param  x coordinate x

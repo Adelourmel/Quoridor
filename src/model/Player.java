@@ -118,6 +118,13 @@ public abstract class Player implements Cloneable, Serializable {
 	public Player clone() throws CloneNotSupportedException {
 		Player clonePlayer = (Player) super.clone();
 
+		clonePlayer.pawn = this.pawn.clone();
+
+		ArrayList<Pair> cloneArray = new ArrayList<Pair>();
+		for (Pair elem : this.possiblePawn) {
+			cloneArray.add(elem.clone());
+		}
+
 		return clonePlayer;
 	}
 }
