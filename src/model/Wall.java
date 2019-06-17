@@ -43,5 +43,12 @@ public class Wall extends Square implements Serializable{
 	public Player getPlayer() {
 		return this.player;
 	}
+	public Wall clone() throws CloneNotSupportedException {
+		Wall cloneObj = (Wall) super.clone();
 
+		cloneObj.posX = this.posX;
+		cloneObj.posY = this.posY;
+
+		return cloneObj;
+	}
 }

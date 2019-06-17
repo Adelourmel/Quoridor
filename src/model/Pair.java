@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Pair class. This class provides a means of representing pairs of coordinates (x and y).
  * This coordinates are widely used for specifying moves locations on the grid.
  */
-public class Pair implements Serializable {
+public class Pair implements Serializable, Cloneable {
 
 	private int x;
 	private int y;
@@ -59,6 +59,15 @@ public class Pair implements Serializable {
  */
 	public String toString() {
 		return "(" + this.x + ";" + this.y + ")";
+	}
+
+	public Pair clone() throws CloneNotSupportedException {
+		Pair clonePair = (Pair) super.clone();
+
+		clonePair.x = this.x;
+		clonePair.y = this.y;
+
+ 		return clonePair;
 	}
 
 }

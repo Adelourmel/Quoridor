@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class Square implements Cloneable, Serializable {
 
 	private SquareType squareType;
-	private int posX;
-	private int posY;
+	protected int posX;
+	protected int posY;
 
 	/**
 	 * Square constructor. Initialises the coordinates of the Square as well as the SquareType, which defines what kind of game object the Square can host during the game.
@@ -83,6 +83,10 @@ public class Square implements Cloneable, Serializable {
 
 	public Square clone() throws CloneNotSupportedException {
 		Square cloneObj = (Square) super.clone();
+
+		cloneObj.posX = this.posX;
+		cloneObj.posY = this.posY;
+
 		return cloneObj;
 	}
 
