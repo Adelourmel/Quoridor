@@ -13,7 +13,7 @@ public class MoveCalculatorTest {
 
   @Before
   public void setup() {
-    this.calcul = new MoveCalculator(player1, player2, null);
+    this.calcul = new MoveCalculator(null);
   }
 
   @Test

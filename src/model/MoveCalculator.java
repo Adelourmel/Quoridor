@@ -10,11 +10,10 @@ import java.util.Iterator;
 public class MoveCalculator {
 
 	private ArrayList<Pair> possibleWalls;
-	private Player player1;
-	private Player player2;
 	private ArrayList<Pair> wallsList;
-	private Square[][] grid;
+
 	private final int[][] COEFF = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+	private Board board;
 
 	/**
 	 * MoveCalculator constructor. Initialises the two players attributes and all the game-managing ArrayLists.
@@ -22,20 +21,22 @@ public class MoveCalculator {
 	 * @param player2 the player2 object
 	 * @param grid the grid array
 	 */
-	public MoveCalculator(Player player1, Player player2, Square[][] grid) {
-		this.player1 = player1;
-		this.player2 = player2;
+	public MoveCalculator(Board board) {
 
-		this.grid = grid;
+		this.board = board;
 	}
 
 	/**
 	 * Update all the arrayLsit
 	 */
 	public void updateAll() {
-		updatePossibleMoves(this.player1);
-		updatePossibleMoves(this.player2);
+		updatePawn();
 		updatePossibleWalls();
+	}
+
+	public void updatePawn() {
+		updatePossibleMoves(this.board.getPlayer1());
+		updatePossibleMoves(this.board.getPlayer2());
 	}
 
 	/**
@@ -43,7 +44,9 @@ public class MoveCalculator {
 	 * @param player the player
 	 */
 	private void updatePossibleMoves(Player player) {
-		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.grid);
+
+		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.board.getGrid());
+		checkWall(1, 0);
 	}
 
 	/**
@@ -111,11 +114,11 @@ public class MoveCalculator {
 			int posX = this.COEFF[i][0] + x;
 			int posY = this.COEFF[i][1] + y;
 
-			if (isInGrid(posX, posY) && !(Wall.class.isInstance(g[posX][posY]))) {
+			if (isInGrid(posX, posY, this.board.getGrid()) && !(Wall.class.isInstance(g[posX][posY]))) {
 				posX += this.COEFF[i][0];
 				posY += this.COEFF[i][1];
 
-				if (isInGrid(posX, posY) && (Pawn.class.isInstance(g[posX][posY]))) {
+				if (isInGrid(posX, posY, this.board.getGrid()) && (Pawn.class.isInstance(g[posX][posY]))) {
 					posX += this.COEFF[i][0];
 					posY += this.COEFF[i][1];
 
@@ -148,8 +151,28 @@ public class MoveCalculator {
 	* @return true is the wall move is possible, false otherwise
 	*/
 	private boolean checkWall(int x, int y) {
-	 	Square[][] gridClone = this.grid.clone();
-		
+
+		Board cloneBoard = null;
+
+		try {
+			cloneBoard = new Board(this.board.getSize(), this.board.getPlayer1().clone(), this.board.getPlayer2().clone());
+
+		} catch(CloneNotSupportedException e) {
+			System.out.println(e.getMessage());
+		}
+		Square[][] tmp = this.board.getGrid().clone();
+		if (tmp == this.board.getGrid())
+			System.out.println("yop");
+		else
+
+		cloneBoard.initGrid(this.board.getGrid().clone());
+		//cloneBoard.setWalls(x, y, cloneBoard.getPlayer1());
+
+
+
+
+
+
 		return true;
 	}
 
@@ -159,8 +182,8 @@ public class MoveCalculator {
  * @param  y coordinate y
  * @return   true if the position is good
  */
-	private boolean isInGrid(int x, int y) {
-		return x >= 0 && y >= 0 && x < this.grid.length && y < this.grid.length;
+	private boolean isInGrid(int x, int y, Square[][] g) {
+		return x >= 0 && y >= 0 && x < g.length && y < g.length;
 	}
 
 

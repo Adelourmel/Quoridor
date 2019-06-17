@@ -5,7 +5,7 @@ import test.TestGridPanel;
  * Board class. Stores the 2-dimension array of Squares that represents the game grid, on which the players place their pawn and walls.
  * This class is charged of managing the grid during the course of the game.
  */
-public class Board {
+public class Board implements Cloneable {
 
 	private Square[][] grid;
 	private MoveCalculator calculator;
@@ -28,6 +28,9 @@ public class Board {
 		this.size = size;
 
 
+	}
+	public void initGrid(Square[][] grid) {
+		this.grid = grid;
 	}
 
 	/**
@@ -63,8 +66,8 @@ public class Board {
 		y = this.player2.getPawn().getPosY();
 		this.grid[x][y] = this.player2.getPawn();
 
-		this.calculator = new MoveCalculator(this.player1, this.player2, this.grid);
-		this.calculator.updateAll();
+		this.calculator = new MoveCalculator(this);
+		this.calculator.updatePawn();
 
 
     this.test = new TestGridPanel(this.grid);
@@ -121,7 +124,7 @@ public class Board {
 	 * @param y      the position y of the wall
 	 * @param player the owner of the wall
 	 */
-	private void setWalls(int x, int y, Player player) {
+	public void setWalls(int x, int y, Player player) {
 		int coeffX = 0;
 		int coeffY = 0;
 
@@ -184,7 +187,7 @@ public class Board {
 	}
 
 	/**
-	 * Changes the grid to apply the changes made by the given move.
+	 * Changes the grid to apply the changes made    by the given move.
 	 * Warning : this method does not check if the given move is correct. It assumes that this checking has been done by the AIPlayer itself.
 	 * This method is only used when the player that made the move is a AIPlayer.
 	 * @param x the x-coordinate of the move
@@ -228,5 +231,18 @@ public class Board {
 		ret += "\t" + tmp;
 		return ret;
 	}
+
+	public Board clone() throws CloneNotSupportedException {
+		return (Board) super.clone();
+	}
+
+	public Player getPlayer1() {
+		return this.player1;
+	}
+
+	public Player getPlayer2() {
+		return this.player2;
+	}
+
 
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Player abstract class. Represents a player (Human or AI) that can play against another player (Human or AI).
  * This class has abstract methods that defines the basic player actions.
  */
-public abstract class Player {
+public abstract class Player implements Cloneable {
 
 	protected Pawn pawn;
 	protected Board board;
@@ -114,5 +114,7 @@ public abstract class Player {
 	public ArrayList<Pair> getPossiblePawn() {
 		return this.possiblePawn;
 	}
-
+	public Player clone() throws CloneNotSupportedException {
+		return (Player) super.clone();
+	}
 }
