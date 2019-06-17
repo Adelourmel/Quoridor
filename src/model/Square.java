@@ -82,7 +82,8 @@ public class Square implements Cloneable {
 	}
 
 	public Square clone() throws CloneNotSupportedException {
-		return (Square) super.clone();
+		Square cloneObj = (Square) super.clone();
+		return cloneObj;
 	}
 
 }

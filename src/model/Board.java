@@ -29,6 +29,7 @@ public class Board implements Cloneable {
 
 
 	}
+
 	public void initGrid(Square[][] grid) {
 		this.grid = grid;
 	}
@@ -233,7 +234,20 @@ public class Board implements Cloneable {
 	}
 
 	public Board clone() throws CloneNotSupportedException {
-		return (Board) super.clone();
+		Board cloneBoard = (Board) super.clone();
+		cloneBoard.player1 = this.player1.clone();
+		cloneBoard.player2 = this.player2.clone();
+
+		System.out.println("ddsf" + cloneBoard.player1);
+		Square[][] gridClone = new Square[this.grid.length][this.grid.length];
+
+		for (int i = 0 ; i < this.grid.length ; i++) {
+			for (int j = 0 ; j < this.grid.length ; j++) {
+				gridClone[i][j] = this.grid[i][j].clone();
+			}
+		}
+		cloneBoard.grid = gridClone;
+		return cloneBoard;
 	}
 
 	public Player getPlayer1() {

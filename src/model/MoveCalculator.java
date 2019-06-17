@@ -7,7 +7,7 @@ import java.util.Iterator;
  * MoveCalculator class. Contains all the useful methods of the game that manage the players moves, by determining if they are legal.
  * This class contains the browsing algorithm which ensure that moves fit the game's rules.
  */
-public class MoveCalculator {
+public class MoveCalculator implements Cloneable {
 
 	private ArrayList<Pair> possibleWalls;
 	private ArrayList<Pair> wallsList;
@@ -155,23 +155,12 @@ public class MoveCalculator {
 		Board cloneBoard = null;
 
 		try {
-			cloneBoard = new Board(this.board.getSize(), this.board.getPlayer1().clone(), this.board.getPlayer2().clone());
-
+			cloneBoard = this.board.clone();
 		} catch(CloneNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
-		Square[][] tmp = this.board.getGrid().clone();
-		if (tmp == this.board.getGrid())
-			System.out.println("yop");
-		else
 
-		cloneBoard.initGrid(this.board.getGrid().clone());
-		//cloneBoard.setWalls(x, y, cloneBoard.getPlayer1());
-
-
-
-
-
+		cloneBoard.setWalls(x, y, cloneBoard.getPlayer1());
 
 		return true;
 	}
@@ -203,6 +192,11 @@ public class MoveCalculator {
 	 */
 	public ArrayList<Pair> getWallsList() {
 		return this.wallsList;
+	}
+
+	public MoveCalculator clone() throws CloneNotSupportedException {
+		MoveCalculator cloneCal = (MoveCalculator) super.clone();
+		return cloneCal;
 	}
 
 }

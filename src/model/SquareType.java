@@ -16,4 +16,5 @@ public enum SquareType {
 	public String toString() {
 		return this.description;
 	}
+
 }
