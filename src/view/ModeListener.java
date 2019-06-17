@@ -23,7 +23,7 @@ public class ModeListener implements ActionListener{
       }
     }
 
-    if (e.getSource() == this.state.getModePanel().getPlayer2Field() ) {
+    else if (e.getSource() == this.state.getModePanel().getPlayer2Field() ) {
       if ( this.state.getModePanel().getPlayer2Field().getText().equals("")) {
         this.state.getModePanel().getPlayer2Field().setBackground(new Color(221, 97, 74));
       }
@@ -32,10 +32,14 @@ public class ModeListener implements ActionListener{
       }
     }
 
-    if (e.getSource() == this.state.getModePanel().getHAButton() ) {
+    else if (e.getSource() == this.state.getModePanel().getHAButton() ) {
       this.state.removeModePanel();
-      this.state.setGamePanel(new GamePanel());
+    //  this.state.setGamePanel(new GamePanel());
+    }
 
+    else if (e.getSource() == this.state.getModePanel().getHHButton() ) {
+      this.state.removeModePanel();
+      //this.state.setGamePanel(new GamePanel());
     }
   }
 }

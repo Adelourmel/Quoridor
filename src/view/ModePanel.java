@@ -47,7 +47,9 @@ public class ModePanel extends JPanel {
     this.modeSelectionPanel.setOpaque(false);
     this.modeSelectionPanel.setLayout(new GridLayout(1, 2, 20, 0));
     this.HAButton = new Button("Joueur contre IA");
+    this.HAButton.addActionListener(new ModeListener(this.state));
     this.HHButton = new Button("Joueur contre Joueur");
+    this.HHButton.addActionListener(new ModeListener(this.state));
     this.modeSelectionPanel.add(this.HAButton);
     this.modeSelectionPanel.add(this.HHButton);
 

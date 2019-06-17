@@ -114,7 +114,7 @@ public class GUI extends JFrame {
     return this.modePanel;
   }
 
-  public ModePanel getGamePanel(){
+  public GamePanel getGamePanel(){
     return this.gamePanel;
   }
 
