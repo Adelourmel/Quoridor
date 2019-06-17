@@ -2,11 +2,11 @@
 package quoridor.model;
 
 import java.awt.Color;
-
+import java.io.Serializable;
 /**
  * AIPlayer class. Represents an AI player that can play against a human player. This class is responsible for managing the AI actions.
  */
-public class AIPlayer extends Player {
+public class AIPlayer extends Player implements Serializable {
 
 	/**
 	 * AIPlayer constructor. Calls the Player super-class constructor with the given parameters.

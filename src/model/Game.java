@@ -1,10 +1,11 @@
 package quoridor.model;
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Game class. This class starts the game with the correct settings (grid size, gamemode, players) and manages the game's progress.
  */
-public class Game {
+public class Game implements Serializable {
 
 	private Player player1;
 	private Player player2;

@@ -3,11 +3,13 @@ package quoridor.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.io.Serializable;
+
 /**
  * MoveCalculator class. Contains all the useful methods of the game that manage the players moves, by determining if they are legal.
  * This class contains the browsing algorithm which ensure that moves fit the game's rules.
  */
-public class MoveCalculator implements Cloneable {
+public class MoveCalculator implements Cloneable, Serializable {
 
 	private ArrayList<Pair> possibleWalls;
 	private ArrayList<Pair> wallsList;

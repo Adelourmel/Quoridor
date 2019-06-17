@@ -1,11 +1,13 @@
 
 package quoridor.model;
 import test.TestGridPanel;
+import java.io.Serializable;
+
 /**
  * Board class. Stores the 2-dimension array of Squares that represents the game grid, on which the players place their pawn and walls.
  * This class is charged of managing the grid during the course of the game.
  */
-public class Board implements Cloneable {
+public class Board implements Cloneable, Serializable {
 
 	private Square[][] grid;
 	private MoveCalculator calculator;
