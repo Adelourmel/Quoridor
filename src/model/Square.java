@@ -1,11 +1,11 @@
-
 package quoridor.model;
+import java.io.Serializable;
 
 /**
  * Square class. This class represents the object that fill the game grid.
  * A Square has a SquareType attribute which defines if the Square can host a wall or a pawn on the game grid.
  */
-public class Square implements Cloneable {
+public class Square implements Cloneable, Serializable {
 
 	private SquareType squareType;
 	private int posX;

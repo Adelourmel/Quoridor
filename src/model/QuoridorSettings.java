@@ -4,10 +4,11 @@ import java.util.Scanner;
 import java.io.File;
 import java.util.InputMismatchException;
 import java.util.ArrayList;
+import java.io.Serializable;
 /**
  * QuoridorSettings class. This class gathers and sets the game settings. It is also responsible for saving and loading save files of unfinished games.
  */
-public class QuoridorSettings {
+public class QuoridorSettings implements Serializable{
 
 	private Game game;
 	private Gamemode gamemode;

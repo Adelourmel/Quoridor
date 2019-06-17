@@ -3,12 +3,13 @@ package quoridor.model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  * Player abstract class. Represents a player (Human or AI) that can play against another player (Human or AI).
  * This class has abstract methods that defines the basic player actions.
  */
-public abstract class Player implements Cloneable {
+public abstract class Player implements Cloneable, Serializable {
 
 	protected Pawn pawn;
 	protected Board board;

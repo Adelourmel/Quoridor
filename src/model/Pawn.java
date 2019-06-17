@@ -2,11 +2,12 @@
 package quoridor.model;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Pawn class, extends from the Square class. This class represents a special kind of Square, that players own and can move on the grid.
  */
-public class Pawn extends Square {
+public class Pawn extends Square implements Serializable {
 
 	private Color color;
 
