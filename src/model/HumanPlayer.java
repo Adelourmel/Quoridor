@@ -73,7 +73,7 @@ public class HumanPlayer extends Player implements Serializable {
 				}
 			}
 			System.out.println(b);
-			if (!b && !ret) {
+			if (b && !ret) {
 				b = this.board.setNewMove(x, y, this);
 			}
 			System.out.print(b);
@@ -84,6 +84,24 @@ public class HumanPlayer extends Player implements Serializable {
     } while (!b );
 
 		return ret;
+
+	}
+
+	public void play(int x, int y) {
+
+
+
+
+
+
+    boolean b = true;
+    do {
+			b = this.board.setNewMove(x, y, this);
+
+			System.out.print(b);
+    } while (!b );
+
+
 
 	}
 
