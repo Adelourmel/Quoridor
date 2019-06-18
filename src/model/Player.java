@@ -17,6 +17,8 @@ public abstract class Player implements Cloneable, Serializable {
 	protected Color color;
 	private int wallsNb;
 	private ArrayList<Pair> possiblePawn;
+	private PlayerPos playerPos;
+	private int finalPos;
 
 	/**
 	 * Player constructor. Initialises the Player attributes with the given parameters.
@@ -31,13 +33,18 @@ public abstract class Player implements Cloneable, Serializable {
 		this.board = board;
 		this.wallsNb = 10;
 
+		this.playerPos = pos;
+
 		this.possiblePawn = new ArrayList<Pair>();
 
 		if (pos == PlayerPos.TOP) {
 			this.pawn = new Pawn((this.board.getSize())/2, 0, this.color);
+			finalPos = this.board.getSize() - 1;
 		}
 		else if(pos == PlayerPos.BOTTOM){
 			this.pawn = new Pawn((this.board.getSize())/2, this.board.getSize()-1, this.color);
+			finalPos = 0;
+
 		}
 	}
 
@@ -126,5 +133,9 @@ public abstract class Player implements Cloneable, Serializable {
 		}
 
 		return clonePlayer;
+	}
+
+	public int getPosFinal() {
+		return this.finalPos;
 	}
 }

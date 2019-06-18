@@ -12,8 +12,7 @@ public class GridPanelListener extends MouseAdapter {
     this.gridGUI = gridGUI;
   }
 
-  public void mousePressed(MouseEvent e) {
-  }
+
   public void mouseEntered(MouseEvent e) {
 
   }
@@ -38,9 +37,7 @@ public class GridPanelListener extends MouseAdapter {
 */
 
   }
-  public void mouseClicked(MouseEvent e) {
 
-  }
   public void mouseExited(MouseEvent e) {
 
   }
