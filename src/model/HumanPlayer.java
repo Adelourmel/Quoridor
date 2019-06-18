@@ -34,12 +34,13 @@ public class HumanPlayer extends Player implements Serializable {
 
 
 		boolean ret = false;
+		boolean b;
     int x = 0;
     int y = 0;
 		String tmp;
 		System.out.println(this.board.toString());
-    boolean b = true;
     do {
+			b = false;
       System.out.println("Entrez la position en X du pion");
       try {
 				this.scan = new Scanner(System.in);
@@ -54,7 +55,6 @@ public class HumanPlayer extends Player implements Serializable {
 
       } catch(Exception e) {
         b= false ;
-				System.out.println("zegvevsd");
       }
 			if (!ret) {
 
@@ -77,7 +77,7 @@ public class HumanPlayer extends Player implements Serializable {
 			if (b != false && !ret) {
 				b = this.board.setNewMove(x, y, this);
 			}
-			if (b == false) {
+			if (b == false && !ret) {
 				System.out.println("Incorrect !");
 			}
 

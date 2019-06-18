@@ -46,7 +46,7 @@ public class Game implements Serializable {
 	/**
 	 * Starts the game and manages the game's progress.
 	 */
-	public void startGame() {
+	public void startConsoleGame() {
 		boolean player1Play = true;
 
 		boolean quitGame = false;
@@ -74,10 +74,8 @@ public class Game implements Serializable {
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream(file));
 			oos.writeObject(this);
-			System.out.println("SAVED");
 		} catch(IOException  e) {
 			System.out.println(e.getMessage());
-			System.out.println("rertrertre");
 		}
 	}
 

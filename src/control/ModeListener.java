@@ -44,6 +44,7 @@ public class ModeListener implements ActionListener{
     else if (e.getSource() == this.state.getModePanel().getHHButton() ) {
       this.state.removeModePanel();
       this.state.getSettings().setGamemode(Gamemode.HA);
+      
       //this.state.getSettings().startGame();
       //this.state.setGamePanel(new GamePanel());
     }

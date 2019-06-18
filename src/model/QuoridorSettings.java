@@ -82,7 +82,7 @@ public class QuoridorSettings {
 
 			} while (!valide);
 			this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
-			this.game.startGame();
+			this.game.startConsoleGame();
 			//this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
 		}
 		else {
@@ -143,9 +143,11 @@ public class QuoridorSettings {
 	/**
 	 * Starts the game.
 	 */
-	public void startGame(){
-		this.game.startGame();
+	public void startConsoleGame(){
+		this.game.startConsoleGame();
 	}
+
+
 
 
 	/**
@@ -240,7 +242,7 @@ public class QuoridorSettings {
 			ois = new ObjectInputStream(new FileInputStream(fileName));
 			try {
 				this.game = (Game)ois.readObject();
-				startGame();
+				startConsoleGame();
 			} catch(ClassNotFoundException e) {
 				System.out.println(e.getMessage());
 			}
