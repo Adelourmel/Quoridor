@@ -86,13 +86,10 @@ public class Board implements Cloneable, Serializable {
 		return this.size;
 	}
 
-	/**
-	 * Sets a the grid size
-	 * @param size the new grid size
-	 */
-	public void setSize(int size) {
-		this.size = size;
+	public int getSizeWall() {
+		return this.SIZEWALL;
 	}
+
 
 	/**
 	 * Returns the 2-dimension array of Square that represents the game grid.
@@ -109,7 +106,7 @@ public class Board implements Cloneable, Serializable {
 	 * @param y      the new position y of the pawn
 	 * @param player the owner of the pawn
 	 */
-	private void setPawn(int x, int y, Player player) {
+	public void setPawn(int x, int y, Player player) {
 		int lastX = player.getPawn().getPosX();
 		int lastY = player.getPawn().getPosY();
 
@@ -119,6 +116,7 @@ public class Board implements Cloneable, Serializable {
 
 		this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
 
+		calculator.updatePawn();
 	}
 
 	/**
@@ -183,7 +181,7 @@ public class Board implements Cloneable, Serializable {
 		}
 
 		if (ret) {
-			calculator.updateAll();
+			calculator.updatePossibleWalls();
 		}
 		test.gridPane.repaint();
 		return ret;
@@ -204,7 +202,7 @@ public class Board implements Cloneable, Serializable {
 		else {
 			setPawn(x, y, player);
 		}
-		calculator.updateAll();
+		calculator.updatePossibleWalls();
 	}
 
 	/**
@@ -240,7 +238,6 @@ public class Board implements Cloneable, Serializable {
 		cloneBoard.player1 = this.player1.clone();
 		cloneBoard.player2 = this.player2.clone();
 
-		System.out.println("ddsf" + cloneBoard.player1);
 		Square[][] gridClone = new Square[this.grid.length][this.grid.length];
 
 		for (int i = 0 ; i < this.grid.length ; i++) {
@@ -249,6 +246,9 @@ public class Board implements Cloneable, Serializable {
 			}
 		}
 		cloneBoard.grid = gridClone;
+
+		cloneBoard.calculator = new MoveCalculator(cloneBoard);
+
 		return cloneBoard;
 	}
 

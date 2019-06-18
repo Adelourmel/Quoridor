@@ -31,10 +31,7 @@ public class MoveCalculator implements Cloneable, Serializable {
 	/**
 	 * Update all the arrayLsit
 	 */
-	public void updateAll() {
-		updatePawn();
-		updatePossibleWalls();
-	}
+
 
 	public void updatePawn() {
 		updatePossibleMoves(this.board.getPlayer1());
@@ -48,14 +45,31 @@ public class MoveCalculator implements Cloneable, Serializable {
 	private void updatePossibleMoves(Player player) {
 
 		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.board.getGrid());
-		checkWall(1, 0);
 	}
 
 	/**
 	 * Updates the possibleWalls ArrayList, used by both players, by browsing through all the grid coordinates to check each possible wall to put on the grid.
 	 */
-	private void updatePossibleWalls() {
-		// TODO - implement MoveCalculator.updatePossibleWalls
+	public void updatePossibleWalls() {
+		Square[][] g = board.getGrid();
+
+		this.possibleWalls = new ArrayList<Pair>();
+
+		for (int i = 0 ;  i < g.length - this.board.getSizeWall() ; i++) {
+			for (int p = 0 ; p < g.length - this.board.getSizeWall() ; p++) {
+				if (this.board.getGrid()[i][p].getSquareType() == SquareType.WALL_ONLY) {
+					if (isInGrid(i, p, g)) {
+						if (checkWall(i, p)) {
+							possibleWalls.add(new Pair(i,p));
+						}
+
+					}
+
+				}
+			}
+
+		}
+	//	checkWall(1, 0);
 	}
 
 	/**
@@ -65,8 +79,7 @@ public class MoveCalculator implements Cloneable, Serializable {
 	 * @return true is the wall move is possible, false otherwise
 	 */
 	public boolean isLegalWall(int x, int y) {
-		//return foundInArrayList(x, y, this.possibleWalls);
-		return true;
+		return foundInArrayList(x, y, this.possibleWalls);
 	}
 
 	/**
@@ -124,21 +137,21 @@ public class MoveCalculator implements Cloneable, Serializable {
 					posX += this.COEFF[i][0];
 					posY += this.COEFF[i][1];
 
-					if (!(Wall.class.isInstance(g[posX][posY]))) {
+					if (isInGrid(posX, posY, this.board.getGrid()) && !(Wall.class.isInstance(g[posX][posY]))) {
 						posX += this.COEFF[i][0];
 						posY += this.COEFF[i][1];
 
 						Pair tmp = new Pair(posX, posY);
 						player.getPossiblePawn().add(tmp);
 						ret = true;
-						System.out.println("pair : " + tmp.toString());
+					//	System.out.println("pair : " + tmp.toString());
 					}
 				}
-				else {
+				else if (isInGrid(posX, posY, this.board.getGrid())){
 					Pair tmp = new Pair(posX, posY);
 					player.getPossiblePawn().add(tmp);
 					ret = true;
-					System.out.println("pair : " + tmp.toString());
+					//System.out.println("pair : " + tmp.toString());
 				}
 			}
 
@@ -155,6 +168,7 @@ public class MoveCalculator implements Cloneable, Serializable {
 	private boolean checkWall(int x, int y) {
 
 		Board cloneBoard = null;
+		boolean ret;
 
 		try {
 			cloneBoard = this.board.clone();
@@ -166,24 +180,42 @@ public class MoveCalculator implements Cloneable, Serializable {
 
 		ArrayList<Pair> mark = new ArrayList<Pair>();
 
-		//explore(cloneBoard.getPlayer1().getPosX(), cloneBoard.getPlayer1().getPosY(), cloneBoard, mark);
+		ret = explore(cloneBoard.getPlayer1(), cloneBoard, mark);
 
-		return true;
+		return ret;
 	}
-/*
-	private void explore(int x, int y, Board cloneBoard, ArrayList<Pair> mark) {
-		mark.add(new Pair(x, y));
-		System.out.println(("x :" + x + " | y : " + y));
 
-		ArrayList<Pair> neighboors = cloneBoard.getPlayer().possiblePawn();
-		for (Pair elem : neighboors) {
-			if (foundInArrayList(x, y, elem)) {
-				explore(x, y, cloneBoard, mark);
+	private boolean explore(Player player, Board cloneBoard, ArrayList<Pair> mark) {
+		int x = player.getPawn().getPosX();
+		int y = player.getPawn().getPosY();
+
+		boolean ret = false;
+
+
+		mark.add(new Pair(x, y));
+
+
+
+		ArrayList<Pair> neighbors = player.getPossiblePawn();
+
+		for (Pair elem : neighbors) {
+			if (!ret && !foundInArrayList(elem.getX(), elem.getY(), mark)) {
+				cloneBoard.setPawn(elem.getX(), elem.getY(), player);
+				if (elem.getY() == player.getPosFinal()) {
+					return true;
+				}
+				else {
+					ret = explore(player, cloneBoard, mark);
+					if (ret) {
+						return true;
+					}
+				}
 			}
 		}
+		return ret;
 
 	}
-*/
+
 /**
  * Check if the x,y coordinate are in grid
  * @param  x coordinate x
