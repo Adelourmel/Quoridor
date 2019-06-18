@@ -104,6 +104,13 @@ public class QuoridorSettings {
 
 	}
 
+	/**
+	 * Starts the game.
+	 */
+	public void startGame(){
+		this.game.startGame();
+	}
+
 
 	/**
 	 * Returns ArrayList with all the save game files

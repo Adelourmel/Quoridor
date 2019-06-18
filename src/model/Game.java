@@ -32,7 +32,7 @@ public class Game implements Serializable {
 		}
 		this.board.setPlayers(this.player1, this.player2);
 		this.board.initGrid();
-		startGame();
+		
 	}
 
 	/**
