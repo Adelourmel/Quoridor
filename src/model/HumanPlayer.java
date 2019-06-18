@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class HumanPlayer extends Player implements Serializable {
 
-	private Scanner scan;
+	private transient  Scanner scan;
 
 	/**
 	 * HumanPlayer constructor. Calls the Player super-class constructor with the given parameters.
@@ -30,39 +30,62 @@ public class HumanPlayer extends Player implements Serializable {
 	/**
 	 * Gathers the user input and manages the player actions during his turn.
 	 */
-	public void play() {
+	public boolean play() {
 
 
-
-      int x = 0;
-      int y = 0;
-			System.out.println(this.board.toString());
-      boolean b = true;
-      do {
-        System.out.println("Entrez la position en X du pion");
-        try {
-					this.scan = new Scanner(System.in);
-          x = scan.nextInt();
-        } catch(InputMismatchException e) {
-          b= false ;
-        }
-
-        System.out.println("Entrez la position en Y du pion");
-        try {
-					this.scan = new Scanner(System.in);
-          y = scan.nextInt();
-        } catch(InputMismatchException e) {
-          b= false ;
-        }
-				if (b != false) {
-					b = this.board.setNewMove(x, y, this);
+		boolean ret = false;
+    int x = 0;
+    int y = 0;
+		String tmp;
+		System.out.println(this.board.toString());
+    boolean b = true;
+    do {
+      System.out.println("Entrez la position en X du pion");
+      try {
+				this.scan = new Scanner(System.in);
+				tmp= scan.nextLine();
+				if (tmp.equals("quit")) {
+					ret = true;
+					b = true;
 				}
-				if (b == false) {
-					System.out.println("Incorrect !");
+				else {
+					x = Integer.parseInt(tmp);
 				}
-      } while (!b );
 
+      } catch(Exception e) {
+        b= false ;
+				System.out.println("zegvevsd");
+      }
+			if (!ret) {
+
+				System.out.println("Entrez la position en Y du pion");
+				try {
+					this.scan = new Scanner(System.in);
+					tmp = scan.nextLine();
+					if (tmp.equals("quit")) {
+						ret = true;
+						b = true;
+					}
+					else {
+						y = Integer.parseInt(tmp);
+					}
+
+				} catch(Exception e) {
+					b= false ;
+				}
+			}
+			if (b != false && !ret) {
+				b = this.board.setNewMove(x, y, this);
+			}
+			if (b == false) {
+				System.out.println("Incorrect !");
+			}
+
+    } while (!b );
+
+		return ret;
 
 	}
+
 
 }

@@ -51,7 +51,7 @@ public abstract class Player implements Cloneable, Serializable {
 	/**
 	 * Manages the player actions during his turn.
 	 */
-	public abstract void play();
+	public abstract boolean play();
 
 	/**
 	 * Returns the player name.
@@ -135,7 +135,11 @@ public abstract class Player implements Cloneable, Serializable {
 		return clonePlayer;
 	}
 
+<<<<<<< HEAD
 	public int getPosFinal() {
 		return this.finalPos;
 	}
+=======
+	
+>>>>>>> ff148c6b17c7f737fcc8b9fdc71c4a6e0b3c071c
 }
