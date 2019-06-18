@@ -40,21 +40,28 @@ public class HumanPlayer extends Player implements Serializable {
 		String tmp;
 		System.out.println(this.board.toString());
     do {
+<<<<<<< HEAD
 			b = false;
+=======
+			b = true;
+>>>>>>> 4432ea79330e764c1169548cbdbaee90eade0390
       System.out.println("Entrez la position en X du pion");
       try {
 				this.scan = new Scanner(System.in);
 				tmp= scan.nextLine();
 				if (tmp.equals("quit")) {
 					ret = true;
-					b = true;
 				}
 				else {
 					x = Integer.parseInt(tmp);
 				}
 
       } catch(Exception e) {
+<<<<<<< HEAD
         b= false ;
+=======
+        b= false;
+>>>>>>> 4432ea79330e764c1169548cbdbaee90eade0390
       }
 			if (!ret) {
 
@@ -64,7 +71,6 @@ public class HumanPlayer extends Player implements Serializable {
 					tmp = scan.nextLine();
 					if (tmp.equals("quit")) {
 						ret = true;
-						b = true;
 					}
 					else {
 						y = Integer.parseInt(tmp);
@@ -74,10 +80,16 @@ public class HumanPlayer extends Player implements Serializable {
 					b= false ;
 				}
 			}
-			if (b != false && !ret) {
+			System.out.println(b);
+			if (!b && !ret) {
 				b = this.board.setNewMove(x, y, this);
 			}
+<<<<<<< HEAD
 			if (b == false && !ret) {
+=======
+			System.out.print(b);
+			if (!b) {
+>>>>>>> 4432ea79330e764c1169548cbdbaee90eade0390
 				System.out.println("Incorrect !");
 			}
 
