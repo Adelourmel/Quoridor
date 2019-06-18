@@ -3,6 +3,7 @@ package quoridor.view;
 import quoridor.control.*;
 import javax.swing.*;
 import java.awt.*;
+import quoridor.model.*;
 
 public class GUI extends JFrame {
   private JPanel header;
@@ -12,11 +13,13 @@ public class GUI extends JFrame {
   private LoadSavePanel loadSavePanel;
   private ModePanel modePanel;
   private GamePanel gamePanel;
+  private QuoridorSettings settings;
 
 
 
 
-  public GUI(){
+  public GUI(QuoridorSettings settings){
+    this.settings = settings;
 
     getContentPane().setLayout(new BorderLayout());
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -46,6 +49,7 @@ public class GUI extends JFrame {
 
 
     this.setSize(1300, 1000);
+    this.setResizable(false);
 
 
 
@@ -122,6 +126,10 @@ public class GUI extends JFrame {
 
   public JButton getMenuButton(){
     return this.menuButton;
+  }
+
+  public QuoridorSettings getSettings(){
+    return this.settings;
   }
 
 

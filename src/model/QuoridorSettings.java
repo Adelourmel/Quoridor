@@ -1,5 +1,7 @@
 package quoridor.model;
 
+import quoridor.view.*;
+
 import java.util.Scanner;
 import java.io.File;
 import java.util.InputMismatchException;
@@ -19,42 +21,77 @@ public class QuoridorSettings {
 
 	private Game game;
 	private Gamemode gamemode;
-	private int SIZE = 17;
+	private final int SIZE = 17;
 	private String playerName1;
 	private String playerName2;
+	private GUI gui;
 
 	/**
 	 * QuoridorSettings constructor. Calls the configure() method that gather game settings from the user.
 	 */
 	public QuoridorSettings() {
 
-
-		// -----------------------Play game save choice-----------------------
-		System.out.println("Play old game (y/n)");
-
+		boolean consoleGame = false;
 		boolean valide = false;
-
-		Scanner sc = new Scanner(System.in);
-
+		System.out.println("Play on console (y/n)");
 		do {
-			String choice = sc.nextLine();
+			String choice = null;
+			Scanner sc = new Scanner(System.in);
+			try {
+				choice = sc.nextLine();
+			} catch(Exception e) {
+				valide = false;
+			}
 
 			if (choice.equals("y")) {
-				choiceGame();
+
 				valide = true;
 			}
 			else if (choice.equals("n")) {
-				configure();
 				valide = true;
+				consoleGame = true;
 			}
 			else {
-				valide = false;
+				System.out.println("Bad choice ! Retry please : ");
 			}
+
 		} while (!valide);
-		this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
-		//this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
+
+		// -----------------------Play game save choice-----------------------
+		if (!consoleGame ) {
+			do {
+				System.out.println("Play old game (y/n)");
+
+				valide = false;
+				String choice = null;
+				Scanner sc = new Scanner(System.in);
+				try {
+					choice = sc.nextLine();
+				} catch(Exception e) {
+					valide = false;
+				}
+
+				if (choice.equals("y")) {
+					choiceGame();
+					valide = true;
+				}
+				else if (choice.equals("n")) {
+					configure();
+					valide = true;
+				}
+
+			} while (!valide);
+			this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
+			this.game.startGame();
+			//this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
+		}
+		else {
+		//	sc.close();
+			this.gui = new GUI(this);
+		}
 
 	}
+
 
 	/**
 	 * Gathers input from the user to set game settings, like gamemode, players names, etc...
@@ -261,6 +298,13 @@ public class QuoridorSettings {
 	public Gamemode getGameMode() {
 		return this.gamemode;
 	}
+
+	public int getSize(){
+		return this.SIZE;
+	}
+
+
+
 
 
 }

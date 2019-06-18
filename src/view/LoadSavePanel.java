@@ -15,12 +15,11 @@ public class LoadSavePanel extends JPanel {
   private JLabel logoLabel;
   private JLabel descriptionLabel;
   private JList<String> savesList;
-  private QuoridorSettings settings;
   private JScrollPane scrollPane;
 
 
   public  LoadSavePanel(GUI state){
-    this.settings = new QuoridorSettings();
+
     this.state = state;
     this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     this.setBackground(new Color(108,128,154));
@@ -44,7 +43,7 @@ public class LoadSavePanel extends JPanel {
     this.add(new SpacePanel());
 
 
-    ArrayList<String> saves = settings.listFile();
+    ArrayList<String> saves = this.state.getSettings().listFile();
     String[] savesArray = new String[saves.size()];
     savesArray = saves.toArray(savesArray);
     this.savesList = new JList<String>(saves.toArray(savesArray));

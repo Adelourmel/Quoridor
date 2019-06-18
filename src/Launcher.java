@@ -10,7 +10,7 @@ public class Launcher {
 	 */
 	public static void main(String[] args) {
 		QuoridorSettings quori = new QuoridorSettings();
-		quori.startGame();
+		
 	}
 
 }

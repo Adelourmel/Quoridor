@@ -19,6 +19,7 @@ public class GridPanelListener extends MouseAdapter {
   }
   public void mouseReleased(MouseEvent e) {
     boolean found = false;
+    boolean b = false;
     int x = 0;
     int y = 0;
     while (!found && y < this.gridGUI.length) {

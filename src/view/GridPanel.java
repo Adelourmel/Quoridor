@@ -13,6 +13,7 @@ public class GridPanel extends JPanel {
   private final int SIZESQUAREPAWN = 60;
   private final int WIDTHWALL = 15;
   private GridPanelListener listener;
+  
 
   public GridPanel(Square[][] grid) {
     this.grid = grid;

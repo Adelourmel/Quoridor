@@ -1,5 +1,6 @@
 package test;
 import quoridor.view.*;
+import quoridor.model.*;
 
 
 
@@ -11,7 +12,7 @@ public class TestGUI{
   public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        new GUI();
+        new GUI(new QuoridorSettings());
       }
     });
   }
