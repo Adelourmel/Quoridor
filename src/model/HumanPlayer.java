@@ -88,62 +88,8 @@ public class HumanPlayer extends Player implements Serializable {
 	}
 
 
-	public boolean play() {
 
 
-		boolean ret = false;
-		boolean b;
-    int x = 0;
-    int y = 0;
-		String tmp;
-		System.out.println(this.board.toString());
-    do {
-			b = true;
-      System.out.println("Entrez la position en X du pion");
-      try {
-				this.scan = new Scanner(System.in);
-				tmp= scan.nextLine();
-				if (tmp.equals("quit")) {
-					ret = true;
-				}
-				else {
-					x = Integer.parseInt(tmp);
-				}
-
-      } catch(Exception e) {
-        b= false;
-      }
-			if (!ret) {
-
-				System.out.println("Entrez la position en Y du pion");
-				try {
-					this.scan = new Scanner(System.in);
-					tmp = scan.nextLine();
-					if (tmp.equals("quit")) {
-						ret = true;
-					}
-					else {
-						y = Integer.parseInt(tmp);
-					}
-
-				} catch(Exception e) {
-					b= false ;
-				}
-			}
-			System.out.println(b);
-			if (!b && !ret) {
-				b = this.board.setNewMove(x, y, this);
-			}
-			if (b == false && !ret) {
-				System.out.println("Incorrect !");
-			}
-
-    } while (!b );
-
-		return ret;
-
-	}
-	
 
 
 }
