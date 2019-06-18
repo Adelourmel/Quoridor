@@ -15,7 +15,7 @@ public class Board implements Cloneable, Serializable {
 	private Player player1;
 	private Player player2;
 	private final int SIZEWALL = 3;
-	private TestGridPanel test;
+	private transient TestGridPanel test;
 
 	/**
 	 * Board constructor. Initialises the game grid at the given size, and creates a MoveCalculator object with the two given players.

@@ -11,7 +11,6 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
-import java.io.File;
 import java.io.IOException;
 /**
  * QuoridorSettings class. This class gathers and sets the game settings. It is also responsible for saving and loading save files of unfinished games.
@@ -52,8 +51,8 @@ public class QuoridorSettings {
 				valide = false;
 			}
 		} while (!valide);
-		//this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
-		this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
+		this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
+		//this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
 
 	}
 
@@ -142,7 +141,7 @@ public class QuoridorSettings {
 
 
 
-		System.out.println("ChoOse file : ");
+		System.out.println("Choose file : ");
 
 		for(int i = 0 ; i < listOfGames.size() ; i++) {
 			System.out.println((i + 1) + ". " + listOfGames.get(i));
@@ -163,9 +162,9 @@ public class QuoridorSettings {
 
 			if (choice <= listOfGames.size() && choice > 0) {
 				try {
-					this.loadGame(listOfGames.get(choice - 1));
+					this.loadGame("../data/"+listOfGames.get(choice - 1));
 				} catch(Exception e) {
-					System.out.println("Error");
+					System.out.println(e.getMessage());
 				}
 				valide = true;
 			}
@@ -182,7 +181,7 @@ public class QuoridorSettings {
 	 * Saves the current on-going game in a save file, that will allow the user to continue the game later.
 	 */
 	public void saveGame() {
-		SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
+		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
     Date date = new Date();
 		File file = new File("../data/"+this.playerName1+"-"+this.playerName2+"-"+formater.format(date)+".ser");
 		ObjectOutputStream oos;
@@ -190,7 +189,7 @@ public class QuoridorSettings {
 			oos = new ObjectOutputStream(new FileOutputStream(file));
 			oos.writeObject(this.game);
 		} catch(IOException  e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -204,11 +203,12 @@ public class QuoridorSettings {
 			ois = new ObjectInputStream(new FileInputStream(fileName));
 			try {
 				this.game = (Game)ois.readObject();
+				startGame();
 			} catch(ClassNotFoundException e) {
-				e.getMessage();
+				System.out.println(e.getMessage());
 			}
 		} catch(IOException e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 	}
 

@@ -1,6 +1,14 @@
 package quoridor.model;
 import java.awt.Color;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Game class. This class starts the game with the correct settings (grid size, gamemode, players) and manages the game's progress.
@@ -32,7 +40,7 @@ public class Game implements Serializable {
 		}
 		this.board.setPlayers(this.player1, this.player2);
 		this.board.initGrid();
-		
+
 	}
 
 	/**
@@ -41,17 +49,64 @@ public class Game implements Serializable {
 	public void startGame() {
 		boolean player1Play = true;
 
-		while (!this.endOfGame()){
+		boolean quitGame = false;
+		while (!this.endOfGame() && !quitGame){
 			if (player1Play) {
-				this.player1.play();
+				quitGame = this.player1.play();
 				player1Play = false;
 			}
 			else {
-				this.player2.play();
+				quitGame = this.player2.play();
 				player1Play = true;
 			}
 		}
+		if (quitGame) {
+			quitConsoleGame();
+		}
+
 	}
+
+	public void saveConsoleGame(){
+		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+    Date date = new Date();
+		File file = new File("../data/"+this.player1.getPlayerName()+"-"+this.player2.getPlayerName()+"-"+formater.format(date)+".ser");
+		ObjectOutputStream oos;
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream(file));
+			oos.writeObject(this);
+			System.out.println("SAVED");
+		} catch(IOException  e) {
+			System.out.println(e.getMessage());
+			System.out.println("rertrertre");
+		}
+	}
+
+	public void quitConsoleGame(){
+
+		System.out.println("Save the game ? (y/n)");
+
+		boolean valide = false;
+
+		Scanner sc = new Scanner(System.in);
+		do {
+			String choice = sc.nextLine();
+
+			if (choice.equals("y")) {
+				this.saveConsoleGame();
+				System.out.println("Game saved");
+				valide = true;
+			}
+			else if (choice.equals("n")) {
+				valide = true;
+			}
+			else {
+				valide = false;
+			}
+		} while (!valide);
+		sc.close();
+	}
+
+
 
 	/**
 	 * Checks if the game has ended. To end a game, a player's pawn have to reach the opposite-player's starting zone.

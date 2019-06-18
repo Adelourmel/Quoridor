@@ -31,8 +31,9 @@ public class AIPlayer extends Player implements Serializable {
 	/**
 	 * Manages the player actions during his turn.
 	 */
-	public void play() {
+	public boolean play() {
 		// TODO - implement AIPlayer.play
+		return false;
 	}
 
 }
