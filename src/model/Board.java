@@ -73,7 +73,7 @@ public class Board implements Cloneable, Serializable {
 		this.calculator.updatePawn();
 
 
-    this.test = new TestGridPanel(this.grid);
+    //this.test = new TestGridPanel(this.grid);
 
 
 
@@ -183,7 +183,7 @@ public class Board implements Cloneable, Serializable {
 		if (ret) {
 			calculator.updatePossibleWalls();
 		}
-		test.gridPane.repaint();
+		//test.gridPane.repaint();
 		return ret;
 	}
 
