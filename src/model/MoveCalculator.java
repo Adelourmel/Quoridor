@@ -43,7 +43,7 @@ public class MoveCalculator implements Cloneable, Serializable {
 	 * @param player the player
 	 */
 	private void updatePossibleMoves(Player player) {
-
+		player.getPossiblePawn().clear();
 		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.board.getGrid());
 	}
 
@@ -144,14 +144,14 @@ public class MoveCalculator implements Cloneable, Serializable {
 						Pair tmp = new Pair(posX, posY);
 						player.getPossiblePawn().add(tmp);
 						ret = true;
-					//	System.out.println("pair : " + tmp.toString());
+						System.out.println("pair : " + tmp.toString());
 					}
 				}
 				else if (isInGrid(posX, posY, this.board.getGrid())){
 					Pair tmp = new Pair(posX, posY);
 					player.getPossiblePawn().add(tmp);
 					ret = true;
-					//System.out.println("pair : " + tmp.toString());
+					System.out.println("pair : " + tmp.toString());
 				}
 			}
 
