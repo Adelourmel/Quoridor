@@ -30,7 +30,7 @@ public class QuoridorSettings {
 	 * QuoridorSettings constructor. Calls the configure() method that gather game settings from the user.
 	 */
 	public QuoridorSettings() {
-
+/*
 		boolean consoleGame = false;
 		boolean valide = false;
 		System.out.println("Play on console (y/n)");
@@ -82,14 +82,15 @@ public class QuoridorSettings {
 
 			} while (!valide);
 			this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
+			this.game.startGame();*/
+			this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
 			this.game.startGame();
-			//this.game = new Game(this.SIZE, "Arnaud1", "Remi2", gamemode.HH);
-		}
+		/*}
 		else {
 		//	sc.close();
 			this.gui = new GUI(this);
 		}
-
+*/
 	}
 
 
