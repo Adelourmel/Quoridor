@@ -213,8 +213,8 @@ public class MoveCalculator implements Cloneable, Serializable {
 		for (Pair elem : neighbors) {
 			try {
 				n.add(elem.clone());
-			} catch (Exception e) {
-
+			} catch (CloneNotSupportedException e) {
+				System.out.println(e.getMessage());
 			}
 		}
 		Iterator<Pair> ite = n.iterator();
@@ -228,14 +228,11 @@ public class MoveCalculator implements Cloneable, Serializable {
 				cloneBoard.setPawn(elem.getX(), elem.getY(), player);
 				if (elem.getY() == player.getPosFinal()) {
 			//		System.out.println("youi");
-					return true;
+			 			ret = true;
 				}
 				else {
 					ret = explore(player, cloneBoard, mark);
-					if (ret) {
-						return true;
-					}
-					
+
 				}
 			}
 

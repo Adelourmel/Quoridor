@@ -70,10 +70,6 @@ public class GridPanelListener extends MouseAdapter {
     	this.endOfGame = true;
     }
 
-    /*ByteArrayInputStream in = new ByteArrayInputStream("2".getBytes());
-    System.setIn(in);
-    System.setIn(System.in);
-*/
 
   }
 

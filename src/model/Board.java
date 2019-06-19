@@ -1,6 +1,5 @@
 
 package quoridor.model;
-import test.TestGridPanel;
 import java.io.Serializable;
 
 /**
@@ -15,7 +14,6 @@ public class Board implements Cloneable, Serializable {
 	private Player player1;
 	private Player player2;
 	private final int SIZEWALL = 3;
-	private transient TestGridPanel test;
 
 	/**
 	 * Board constructor. Initialises the game grid at the given size, and creates a MoveCalculator object with the two given players.
@@ -73,7 +71,6 @@ public class Board implements Cloneable, Serializable {
 		this.calculator.updatePawn();
 
 
-    this.test = new TestGridPanel(this.grid);
 
 
 
@@ -167,7 +164,7 @@ public class Board implements Cloneable, Serializable {
 		boolean ret = false;
 
 		if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
-			if (true) {
+			if (this.calculator.isLegalWall(x, y)) {
 				setWalls(x, y, player);
 				ret = true;
 			}
@@ -187,7 +184,6 @@ public class Board implements Cloneable, Serializable {
 			for (Pair elem : player.getPossiblePawn()) {
 				System.out.println(elem.toString());
 			}
-			//test.gridPane.repaint();
 		}
 		return ret;
 	}
