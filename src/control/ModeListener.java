@@ -30,7 +30,7 @@ public class ModeListener implements ActionListener{
       }
       else if (!this.state.getModePanel().getPlayer2Field().getText().equals("")) {
         this.state.getModePanel().getPlayer2Field().setBackground(Color.WHITE);
-        this.state.getSettings().setPlayerName2(this.state.getModePanel().getPlayer1Field().getText());
+        this.state.getSettings().setPlayerName2(this.state.getModePanel().getPlayer2Field().getText());
       }
     }
 
@@ -43,17 +43,17 @@ public class ModeListener implements ActionListener{
 
     else if (e.getSource() == this.state.getModePanel().getHHButton() ) {
       this.state.removeModePanel();
-      this.state.getSettings().setGamemode(Gamemode.HA);
+      this.state.getSettings().setGamemode(Gamemode.HH);
 
 
 
+      this.state.getSettings().startGUIGame();
       this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
       SwingUtilities.updateComponentTreeUI(this.state);
 
       this.state.pack();
 
 
-      //this.state.getSettings().startGame();
       //this.state.setGamePanel(new GamePanel());
     }
   }

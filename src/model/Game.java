@@ -66,6 +66,7 @@ public class Game implements Serializable {
 
 	}
 
+	/*
 	public void startGUIGame() {
 		boolean player1Play = true;
 
@@ -82,6 +83,7 @@ public class Game implements Serializable {
 		}
 
 	}
+	*/
 
 	public void saveConsoleGame(){
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");

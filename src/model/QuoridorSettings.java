@@ -89,7 +89,6 @@ public class QuoridorSettings {
 			//sc.close();
 			this.gui = new GUI(this);
 		}
-		this.game = new Game(this.SIZE, "Arnaud", "Remi", Gamemode.HH);
 
 
 	}
@@ -151,7 +150,6 @@ public class QuoridorSettings {
 
 	public void startGUIGame(){
 		this.game = new Game(this.SIZE, this.playerName1, this.playerName2, this.gamemode);
-		this.game.startGUIGame();
 	}
 
 

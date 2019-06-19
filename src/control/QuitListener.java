@@ -18,9 +18,10 @@ public class QuitListener implements ActionListener{
       this.state.dispose();
     }
     else if (e.getSource() == this.state.getQuitPanel().getSaveButton()) {
-
+      this.state.getSettings().saveGame();
+      this.state.dispose();
     }
 
-    
+
   }
 }
