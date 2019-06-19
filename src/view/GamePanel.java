@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
   private JLabel wall2Label;
   private final String PATH ="../img";
   private GUI state;
-  private JButton quitButton;
+
 
 
   public  GamePanel(GUI state, Square[][] grid){
@@ -26,13 +26,7 @@ public class GamePanel extends JPanel {
     this.gridPanel = new GridPanel(this.state, grid);
     this.add(this.gridPanel);
 
-    this.quitButton = new JButton("QUITTER");
-
-    this.quitButton.setBackground(new Color(255, 255, 255));
-    this.quitButton.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-    this.quitButton.setFont(new Font("Arial", Font.PLAIN, 30));
-    this.quitButton.setFocusPainted(false);
-    this.state.getHeader().add(this.quitButton, BorderLayout.WEST);
+    
 
 
     this.player1Panel = new JPanel();

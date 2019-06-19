@@ -40,9 +40,9 @@ public class QuitPanel extends JPanel {
     this.buttonPanel.setOpaque(false);
 
     this.saveButton = new Button("Sauvegarder et quitter");
-  //  this.saveButton.addActionListener(new MenuListener(this.state));
+    this.saveButton.addActionListener(new QuitListener(this.state));
     this.quitButton = new Button("Quitter");
-    //this.quitButton.addActionListener(new MenuListener(this.state));
+    this.quitButton.addActionListener(new QuitListener(this.state));
 
     this.quitButton.setAlignmentX(CENTER_ALIGNMENT);
     this.saveButton.setAlignmentX(CENTER_ALIGNMENT);
@@ -51,6 +51,7 @@ public class QuitPanel extends JPanel {
 
     this.buttonPanel.add(new SpacePanel());
     this.buttonPanel.add(this.saveButton);
+
 
     this.buttonPanel.add(new SpacePanel());
     this.buttonPanel.add(this.quitButton);
@@ -61,6 +62,14 @@ public class QuitPanel extends JPanel {
 
 
 
+  }
+
+  public Button getQuitButton(){
+    return this.quitButton;
+  }
+
+  public Button getSaveButton(){
+    return this.saveButton;
   }
 
 

@@ -8,6 +8,7 @@ import quoridor.model.*;
 public class GUI extends JFrame {
   private JPanel header;
   private JButton menuButton;
+  private JButton quitButton;
 
   private MenuPanel menuPanel;
   private LoadSavePanel loadSavePanel;
@@ -15,6 +16,7 @@ public class GUI extends JFrame {
   private GamePanel gamePanel;
   private QuitPanel quitPanel;
   private QuoridorSettings settings;
+
 
 
 
@@ -28,6 +30,15 @@ public class GUI extends JFrame {
     this.header = new JPanel();
     this.header.setLayout(new BorderLayout());
     this.header.setBackground(new Color(10,34,57));
+
+
+    this.quitButton = new JButton("QUITTER");
+    this.quitButton.addActionListener(new MenuButtonListener(this));
+    this.quitButton.setBackground(new Color(255, 255, 255));
+    this.quitButton.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+    this.quitButton.setFont(new Font("Arial", Font.PLAIN, 30));
+    this.quitButton.setFocusPainted(false);
+    this.header.add(this.quitButton, BorderLayout.WEST);
 
     this.menuButton = new JButton("MENU");
     this.menuButton.addActionListener(new MenuButtonListener(this));
@@ -135,14 +146,18 @@ public class GUI extends JFrame {
     return this.gamePanel;
   }
 
-  public GamePanel getQuitPanel(){
-    return this.gamePanel;
+  public QuitPanel getQuitPanel(){
+    return this.quitPanel;
   }
 
 
 
   public JButton getMenuButton(){
     return this.menuButton;
+  }
+
+  public JButton getQuitButton(){
+    return this.quitButton;
   }
 
   public QuoridorSettings getSettings(){
