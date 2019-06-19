@@ -59,10 +59,13 @@ public class ModePanel extends JPanel {
     this.namePanel.setLayout(new GridLayout(1, 2, 20, 0));
     this.player1Field = new JTextField("Nom du joueur 1");
     this.player1Field.setFont(new Font("Arial", Font.PLAIN, 35));
-    this.player1Field.addActionListener(new ModeListener(this.state));
+    this.player1Field.addCaretListener(new ModeListener(this.state));
+    this.player1Field.addFocusListener(new ModeListener(this.state));
 
     this.player2Field = new JTextField("Nom du joueur 2");
-    this.player2Field.addActionListener(new ModeListener(this.state));
+    this.player2Field.addCaretListener(new ModeListener(this.state));
+    this.player2Field.addFocusListener(new ModeListener(this.state));
+
     this.player2Field.setFont(new Font("Arial", Font.PLAIN, 35));
     this.namePanel.add(this.player1Field);
     this.namePanel.add(this.player2Field);

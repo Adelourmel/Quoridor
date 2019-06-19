@@ -62,6 +62,7 @@ public class GamePanel extends JPanel {
     JLabel label = new JLabel(player.getPlayerName());
     label.setFont(new Font("Arial", Font.PLAIN, 40));
     label.setAlignmentY(CENTER_ALIGNMENT);
+
     ret.add(label);
     ret.add(new SpacePanel());
 

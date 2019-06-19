@@ -42,6 +42,9 @@ public class GridPanel extends JPanel {
       }
     }
 
+    drawPawn(this.state.getSettings().getGame().getPlayer1(), g2d);
+    drawPawn(this.state.getSettings().getGame().getPlayer2(), g2d);
+
   }
   protected void paintComponent(Graphics grphcs) {
     super.paintComponent(grphcs);
@@ -81,7 +84,7 @@ public class GridPanel extends JPanel {
   private void drawSquare(int x, int y, Graphics2D g2d) {
     g2d.setColor(new Color(189,189,189));
     if (Pawn.class.isInstance(grid[x][y])) {
-      g2d.setColor(Color.BLUE);
+    //  g2d.setColor(Color.BLUE);
     }
     int posX = (x/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
     int posY = (y/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
@@ -89,7 +92,18 @@ public class GridPanel extends JPanel {
     this.gridGUI[y][x] = new Rectangle(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
     g2d.fill(this.gridGUI[y][x]);
   }
+  private void drawPawn(Player player, Graphics g2d) {
 
+
+    g2d.setColor(Color.RED);
+
+
+    int posX = (player.getPawn().getPosX()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
+    int posY = (player.getPawn().getPosY()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
+
+    g2d.fillOval(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
+
+  }
 
 
 
