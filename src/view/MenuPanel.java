@@ -18,7 +18,7 @@ public class MenuPanel extends JPanel {
   public  MenuPanel(GUI state){
     this.state = state;
     this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    this.setBackground(new Color(108,128,154));
+    this.setBackground(state.getbackColor());
 
 
 

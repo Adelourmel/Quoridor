@@ -16,7 +16,6 @@ public class GamePanel extends JPanel {
   private GUI state;
 
 
-
   public  GamePanel(GUI state, Square[][] grid){
     this.state = state;
     this.setLayout(new BorderLayout());
@@ -24,25 +23,41 @@ public class GamePanel extends JPanel {
     this.add(this.gridPanel);
 
 
+
+    load();
+
+  }
+
+  public void load() {
+    System.out.println("I am loading");
     Player player1 = this.state.getSettings().getGame().getPlayer1();
     Player player2 = this.state.getSettings().getGame().getPlayer2();
 
-    this.player1Panel = createSide(player1);
 
+
+
+    this.player1Panel = createSide(player1);
     this.player2Panel = createSide(player2);
+
+    remove(this.player1Panel);
+    remove(this.player2Panel);
 
 
     add(this.player1Panel, BorderLayout.WEST);
     add(this.player2Panel, BorderLayout.EAST);
 
+
+
+
   }
 
 
   private JPanel createSide(Player player) {
+    System.out.println(player.getWallsNb());
 
     JPanel ret = new JPanel();
     ret.setLayout(new BoxLayout(ret, BoxLayout.Y_AXIS));
-    ret.setBackground(new Color(90,219,255));
+    ret.setBackground(this.state.getbackColor());
 
     JLabel label = new JLabel(player.getPlayerName());
     label.setFont(new Font("Arial", Font.PLAIN, 40));

@@ -17,6 +17,8 @@ public class GUI extends JFrame {
   private QuitPanel quitPanel;
   private QuoridorSettings settings;
 
+  private final Color backColor = new Color(108,128,154);
+
 
   private final String PATH ="../img";
 
@@ -92,7 +94,9 @@ public class GUI extends JFrame {
     this.add(q);
   }
 
-
+  public Color getbackColor() {
+    return this.backColor;
+  }
 
   public void removeMenuPanel(){
     this.remove(this.menuPanel);

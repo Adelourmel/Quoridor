@@ -60,9 +60,13 @@ public class GridPanelListener extends MouseAdapter {
         }
         y++;
       }
+
     }
 
 
+
+    this.state.getGamePanel().load();
+    javax.swing.SwingUtilities.updateComponentTreeUI(this.state.getGamePanel());
 
     this.state.repaint();
 
