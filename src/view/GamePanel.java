@@ -9,12 +9,9 @@ public class GamePanel extends JPanel {
 
   private GridPanel gridPanel;
   private JPanel player1Panel;
-  private JLabel player1Label;
 
   private JPanel player2Panel;
-  private JLabel player2Label;
-  private JLabel wall1Label;
-  private JLabel wall2Label;
+
   private final String PATH ="../img";
   private GUI state;
 
@@ -26,53 +23,40 @@ public class GamePanel extends JPanel {
     this.gridPanel = new GridPanel(this.state, grid);
     this.add(this.gridPanel);
 
-    
+
+    Player player1 = this.state.getSettings().getGame().getPlayer1();
+    Player player2 = this.state.getSettings().getGame().getPlayer2();
+
+    this.player1Panel = createSide(player1);
+
+    this.player2Panel = createSide(player2);
 
 
-    this.player1Panel = new JPanel();
-    this.player1Panel.setLayout(new BoxLayout(this.player1Panel, BoxLayout.Y_AXIS));
-    this.player1Panel.setBackground(new Color(90,219,255));
-    this.player1Label = new JLabel("dds");
-
-    this.player1Label.setFont(new Font("Arial", Font.PLAIN, 40));
-    this.player1Panel.setAlignmentX(CENTER_ALIGNMENT);
-    this.player1Panel.add(this.player1Label);
-    this.player1Panel.add(new SpacePanel());
-    this.wall1Label = new JLabel("Barriere Restante : 8");
-    this.wall1Label.setFont(new Font("Arial", Font.PLAIN, 40));
-    this.wall1Label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-    this.player1Panel.add(this.wall1Label);
-
-
-
-    this.player2Panel = new JPanel();
-    this.player2Panel.setLayout(new BoxLayout(this.player2Panel, BoxLayout.Y_AXIS));
-    this.player2Panel.setBackground(new Color(90,219,255));
-    this.player2Label = new JLabel("zsxw");
-    this.player2Label.setFont(new Font("Arial", Font.PLAIN, 40));
-    this.player2Label.setAlignmentY(CENTER_ALIGNMENT);
-    this.player2Panel.add(this.player2Label);
-    this.player2Panel.add(new SpacePanel());
-    this.wall2Label = new JLabel("Barriere Restante : 10");
-    this.wall2Label.setFont(new Font("Arial", Font.PLAIN, 40));
-    this.wall2Label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-    this.player2Panel.add(this.wall2Label);
-
-    this.add(this.player1Panel, BorderLayout.WEST);
-    this.add(this.player2Panel, BorderLayout.EAST);
-
-
-
-
-
-
-
-
-
+    add(this.player1Panel, BorderLayout.WEST);
+    add(this.player2Panel, BorderLayout.EAST);
 
   }
 
 
+  private JPanel createSide(Player player) {
+
+    JPanel ret = new JPanel();
+    ret.setLayout(new BoxLayout(ret, BoxLayout.Y_AXIS));
+    ret.setBackground(new Color(90,219,255));
+
+    JLabel label = new JLabel(player.getPlayerName());
+    label.setFont(new Font("Arial", Font.PLAIN, 40));
+    label.setAlignmentY(CENTER_ALIGNMENT);
+    ret.add(label);
+    ret.add(new SpacePanel());
+
+    JLabel wallLabel = new JLabel("Barriere Restante : " + player.getWallsNb());
+    wallLabel.setFont(new Font("Arial", Font.PLAIN, 40));
+    wallLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+    ret.add(wallLabel);
+
+    return ret;
+  }
 
 
 }
