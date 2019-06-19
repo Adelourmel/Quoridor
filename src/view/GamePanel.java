@@ -29,7 +29,6 @@ public class GamePanel extends JPanel {
   }
 
   public void load() {
-    System.out.println("I am loading");
     Player player1 = this.state.getSettings().getGame().getPlayer1();
     Player player2 = this.state.getSettings().getGame().getPlayer2();
 

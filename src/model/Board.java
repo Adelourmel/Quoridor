@@ -167,8 +167,13 @@ public class Board implements Cloneable, Serializable {
 
 		if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
 			if (this.calculator.isLegalWall(x, y)) {
-				setWalls(x, y, player);
-				ret = true;
+				if (player.getWallsNb() > 0) {
+					setWalls(x, y, player);
+					ret = true;
+				}
+				else {
+					ret = false;
+				}
 			}
 
 		}
@@ -182,10 +187,6 @@ public class Board implements Cloneable, Serializable {
 		}
 		if (ret) {
 			calculator.updatePossibleWalls();
-			System.out.println("array : ");
-			for (Pair elem : player.getPossiblePawn()) {
-				System.out.println(elem.toString());
-			}
 		}
 		return ret;
 	}
