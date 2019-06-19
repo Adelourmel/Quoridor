@@ -58,13 +58,11 @@ public class MoveCalculator implements Cloneable, Serializable {
 		for (int i = 0 ;  i <= g.length - this.board.getSizeWall() ; i++) {
 			for (int p = 0 ; p <= g.length - this.board.getSizeWall() ; p++) {
 				if (this.board.getGrid()[i][p].getSquareType() == SquareType.WALL_ONLY && !(p%2 != 0 && i%2 != 0)) {
-				//	System.out.println("i :" + i + " p : " + p);
 					if (isInGrid(i, p, g)) {
 						if (checkWall(i, p)) {
 							possibleWalls.add(new Pair(i,p));
 						}
 						else {
-							System.out.println("Impossible : " + (new Pair(i, p)).toString());
 						}
 
 					}
@@ -148,14 +146,12 @@ public class MoveCalculator implements Cloneable, Serializable {
 						Pair tmp = new Pair(posX, posY);
 						player.getPossiblePawn().add(tmp);
 						ret = true;
-						//System.out.println("pair : " + tmp.toString());
 					}
 				}
 				else if (isInGrid(posX, posY, this.board.getGrid())){
 					Pair tmp = new Pair(posX, posY);
 					player.getPossiblePawn().add(tmp);
 					ret = true;
-					//System.out.println("pair : " + tmp.toString());
 				}
 			}
 
