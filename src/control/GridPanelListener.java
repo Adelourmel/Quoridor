@@ -27,7 +27,7 @@ public class GridPanelListener extends MouseAdapter {
 
   public void mouseReleased(MouseEvent e) {
     boolean found = false;
-    //boolean b = false;
+
     int x = 0;
     int y = 0;
 
@@ -41,12 +41,17 @@ public class GridPanelListener extends MouseAdapter {
             System.out.println(x + ";" + y);
 
             if (player1Play) {
-              this.state.getSettings().getGame().getPlayer1().play(x,y);
-              this.player1Play = false;
+              if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
+                this.player1Play = false;
+
+              }
+
             }
             else {
-              this.state.getSettings().getGame().getPlayer2().play(x,y);
-              this.player1Play = true;
+              if (this.state.getSettings().getGame().getPlayer2().play(x,y)) {
+                this.player1Play = true;
+
+              }
             }
 
 

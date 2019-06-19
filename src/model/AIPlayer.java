@@ -36,8 +36,8 @@ public class AIPlayer extends Player implements Serializable {
 		return false;
 	}
 
-	public void play(int x, int y){
-		
+	public boolean play(int x, int y){
+		return true;
 	}
 
 }

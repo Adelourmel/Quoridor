@@ -13,6 +13,7 @@ public class GUI extends JFrame {
   private LoadSavePanel loadSavePanel;
   private ModePanel modePanel;
   private GamePanel gamePanel;
+  private QuitPanel quitPanel;
   private QuoridorSettings settings;
 
 
@@ -43,7 +44,7 @@ public class GUI extends JFrame {
 
 
     this.setMenuPanel(new MenuPanel(this));
-    //this.add(new ModePanel(this));
+    //this.add(new QuitPanel(this));
     //this.add(new LoadSavePanel(this));
 
 
@@ -79,6 +80,11 @@ public class GUI extends JFrame {
     this.add(g);
   }
 
+  public void setQuitPanel(QuitPanel q){
+    this.quitPanel = q;
+    this.add(q);
+  }
+
 
 
   public void removeMenuPanel(){
@@ -102,9 +108,16 @@ public class GUI extends JFrame {
     this.gamePanel = null;
   }
 
+  public void removeQuitPanel(){
+    this.remove(this.quitPanel);
+    this.quitPanel = null;
+  }
 
 
 
+  public JPanel getHeader(){
+    return this.header;
+  }
 
   public MenuPanel getMenuPanel(){
     return this.menuPanel;
@@ -119,6 +132,10 @@ public class GUI extends JFrame {
   }
 
   public GamePanel getGamePanel(){
+    return this.gamePanel;
+  }
+
+  public GamePanel getQuitPanel(){
     return this.gamePanel;
   }
 

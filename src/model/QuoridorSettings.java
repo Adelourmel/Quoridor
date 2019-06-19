@@ -258,6 +258,20 @@ public class QuoridorSettings {
 		}
 	}
 
+	public void loadGUIGame(String fileName) {
+		ObjectInputStream ois;
+		try {
+			ois = new ObjectInputStream(new FileInputStream(fileName));
+			try {
+				this.game = (Game)ois.readObject();
+			} catch(ClassNotFoundException e) {
+				System.out.println(e.getMessage());
+			}
+		} catch(IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	/**
 	 * Sets the player1 name.
 	 * @param playerName1 the player1 name

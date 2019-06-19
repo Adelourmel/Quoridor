@@ -15,12 +15,12 @@ public class LoadSaveListener implements  ListSelectionListener{
   }
 
   public void valueChanged(ListSelectionEvent e){
-    /*JList savesList = (JList)e.getSource();
-    this.state.getSettings().loadGame("../data"+(String) savesList.getSelectedValue());
+    JList savesList = (JList)e.getSource();
+    this.state.getSettings().loadGUIGame("../data/"+(String) savesList.getSelectedValue());
     this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
     this.state.removeLoadSavePanel();
     SwingUtilities.updateComponentTreeUI(this.state);
 
-    this.state.pack();*/
+    this.state.pack();
   }
 }
