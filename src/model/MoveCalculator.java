@@ -56,12 +56,9 @@ public class MoveCalculator implements Cloneable, Serializable {
 		for (int i = 0 ;  i < g.length - 1; i++) {
 			for (int p = 0 ; p < g[i].length -1 ; p++) {
 				if (this.board.getGrid()[i][p].getSquareType() == SquareType.WALL_ONLY && !(p%2 != 0 && i%2 != 0)) {
-					if (isInGrid(i, p, g) && !(Wall.class.isInstance(this.board.getGrid()[i][p]))) {
+					if (thereIsWall(i, p, g)) {
 						if (checkWall(i, p)) {
 							possibleWalls.add(new Pair(i,p));
-						}
-						else {
-							System.out.println("impossible : " + (new Pair(i, p)).toString());
 						}
 					}
 
@@ -70,6 +67,16 @@ public class MoveCalculator implements Cloneable, Serializable {
 
 		}
 	//	checkWall(1, 0);
+	}
+
+
+	public boolean thereIsWall(int x, int y, Square[][] g) {
+		return isInGrid(x, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y]))
+		 && isInGrid(x+2, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+2][y]))
+		 && isInGrid(x, y+2, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y+2]))
+		 && isInGrid(x+1, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+1][y]))
+		 && isInGrid(x, y+1, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y+1]));
+
 	}
 
 	/**
