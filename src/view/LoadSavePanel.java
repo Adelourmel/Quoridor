@@ -17,6 +17,7 @@ public class LoadSavePanel extends JPanel {
   private JLabel descriptionLabel;
   private JList<String> savesList;
   private JScrollPane scrollPane;
+  private JPanel savePanel;
 
 
   public  LoadSavePanel(GUI state){
@@ -51,17 +52,24 @@ public class LoadSavePanel extends JPanel {
     this.savesList.addListSelectionListener(new LoadSaveListener(this.state));
 
     this.savesList.setFont(new Font("Arial", Font.PLAIN, 30));
-    this.savesList.setSelectionBackground(new Color(219,173,106));
+    this.savesList.setSelectionBackground(new Color(154, 126, 108));
     this.savesList.setAlignmentX(CENTER_ALIGNMENT);
 
+    this.savePanel = new JPanel();
+    this.savePanel.setOpaque(false);
+    this.savePanel.setLayout(new BorderLayout());
+    this.savePanel.add(new SpacePanel(), BorderLayout.WEST);
+    this.savePanel.add(new SpacePanel(), BorderLayout.EAST);
+    this.savePanel.add(new SpacePanel(), BorderLayout.SOUTH);
 
-    this.scrollPane = new JScrollPane(savesList);
+    this.scrollPane = new JScrollPane(this.savesList);
     this.scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     this.scrollPane.setPreferredSize(new Dimension(500,50));
-    this.add(this.scrollPane);
+    this.savePanel.add(this.scrollPane);
     this.scrollPane.setAlignmentX(CENTER_ALIGNMENT);
-    this.savesList.setBackground(new Color(230,238,214));
-    this.add(new SpacePanel());
+    this.savesList.setBackground(new Color(255, 255, 255));
+
+    this.add(this.savePanel);
 
 
 
