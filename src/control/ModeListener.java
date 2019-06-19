@@ -46,9 +46,10 @@ public class ModeListener implements ActionListener{
       this.state.getSettings().setGamemode(Gamemode.HA);
 
 
-			
+
       this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
       SwingUtilities.updateComponentTreeUI(this.state);
+
       this.state.pack();
 
 

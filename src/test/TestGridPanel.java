@@ -19,7 +19,7 @@ public class TestGridPanel extends JFrame {
     getContentPane().setLayout(new BorderLayout(15,0));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    this.add(this.gridPane);
+    //this.add(this.gridPane);
 
 
 
