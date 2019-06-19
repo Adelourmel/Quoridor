@@ -70,7 +70,7 @@ public class Board implements Cloneable, Serializable {
 		this.grid[x][y] = this.player2.getPawn();
 
 		this.calculator = new MoveCalculator(this);
-		//this.calculator.updatePawn();
+		this.calculator.updatePawn();
 
 
     this.test = new TestGridPanel(this.grid);
@@ -116,7 +116,7 @@ public class Board implements Cloneable, Serializable {
 
 		this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
 
-		//calculator.updatePawn();
+		calculator.updatePawn();
 	}
 
 
@@ -167,7 +167,7 @@ public class Board implements Cloneable, Serializable {
 		boolean ret = false;
 
 		if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
-			if (true/*this.calculator.isLegalWall(x, y)*/) {
+			if (true) {
 				setWalls(x, y, player);
 				ret = true;
 			}
@@ -182,7 +182,7 @@ public class Board implements Cloneable, Serializable {
 
 		}
 		if (ret) {
-			//calculator.updatePossibleWalls();
+			calculator.updatePossibleWalls();
 			System.out.println("array : ");
 			for (Pair elem : player.getPossiblePawn()) {
 				System.out.println(elem.toString());
@@ -207,7 +207,7 @@ public class Board implements Cloneable, Serializable {
 		else {
 			setPawn(x, y, player);
 		}
-	//	calculator.updatePossibleWalls();
+		calculator.updatePossibleWalls();
 	}
 
 	/**
