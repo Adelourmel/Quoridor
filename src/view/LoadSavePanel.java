@@ -1,5 +1,6 @@
 package quoridor.view;
-//import controller.*;
+
+import quoridor.control.*;
 import quoridor.model.QuoridorSettings;
 import javax.swing.*;
 import java.awt.*;
@@ -47,6 +48,7 @@ public class LoadSavePanel extends JPanel {
     String[] savesArray = new String[saves.size()];
     savesArray = saves.toArray(savesArray);
     this.savesList = new JList<String>(saves.toArray(savesArray));
+    this.savesList.addListSelectionListener(new LoadSaveListener(this.state));
 
     this.savesList.setFont(new Font("Arial", Font.PLAIN, 30));
     this.savesList.setSelectionBackground(new Color(219,173,106));

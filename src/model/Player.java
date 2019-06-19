@@ -53,6 +53,8 @@ public abstract class Player implements Cloneable, Serializable {
 	 */
 	public abstract boolean play();
 
+	public abstract void play(int x, int y);
+
 	/**
 	 * Returns the player name.
 	 * @return the player name
