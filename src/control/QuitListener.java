@@ -15,12 +15,19 @@ public class QuitListener implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == this.state.getQuitPanel().getQuitButton() ) {
-      this.state.dispose();
+      this.state.removeQuitPanel();
+      this.state.setMenuPanel(new MenuPanel(this.state));
+      SwingUtilities.updateComponentTreeUI(this.state);
     }
     else if (e.getSource() == this.state.getQuitPanel().getSaveButton()) {
       this.state.getSettings().saveGame();
-      this.state.dispose();
+
+      this.state.removeQuitPanel();
+      this.state.setMenuPanel(new MenuPanel(this.state));
+      SwingUtilities.updateComponentTreeUI(this.state);
+      
     }
+
 
 
   }

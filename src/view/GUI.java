@@ -18,7 +18,7 @@ public class GUI extends JFrame {
   private QuoridorSettings settings;
 
 
-
+  private final String PATH ="../img";
 
 
   public GUI(QuoridorSettings settings){
@@ -32,18 +32,14 @@ public class GUI extends JFrame {
     this.header.setBackground(new Color(10,34,57));
 
 
-    this.quitButton = new JButton("QUITTER");
-    this.quitButton.addActionListener(new MenuButtonListener(this));
-    this.quitButton.setBackground(new Color(255, 255, 255));
-    this.quitButton.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-    this.quitButton.setFont(new Font("Arial", Font.PLAIN, 30));
-    this.quitButton.setFocusPainted(false);
-    this.header.add(this.quitButton, BorderLayout.WEST);
-
-    this.menuButton = new JButton("MENU");
+    ImageIcon imageIcon = new ImageIcon(this.PATH+"/menu.png"); // load the image to a imageIcon
+    Image image = imageIcon.getImage(); // transform it
+    Image newimg = image.getScaledInstance(75, 75,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+    imageIcon = new ImageIcon(newimg);
+    this.menuButton = new JButton(imageIcon);
     this.menuButton.addActionListener(new MenuButtonListener(this));
     this.menuButton.setBackground(new Color(255, 255, 255));
-    this.menuButton.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+    //this.menuButton.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
     this.menuButton.setFont(new Font("Arial", Font.PLAIN, 30));
     this.menuButton.setFocusPainted(false);
 

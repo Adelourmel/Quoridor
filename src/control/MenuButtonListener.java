@@ -27,33 +27,29 @@ public class MenuButtonListener implements ActionListener {
         SwingUtilities.updateComponentTreeUI(this.state);
       }
 
-
-      else if (this.state.getGamePanel() != null) {
-        this.state.removeGamePanel();
-        this.state.setMenuPanel(new MenuPanel(this.state));
-        this.state.setSize(1300, 1000);
-        //this.state.getSettings().getGame() = null;
-        SwingUtilities.updateComponentTreeUI(this.state);
-      }
-
-
       else if (this.state.getQuitPanel() != null) {
         this.state.removeQuitPanel();
         this.state.setMenuPanel(new MenuPanel(this.state));
         SwingUtilities.updateComponentTreeUI(this.state);
       }
 
-    }
-    if (e.getSource() == this.state.getQuitButton()){
-      if (this.state.getGamePanel() == null) {
-        this.state.dispose();
-      }
-      else {
+
+      else if (this.state.getGamePanel() != null) {
         this.state.removeGamePanel();
         this.state.setQuitPanel(new QuitPanel(this.state));
         this.state.setSize(1300, 1000);
+        //this.state.getSettings().getGame() = null;
         SwingUtilities.updateComponentTreeUI(this.state);
       }
+
+
+
+
+      else  if (this.state.getMenuPanel() != null ) {
+        this.state.dispose();
+      }
+
+
     }
   }
 }
