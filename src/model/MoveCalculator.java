@@ -31,8 +31,6 @@ public class MoveCalculator implements Cloneable, Serializable {
 	/**
 	 * Update all the arrayLsit
 	 */
-
-
 	public void updatePawn() {
 		updatePossibleMoves(this.board.getPlayer1());
 		updatePossibleMoves(this.board.getPlayer2());
@@ -55,16 +53,16 @@ public class MoveCalculator implements Cloneable, Serializable {
 
 		this.possibleWalls = new ArrayList<Pair>();
 
-		for (int i = 0 ;  i <= g.length - this.board.getSizeWall() ; i++) {
-			for (int p = 0 ; p <= g.length - this.board.getSizeWall() ; p++) {
+		for (int i = 0 ;  i < g.length - 1; i++) {
+			for (int p = 0 ; p < g[i].length -1 ; p++) {
 				if (this.board.getGrid()[i][p].getSquareType() == SquareType.WALL_ONLY && !(p%2 != 0 && i%2 != 0)) {
-					if (isInGrid(i, p, g)) {
+					if (isInGrid(i, p, g) && !(Wall.class.isInstance(this.board.getGrid()[i][p]))) {
 						if (checkWall(i, p)) {
 							possibleWalls.add(new Pair(i,p));
 						}
 						else {
+							System.out.println("impossible : " + (new Pair(i, p)).toString());
 						}
-
 					}
 
 				}
@@ -200,34 +198,26 @@ public class MoveCalculator implements Cloneable, Serializable {
 		boolean ret = false;
 
 		mark.add(new Pair(x, y));
-		ArrayList<Pair> m = new ArrayList<Pair>();
-
+		ArrayList<Pair> m = cloneArray(mark);
 
 
 		ArrayList<Pair> neighbors = player.getPossiblePawn();
-		ArrayList<Pair> n = new ArrayList<Pair>();
-		for (Pair elem : neighbors) {
-			try {
-				n.add(elem.clone());
-			} catch (CloneNotSupportedException e) {
-				System.out.println(e.getMessage());
-			}
-		}
+		ArrayList<Pair> n = cloneArray(neighbors);
+
 		Iterator<Pair> ite = n.iterator();
 
 
-		while (ite.hasNext()) {
+		while (!ret && ite.hasNext()) {
 
 			Pair elem = ite.next();
-		//	System.out.println("posfinal " + player.getPosFinal() + "  elem.getY" + elem.getY());
+
 			if (!ret && !foundInArrayList(elem.getX(), elem.getY(), mark)) {
 				cloneBoard.setPawn(elem.getX(), elem.getY(), player);
 				if (elem.getY() == player.getPosFinal()) {
-			//		System.out.println("youi");
 			 			ret = true;
 				}
 				else {
-					ret = explore(player, cloneBoard, mark);
+					ret = explore(player, cloneBoard, m);
 
 				}
 			}
@@ -235,6 +225,22 @@ public class MoveCalculator implements Cloneable, Serializable {
 		}
 		return ret;
 
+	}
+
+
+	private ArrayList<Pair> cloneArray(ArrayList<Pair> array) {
+		ArrayList<Pair> ret = new ArrayList<Pair>();
+
+		for (Pair elem : array) {
+			try {
+				ret.add(elem.clone());
+			}
+			catch (CloneNotSupportedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+		return ret;
 	}
 
 /**
