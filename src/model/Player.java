@@ -134,6 +134,8 @@ public abstract class Player implements Cloneable, Serializable {
 			cloneArray.add(elem.clone());
 		}
 
+		clonePlayer.possiblePawn = cloneArray;
+
 		return clonePlayer;
 	}
 

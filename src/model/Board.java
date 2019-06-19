@@ -180,11 +180,15 @@ public class Board implements Cloneable, Serializable {
 			}
 
 		}
-
+		System.out.println("yop");
 		if (ret) {
 			calculator.updatePossibleWalls();
+			System.out.println("array : ");
+			for (Pair elem : player.getPossiblePawn()) {
+				System.out.println(elem.toString());
+			}
+			test.gridPane.repaint();
 		}
-		test.gridPane.repaint();
 		return ret;
 	}
 
