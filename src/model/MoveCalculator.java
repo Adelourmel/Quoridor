@@ -42,7 +42,6 @@ public class MoveCalculator implements Cloneable, Serializable {
 	 */
 	private void updatePossibleMoves(Player player) {
 		player.getPossiblePawn().clear();
-		System.out.println("boucle ou pas ?");
 		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.board.getGrid(), true);
 	}
 
@@ -170,7 +169,6 @@ public class MoveCalculator implements Cloneable, Serializable {
 				else if (isInGrid(posX, posY, this.board.getGrid())){
 					Pair tmp = new Pair(posX, posY);
 					player.getPossiblePawn().add(tmp);
-					System.out.println("paire : " + tmp);
 					ret = true;
 				}
 			}
