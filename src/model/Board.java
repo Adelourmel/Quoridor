@@ -69,7 +69,7 @@ public class Board implements Cloneable, Serializable {
 
 		this.calculator = new MoveCalculator(this);
 		this.calculator.updatePawn();
-
+		this.calculator.updatePossibleWalls();
 
 
 
@@ -114,6 +114,7 @@ public class Board implements Cloneable, Serializable {
 		this.grid[lastX][lastY] = new Square(lastX, lastY, SquareType.PAWN_ONLY);
 
 		calculator.updatePawn();
+
 	}
 
 
@@ -143,6 +144,7 @@ public class Board implements Cloneable, Serializable {
 			posX += coeffX;
 			posY += coeffY;
 		}
+		calculator.updatePawn();
 		player.decWalls();
 	}
 	public void setPlayers(Player p1, Player p2) {
