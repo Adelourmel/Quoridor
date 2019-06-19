@@ -14,7 +14,7 @@ public class MoveCalculator implements Cloneable, Serializable {
 	private ArrayList<Pair> possibleWalls;
 	private ArrayList<Pair> wallsList;
 
-	private final int[][] COEFF = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+	private final int[][] COEFF = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 	private Board board;
 
 	/**
@@ -58,6 +58,7 @@ public class MoveCalculator implements Cloneable, Serializable {
 		for (int i = 0 ;  i <= g.length - this.board.getSizeWall() ; i++) {
 			for (int p = 0 ; p <= g.length - this.board.getSizeWall() ; p++) {
 				if (this.board.getGrid()[i][p].getSquareType() == SquareType.WALL_ONLY && !(p%2 != 0 && i%2 != 0)) {
+					System.out.println("i :" + i + " p : " + p);
 					if (isInGrid(i, p, g)) {
 						if (checkWall(i, p)) {
 							possibleWalls.add(new Pair(i,p));
@@ -185,22 +186,22 @@ public class MoveCalculator implements Cloneable, Serializable {
 			ret = explore(cloneBoard.getPlayer1(), cloneBoard, mark);
 		}
 		catch (Exception e) {
-		//	System.out.println("--------------------------------------");
+			System.out.println("------------------------------------------------------------------");
 		//	System.out.println(e.getMessage());
-		//	System.out.println("x ; y" + x + " ; " + y);
+			System.out.println("x ; y" + x + " ; " + y);
 			ret = false;
 		}
-
 		cloneBoard = cloneTheBoard();
+		cloneBoard.setWalls(x, y, cloneBoard.getPlayer1());
 
 		if (ret) {
 			try {
 			ret = explore(cloneBoard.getPlayer2(), cloneBoard, mark);
 			}
 			catch (Exception e) {
-		//	System.out.println("--------------------------------------");
+			System.out.println("--------------------------------------------------------");
 			//System.out.println(e.getMessage());
-		//	System.out.println("x ; y" + x + " ; " + y);
+			System.out.println("player 2 x ; y" + x + " ; " + y);
 			ret = false;
 		}
 
@@ -218,31 +219,34 @@ public class MoveCalculator implements Cloneable, Serializable {
 		mark.add(new Pair(x, y));
 		ArrayList<Pair> m = new ArrayList<Pair>();
 
-		for (Pair elem : mark) {
-			m.add(elem);
-		}
-
 
 
 		ArrayList<Pair> neighbors = player.getPossiblePawn();
 		Iterator<Pair> ite = neighbors.iterator();
 
-		while (!ret && ite.hasNext()) {
+		for (Pair elem : neighbors) {
 
-			Pair elem = ite.next();
-
-			if (!ret && !foundInArrayList(elem.getX(), elem.getY(), m)) {
+		//	System.out.println("posfinal " + player.getPosFinal() + "  elem.getY" + elem.getY());
+			if (!ret && !foundInArrayList(elem.getX(), elem.getY(), mark)) {
 				cloneBoard.setPawn(elem.getX(), elem.getY(), player);
 				if (elem.getY() == player.getPosFinal()) {
+			//		System.out.println("youi");
 					return true;
 				}
 				else {
-					ret = explore(player, cloneBoard, m);
+					ret = explore(player, cloneBoard, mark);
 					if (ret) {
 						return true;
 					}
+					else {
+						cloneBoard.setPawn(elem.getX(), elem.getY(), player);
 
+					}
 				}
+			}
+			else {
+				//return false;
+				System.out.print("n"+ !foundInArrayList(elem.getX(), elem.getY(), mark) +"f");
 			}
 		}
 		return ret;

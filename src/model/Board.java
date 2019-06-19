@@ -118,6 +118,8 @@ public class Board implements Cloneable, Serializable {
 
 		calculator.updatePawn();
 	}
+	
+
 
 	/**
 	 * set wall in the grid
