@@ -69,12 +69,23 @@ public class MoveCalculator implements Cloneable, Serializable {
 	}
 
 
+
+
 	public boolean thereIsNoWall(int x, int y, Square[][] g) {
-		return isInGrid(x, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y]))
-		 && isInGrid(x+2, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+2][y]))
-		 && isInGrid(x, y+2, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y+2]))
-		 && isInGrid(x+1, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+1][y]))
-		 && isInGrid(x, y+1, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y+1]));
+		boolean ret = false;
+
+		if (y%2 != 0) {
+			ret = isInGrid(x, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y]))
+			 && isInGrid(x+2, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+2][y]))
+			 && isInGrid(x+1, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+1][y]));
+		}
+		else if (x%2 != 0) {
+			ret = isInGrid(x, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y]))
+			&& isInGrid(x, y+2, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y+2]))
+			 && isInGrid(x, y+1, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y+1]));
+		}
+
+		return ret;
 
 	}
 
@@ -85,7 +96,15 @@ public class MoveCalculator implements Cloneable, Serializable {
 	 * @return true is the wall move is possible, false otherwise
 	 */
 	public boolean isLegalWall(int x, int y) {
-		return foundInArrayList(x, y, this.possibleWalls);
+		boolean ret = false;
+		Square[][] g = board.getGrid();
+
+		if (thereIsNoWall(x, y, g)) {
+			if (checkWall(x, y)) {
+				ret = true;
+			}
+		}
+		return ret;
 	}
 
 	/**
