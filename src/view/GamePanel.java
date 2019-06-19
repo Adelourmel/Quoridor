@@ -8,7 +8,6 @@ import java.awt.*;
 public class GamePanel extends JPanel {
 
   private GridPanel gridPanel;
-  private GUI state;
   private JPanel player1Panel;
   private JLabel player1Label;
 
@@ -17,19 +16,20 @@ public class GamePanel extends JPanel {
   private JLabel wall1Label;
   private JLabel wall2Label;
   private final String PATH ="../img";
+  private GUI state;
 
 
-  public  GamePanel(Square[][] grid){
+  public  GamePanel(GUI state, Square[][] grid){
     this.state = state;
     this.setLayout(new BorderLayout());
-    this.gridPanel = new GridPanel(grid);
+    this.gridPanel = new GridPanel(this.state, grid);
     this.add(this.gridPanel);
 
 
     this.player1Panel = new JPanel();
     this.player1Panel.setLayout(new BoxLayout(this.player1Panel, BoxLayout.Y_AXIS));
     this.player1Panel.setBackground(new Color(90,219,255));
-    this.player1Label = new JLabel("Nom Joueur 1");
+    this.player1Label = new JLabel("dds");
 
     this.player1Label.setFont(new Font("Arial", Font.PLAIN, 40));
     this.player1Panel.setAlignmentX(CENTER_ALIGNMENT);
@@ -45,7 +45,7 @@ public class GamePanel extends JPanel {
     this.player2Panel = new JPanel();
     this.player2Panel.setLayout(new BoxLayout(this.player2Panel, BoxLayout.Y_AXIS));
     this.player2Panel.setBackground(new Color(90,219,255));
-    this.player2Label = new JLabel("Nom Joueur 2");
+    this.player2Label = new JLabel("zsxw");
     this.player2Label.setFont(new Font("Arial", Font.PLAIN, 40));
     this.player2Label.setAlignmentY(CENTER_ALIGNMENT);
     this.player2Panel.add(this.player2Label);

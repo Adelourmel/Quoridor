@@ -13,16 +13,18 @@ public class GridPanel extends JPanel {
   private final int SIZESQUAREPAWN = 60;
   private final int WIDTHWALL = 15;
   private GridPanelListener listener;
-  
+  private GUI state;
 
-  public GridPanel(Square[][] grid) {
+
+  public GridPanel(GUI state, Square[][] grid) {
+    this.state = state;
     this.grid = grid;
     this.gridGUI = new Rectangle[this.grid.length][this.grid.length];
-    this.listener = new GridPanelListener(this.gridGUI);
+    this.listener = new GridPanelListener(this.state, this.gridGUI);
     //initShape();
     int sizeGrid = ((this.grid.length/2) * (this.WIDTHWALL + this.SIZESQUAREPAWN)) + this.SIZESQUAREPAWN;
     this.setPreferredSize(new Dimension(sizeGrid, sizeGrid));
-    addMouseListener(this.listener);
+    this.addMouseListener(this.listener);
   }
 
   private void initShape(Graphics2D g2d) {

@@ -89,11 +89,6 @@ public class HumanPlayer extends Player implements Serializable {
 
 	public void play(int x, int y) {
 
-
-
-
-
-
     boolean b = true;
     do {
 			b = this.board.setNewMove(x, y, this);

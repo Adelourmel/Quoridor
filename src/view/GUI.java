@@ -49,7 +49,7 @@ public class GUI extends JFrame {
 
 
     this.setSize(1300, 1000);
-    this.setResizable(false);
+    //this.setResizable(false);
 
 
 

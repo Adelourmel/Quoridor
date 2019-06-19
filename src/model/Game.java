@@ -66,6 +66,23 @@ public class Game implements Serializable {
 
 	}
 
+	public void startGUIGame() {
+		boolean player1Play = true;
+
+		boolean quitGame = false;
+		while (!this.endOfGame() && !quitGame){
+			if (player1Play) {
+				quitGame = this.player1.play();
+				player1Play = false;
+			}
+			else {
+				quitGame = this.player2.play();
+				player1Play = true;
+			}
+		}
+
+	}
+
 	public void saveConsoleGame(){
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
     Date date = new Date();
@@ -129,6 +146,14 @@ public class Game implements Serializable {
 	 */
 	public Board getBoard() {
 		return this.board;
+	}
+
+	public Player getPlayer1() {
+		return this.player1;
+	}
+
+	public Player getPlayer2() {
+		return this.player2;
 	}
 
 }
