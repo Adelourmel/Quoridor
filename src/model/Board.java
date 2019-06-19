@@ -118,7 +118,7 @@ public class Board implements Cloneable, Serializable {
 
 		calculator.updatePawn();
 	}
-	
+
 
 
 	/**
@@ -175,14 +175,12 @@ public class Board implements Cloneable, Serializable {
 		}
 		else {
 			if (this.calculator.isLegalPawn(x, y, player)) {
-				System.out.println("Camarcje");
 				setPawn(x, y, player);
 				ret = true;
 
 			}
 
 		}
-		System.out.println("yop");
 		if (ret) {
 			calculator.updatePossibleWalls();
 			System.out.println("array : ");

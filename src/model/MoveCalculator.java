@@ -235,16 +235,10 @@ public class MoveCalculator implements Cloneable, Serializable {
 					if (ret) {
 						return true;
 					}
-					else {
-						cloneBoard.setPawn(elem.getX(), elem.getY(), player);
-
-					}
+					
 				}
 			}
-			else {
-				//return false;
-				//System.out.print("n"+ !foundInArrayList(elem.getX(), elem.getY(), mark) +"f f" + ret);
-			}
+
 		}
 		return ret;
 
