@@ -42,7 +42,8 @@ public class MoveCalculator implements Cloneable, Serializable {
 	 */
 	private void updatePossibleMoves(Player player) {
 		player.getPossiblePawn().clear();
-		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.board.getGrid());
+		System.out.println("boucle ou pas ?");
+		checkPawnMove(player.getPawn().getPosX(), player.getPawn().getPosY(), player, this.board.getGrid(), true);
 	}
 
 	/**
@@ -73,8 +74,10 @@ public class MoveCalculator implements Cloneable, Serializable {
 
 	public boolean thereIsNoWall(int x, int y, Square[][] g) {
 		boolean ret = false;
-
-		if (y%2 != 0) {
+		if (y%2 != 0 && x%2 != 0) {
+			ret = false;
+		}
+		else if (y%2 != 0) {
 			ret = isInGrid(x, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x][y]))
 			 && isInGrid(x+2, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+2][y]))
 			 && isInGrid(x+1, y, g) && !(Wall.class.isInstance(this.board.getGrid()[x+1][y]));
@@ -146,7 +149,7 @@ public class MoveCalculator implements Cloneable, Serializable {
 	 * @param player the player that made the move
 	 * @return false if there is no move possible
 	 */
-	private boolean checkPawnMove(int x, int y, Player player, Square[][] g) {
+	private boolean checkPawnMove(int x, int y, Player player, Square[][] g, boolean first) {
 
 		boolean ret = false;
 
@@ -159,21 +162,15 @@ public class MoveCalculator implements Cloneable, Serializable {
 				posY += this.COEFF[i][1];
 
 				if (isInGrid(posX, posY, this.board.getGrid()) && (Pawn.class.isInstance(g[posX][posY]))) {
-					posX += this.COEFF[i][0];
-					posY += this.COEFF[i][1];
-
-					if (isInGrid(posX, posY, this.board.getGrid()) && !(Wall.class.isInstance(g[posX][posY]))) {
-						posX += this.COEFF[i][0];
-						posY += this.COEFF[i][1];
-
-						Pair tmp = new Pair(posX, posY);
-						player.getPossiblePawn().add(tmp);
-						ret = true;
+					if (first) {
+						ret = checkPawnMove(posX, posY, player, g, false);
 					}
+
 				}
 				else if (isInGrid(posX, posY, this.board.getGrid())){
 					Pair tmp = new Pair(posX, posY);
 					player.getPossiblePawn().add(tmp);
+					System.out.println("paire : " + tmp);
 					ret = true;
 				}
 			}
