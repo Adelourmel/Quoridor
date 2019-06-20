@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.awt.Rectangle;
 import java.io.ByteArrayInputStream;
 import java.awt.Color;
+import javax.swing.*;
 
 
 public class GridPanelListener extends MouseAdapter {
@@ -82,7 +83,7 @@ public class GridPanelListener extends MouseAdapter {
               //System.out.println(x + ";" + y);
               if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
 
-            
+
                 this.state.getSettings().getGame().getPlayer2().play();
               }
             }
@@ -103,10 +104,19 @@ public class GridPanelListener extends MouseAdapter {
     if (this.state.getSettings().getGame().getPlayer1().getPawn().getPosY() == this.state.getSettings().getGame().getBoard().getSize()-1) {
     	//System.out.println("Le gagnant est "+player1.toString());
     	this.endOfGame = true;
+      this.state.removeGamePanel();
+      this.state.setWinnerPanel(new WinnerPanel(this.state));
+      this.state.getWinnerPanel().getWinnerLabel().setText(this.state.getSettings().getPlayerName1() + " remporte la partie");
+      this.state.setSize(1300, 1000);
+
     }
     else if (this.state.getSettings().getGame().getPlayer2().getPawn().getPosY() == 0) {
     	//System.out.println("Le gagnant est "+player2.toString());
     	this.endOfGame = true;
+      this.state.removeGamePanel();
+      this.state.setWinnerPanel(new WinnerPanel(this.state));
+      this.state.getWinnerPanel().getWinnerLabel().setText(this.state.getSettings().getPlayerName2() + " remporte la partie");
+      this.state.setSize(1300, 1000);
     }
 
 

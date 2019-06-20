@@ -15,6 +15,7 @@ public class GUI extends JFrame {
   private ModePanel modePanel;
   private GamePanel gamePanel;
   private QuitPanel quitPanel;
+  private WinnerPanel winnerPanel;
   private QuoridorSettings settings;
 
   private final Color backColor = new Color(108,128,154);
@@ -53,7 +54,7 @@ public class GUI extends JFrame {
 
 
     this.setMenuPanel(new MenuPanel(this));
-    //this.add(new QuitPanel(this));
+    //this.add(new WinnerPanel(this));
     //this.add(new LoadSavePanel(this));
 
 
@@ -94,6 +95,15 @@ public class GUI extends JFrame {
     this.add(q);
   }
 
+  public void setWinnerPanel(WinnerPanel w){
+    this.winnerPanel = w;
+    this.add(w);
+  }
+
+
+
+
+
   public Color getbackColor() {
     return this.backColor;
   }
@@ -124,6 +134,12 @@ public class GUI extends JFrame {
     this.quitPanel = null;
   }
 
+  public void removeWinnerPanel(){
+    this.remove(this.winnerPanel);
+    this.winnerPanel = null;
+  }
+
+
 
 
   public JPanel getHeader(){
@@ -148,6 +164,10 @@ public class GUI extends JFrame {
 
   public QuitPanel getQuitPanel(){
     return this.quitPanel;
+  }
+
+  public WinnerPanel getWinnerPanel(){
+    return this.winnerPanel;
   }
 
 
