@@ -166,18 +166,27 @@ public class MoveCalculator implements Cloneable, Serializable {
 				posY += this.COEFF[i][1];
 
 				if (isInGrid(posX, posY, this.board.getGrid()) && (Pawn.class.isInstance(g[posX][posY]))) {
-					if (first) {
-						ret = checkPawnMove(posX, posY, player, g, false);
+					if (isInGrid(posX + this.COEFF[i][0], posY + this.COEFF[i][1], this.board.getGrid()) && (Wall.class.isInstance(g[posX + this.COEFF[i][0]][posY + this.COEFF[i][1]]))) {
+						if (first) {
+							ret = checkPawnMove(posX, posY, player, g, false);
+						}
 					}
-
+					else if (isInGrid(posX + this.COEFF[i][0], posY + this.COEFF[i][1], this.board.getGrid()) && !(Wall.class.isInstance(g[posX + this.COEFF[i][0]][posY + this.COEFF[i][1]]))){
+						posX += 2* this.COEFF[i][0];
+						posY += 2 *this.COEFF[i][1];
+						if (isInGrid(posX, posY, this.board.getGrid())) {
+							Pair tmp = new Pair(posX, posY);
+							player.getPossiblePawn().add(tmp);
+						}
+					}
 				}
+
 				else if (isInGrid(posX, posY, this.board.getGrid())){
 					Pair tmp = new Pair(posX, posY);
 					player.getPossiblePawn().add(tmp);
 					ret = true;
 				}
 			}
-
 		}
 		return ret;
 	}
