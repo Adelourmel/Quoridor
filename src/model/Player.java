@@ -50,9 +50,17 @@ public abstract class Player implements Cloneable, Serializable {
 
 	/**
 	 * Manages the player actions during his turn.
+	 * @return   true if it's good move false if it isn't
 	 */
 	public abstract boolean play();
 
+
+/**
+ * Manages the player actions during his turn
+ * @param  x the x coordinate of the move
+ * @param  y the y coordinate of the move
+ * @return   true if it's good move false if it isn't
+ */
 	public abstract boolean play(int x, int y);
 
 	/**
@@ -121,6 +129,10 @@ public abstract class Player implements Cloneable, Serializable {
 		return s;
 	}
 
+/**
+ * [getPossiblePawn description]
+ * @return [description]
+ */
 	public ArrayList<Pair> getPossiblePawn() {
 		return this.possiblePawn;
 	}
@@ -139,7 +151,10 @@ public abstract class Player implements Cloneable, Serializable {
 		return clonePlayer;
 	}
 
-
+/**
+ * Return the final postion of the player the win position
+ * @return final position of the player
+ */
 	public int getPosFinal() {
 		return this.finalPos;
 	}

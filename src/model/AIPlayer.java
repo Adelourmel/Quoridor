@@ -24,6 +24,7 @@ public class AIPlayer extends Player implements Serializable {
 	 * @return the Pair of coordinates of the next move
 	 */
 	public Pair computeNextMove() {
+		this.board.getCalculator().updatePossibleWalls();
 		// TODO - implement AIPlayer.computeNextMove
 		return new Pair(0, 0);
 	}
