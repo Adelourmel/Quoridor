@@ -8,6 +8,9 @@ import java.awt.event.*;
 import javax.swing.event.CaretListener;
 import javax.swing.event.CaretEvent;
 
+/**
+ * ModeListener Class. Allows to chose the player's names and the gamemodes before the start of the game.
+ */
 public class ModeListener extends FocusAdapter implements ActionListener, CaretListener {
 
   private GUI state;
@@ -15,6 +18,10 @@ public class ModeListener extends FocusAdapter implements ActionListener, CaretL
     this.state = state;
   }
 
+  /**
+   * Invoked when an action occurs.
+   * @param e the event generated if an action occurs
+   */
   public void actionPerformed(ActionEvent e){
 
     if (e.getSource() == this.state.getModePanel().getHAButton() ) {
@@ -72,6 +79,7 @@ public class ModeListener extends FocusAdapter implements ActionListener, CaretL
       }
     }
   }
+
 
   public void focusGained(FocusEvent e) {
 

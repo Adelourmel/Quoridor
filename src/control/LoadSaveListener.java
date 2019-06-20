@@ -7,6 +7,9 @@ import java.awt.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * ListSaveListener Class. It load a save when it is selected
+ */
 public class LoadSaveListener implements  ListSelectionListener{
 
   private GUI state;
@@ -14,6 +17,10 @@ public class LoadSaveListener implements  ListSelectionListener{
     this.state = state;
   }
 
+  /**
+   * valueChanged Listener. It listens if a value of a JList is selected or deselected.
+   * @param e the listSelectionEvent generated when a value changes
+   */
   public void valueChanged(ListSelectionEvent e){
     JList savesList = (JList)e.getSource();
     this.state.getSettings().loadGUIGame("../data/"+(String) savesList.getSelectedValue());
@@ -21,6 +28,5 @@ public class LoadSaveListener implements  ListSelectionListener{
     this.state.removeLoadSavePanel();
     SwingUtilities.updateComponentTreeUI(this.state);
 
-    //this.state.pack();
   }
 }

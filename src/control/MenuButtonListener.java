@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * MenuButtonListener Class. It returns on the menu, opens the quitPanel or closes the JFrame if it is triggered.
+ */
 public class MenuButtonListener implements ActionListener {
 
   private GUI state;
@@ -14,6 +17,10 @@ public class MenuButtonListener implements ActionListener {
     this.state = state;
   }
 
+  /**
+   * Invoked when an action occurs.
+   * @param e the event generated if an action occurs
+   */
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == this.state.getMenuButton()) {
       if (this.state.getModePanel() != null) {

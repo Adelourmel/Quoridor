@@ -8,7 +8,9 @@ import java.io.ByteArrayInputStream;
 import java.awt.Color;
 import javax.swing.*;
 
-
+/**
+ * GridPanelListener class. Allows to place pawn and wall with the mouse. It manages the game process and the end of the game.
+ */
 public class GridPanelListener extends MouseAdapter {
 
   private Rectangle[][] gridGUI;
@@ -16,6 +18,11 @@ public class GridPanelListener extends MouseAdapter {
   private static boolean player1Play ;
   private static boolean endOfGame;
 
+  /**
+   * GridPanelListener Constructor
+   * @param state   the JFrame
+   * @param gridGUI the Graphic representation of the grid
+   */
   public GridPanelListener(GUI state, Rectangle[][] gridGUI) {
     this.gridGUI = gridGUI;
     this.state = state;
@@ -96,7 +103,7 @@ public class GridPanelListener extends MouseAdapter {
     this.state.repaint();
 
     if (this.state.getSettings().getGame().getPlayer1().getPawn().getPosY() == this.state.getSettings().getGame().getBoard().getSize()-1) {
-    	//System.out.println("Le gagnant est "+player1.toString());
+
     	this.endOfGame = true;
       this.state.removeGamePanel();
       this.state.setWinnerPanel(new WinnerPanel(this.state));
@@ -105,7 +112,7 @@ public class GridPanelListener extends MouseAdapter {
 
     }
     else if (this.state.getSettings().getGame().getPlayer2().getPawn().getPosY() == 0) {
-    	//System.out.println("Le gagnant est "+player2.toString());
+
     	this.endOfGame = true;
       this.state.removeGamePanel();
       this.state.setWinnerPanel(new WinnerPanel(this.state));
