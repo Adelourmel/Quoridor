@@ -72,7 +72,7 @@ public class HumanPlayer extends Player implements Serializable {
 					b= false ;
 				}
 			}
-			System.out.println(b);
+			
 			if (b && !ret) {
 				b = this.board.setNewMove(x, y, this);
 			}

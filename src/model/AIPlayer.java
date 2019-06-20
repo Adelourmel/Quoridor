@@ -3,6 +3,7 @@ package quoridor.model;
 
 import java.awt.Color;
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  * AIPlayer class. Represents an AI player that can play against a human player. This class is responsible for managing the AI actions.
  */
@@ -25,15 +26,27 @@ public class AIPlayer extends Player implements Serializable {
 	 */
 	public Pair computeNextMove() {
 		this.board.getCalculator().updatePossibleWalls();
-		// TODO - implement AIPlayer.computeNextMove
-		return new Pair(0, 0);
+		Pair ret;
+
+		int index;
+		int choice = (int)Math.round(Math.random());
+		if (choice ==1 ) {
+			index = (int) (Math.random()*(this.board.getCalculator().getPossibleWalls().size()-1));
+			ret = this.board.getCalculator().getPossibleWalls().get(index);
+		}
+		else{
+			index = (int) (Math.random()*(this.getPossiblePawn().size()-1));
+			ret = this.getPossiblePawn().get(index);
+		}
+		return ret;
 	}
 
 	/**
 	 * Manages the player actions during his turn.
 	 */
 	public boolean play() {
-		// TODO - implement AIPlayer.play
+		Pair pair = this.computeNextMove();
+		this.board.setNewMove(pair.getX(), pair.getY(), this);
 		return false;
 	}
 

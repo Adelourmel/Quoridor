@@ -223,12 +223,17 @@ public class Board implements Cloneable, Serializable {
 			ret += i + "\t";
 
 			for (int p = 0 ; p < this.grid[i].length ; p++) {
-				ret += this.grid[p][i].toString() + " ";
+				ret += this.grid[p][i].toString() + "  ";
 			}
-			tmp += i + " ";
+			if (i <10) {
+				tmp += i + "  ";
+			}
+			else {
+				tmp += i + " ";
+			}
 			ret += "\n";
 		}
-		ret += "\t" + tmp;
+		ret += "     "+  tmp;
 		return ret;
 	}
 
