@@ -12,6 +12,12 @@ public class GamePanel extends JPanel {
 
   private JPanel player2Panel;
 
+  private JLabel labelName1;
+  private JLabel labelName2;
+
+  private JLabel wallLabelP1;
+  private JLabel wallLabelP2;
+
   private final String PATH ="../img";
   private GUI state;
 
@@ -24,22 +30,59 @@ public class GamePanel extends JPanel {
 
 
 
-    load();
+    loadContent();
 
   }
 
-  public void load() {
+  public void loadContent() {
     Player player1 = this.state.getSettings().getGame().getPlayer1();
     Player player2 = this.state.getSettings().getGame().getPlayer2();
 
+    this.labelName2 = new JLabel();
 
 
 
-    this.player1Panel = createSide(player1);
-    this.player2Panel = createSide(player2);
+    this.player1Panel = new JPanel();
+    this.player1Panel.setLayout(new BoxLayout(this.player1Panel, BoxLayout.Y_AXIS));
+    this.player1Panel.setBackground(this.state.getbackColor());
 
-    remove(this.player1Panel);
-    remove(this.player2Panel);
+    this.labelName1 = new JLabel();
+    this.labelName1.setText(player1.getPlayerName());
+    this.labelName1.setFont(new Font("Arial", Font.PLAIN, 40));
+    this.labelName1.setAlignmentY(CENTER_ALIGNMENT);
+
+    this.player1Panel.add(labelName1);
+    this.player1Panel.add(new SpacePanel());
+
+    this.wallLabelP1 = new JLabel("Barriere Restante : " + player1.getWallsNb());
+    this.wallLabelP1.setFont(new Font("Arial", Font.PLAIN, 40));
+    this.wallLabelP1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+    this.player1Panel.add(this.wallLabelP1);
+
+
+
+
+
+
+
+    this.player2Panel = new JPanel();
+    this.player2Panel.setLayout(new BoxLayout(this.player2Panel, BoxLayout.Y_AXIS));
+    this.player2Panel.setBackground(this.state.getbackColor());
+
+    this.labelName2 = new JLabel();
+    this.labelName2.setText(player2.getPlayerName());
+    this.labelName2.setFont(new Font("Arial", Font.PLAIN, 40));
+    this.labelName2.setAlignmentY(CENTER_ALIGNMENT);
+
+    this.player2Panel.add(this.labelName2);
+    this.player2Panel.add(new SpacePanel());
+
+    this.wallLabelP2 = new JLabel("Barriere Restante : " + player2.getWallsNb());
+    this.wallLabelP2.setFont(new Font("Arial", Font.PLAIN, 40));
+    this.wallLabelP2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
+    this.player2Panel.add(this.wallLabelP2);
+
+
 
 
     add(this.player1Panel, BorderLayout.WEST);
@@ -51,27 +94,22 @@ public class GamePanel extends JPanel {
   }
 
 
-  private JPanel createSide(Player player) {
-    System.out.println(player.getWallsNb());
 
-    JPanel ret = new JPanel();
-    ret.setLayout(new BoxLayout(ret, BoxLayout.Y_AXIS));
-    ret.setBackground(this.state.getbackColor());
 
-    JLabel label = new JLabel(player.getPlayerName());
-    label.setFont(new Font("Arial", Font.PLAIN, 40));
-    label.setAlignmentY(CENTER_ALIGNMENT);
 
-    ret.add(label);
-    ret.add(new SpacePanel());
-
-    JLabel wallLabel = new JLabel("Barriere Restante : " + player.getWallsNb());
-    wallLabel.setFont(new Font("Arial", Font.PLAIN, 40));
-    wallLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-    ret.add(wallLabel);
-
-    return ret;
+  public JLabel getLabelName1() {
+    return this.labelName1;
+  }
+  public JLabel getLabelName2() {
+    return this.labelName2;
   }
 
+  public JLabel getWallLabelP1() {
+    return this.wallLabelP1;
+  }
+
+  public JLabel getWallLabelP2() {
+    return this.wallLabelP2;
+  }
 
 }

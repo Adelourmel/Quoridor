@@ -5,6 +5,8 @@ import quoridor.model.*;
 import java.awt.event.*;
 import java.awt.Rectangle;
 import java.io.ByteArrayInputStream;
+import java.awt.Color;
+
 
 public class GridPanelListener extends MouseAdapter {
 
@@ -18,6 +20,7 @@ public class GridPanelListener extends MouseAdapter {
     this.state = state;
     this.player1Play = true;
     this.endOfGame = false;
+
   }
 
 
@@ -41,15 +44,21 @@ public class GridPanelListener extends MouseAdapter {
             System.out.println(x + ";" + y);
 
             if (player1Play) {
+
               if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
                 this.player1Play = false;
-
+                this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 255, 0));
+                this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 0, 0));
               }
 
             }
             else {
               if (this.state.getSettings().getGame().getPlayer2().play(x,y)) {
                 this.player1Play = true;
+                this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 255, 0));
+                this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 0, 0));
+
+
 
               }
             }
@@ -65,7 +74,6 @@ public class GridPanelListener extends MouseAdapter {
 
 
 
-    this.state.getGamePanel().load();
 
     this.state.repaint();
 
