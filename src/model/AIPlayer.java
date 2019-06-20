@@ -50,6 +50,12 @@ public class AIPlayer extends Player implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Manages the player actions during his turn
+	 * @param  x the x coordinate of the move
+	 * @param  y the y coordinate of the move
+	 * @return   true if it's good move false if it isn't
+	 */
 	public boolean play(int x, int y){
 		return true;
 	}
