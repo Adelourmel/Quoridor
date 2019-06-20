@@ -121,6 +121,8 @@ public class GridPanelListener extends MouseAdapter {
       this.state.setSize(1300, 1000);
     }
 
+    this.state.getGamePanel().repaint();
+
 
   }
 

@@ -57,10 +57,11 @@ public class GamePanel extends JPanel {
     this.player1Panel.add(labelName1);
     this.player1Panel.add(new SpacePanel());
 
+
     this.wallLabelP1 = new JLabel("Barriere Restante : " + player1.getWallsNb());
     this.wallLabelP1.setFont(new Font("Arial", Font.PLAIN, 40));
     this.wallLabelP1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-    this.player1Panel.add(this.wallLabelP1);
+    this.player1Panel.add(new WallPanel(player2, this.gridPanel));
 
 
 
@@ -83,7 +84,7 @@ public class GamePanel extends JPanel {
     this.wallLabelP2 = new JLabel("Barriere Restante : " + player2.getWallsNb());
     this.wallLabelP2.setFont(new Font("Arial", Font.PLAIN, 40));
     this.wallLabelP2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-    this.player2Panel.add(this.wallLabelP2);
+    this.player2Panel.add(new WallPanel(player2, this.gridPanel));
 
 
 
@@ -113,6 +114,10 @@ public class GamePanel extends JPanel {
 
   public JLabel getWallLabelP2() {
     return this.wallLabelP2;
+  }
+
+  public JPanel getGridPanel() {
+    return this.gridPanel;
   }
 
 }
