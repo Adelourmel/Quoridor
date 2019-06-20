@@ -3,6 +3,9 @@ import quoridor.control.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * QuitPanel Class. Allows to quit or  quit and save the game
+ */
 public class QuitPanel extends JPanel {
 
   private final String PATH ="../img";
@@ -16,7 +19,10 @@ public class QuitPanel extends JPanel {
 
 
 
-
+  /**
+   * QuitPanel constructor
+   * @param state the JFrame
+   */
   public  QuitPanel(GUI state){
 
     this.state = state;
@@ -64,10 +70,18 @@ public class QuitPanel extends JPanel {
 
   }
 
+  /**
+   * get the QuitButton
+   * @return return the QuitButtono
+   */
   public Button getQuitButton(){
     return this.quitButton;
   }
 
+  /**
+   * get the SaveButton
+   * @return the SaveButton
+   */
   public Button getSaveButton(){
     return this.saveButton;
   }

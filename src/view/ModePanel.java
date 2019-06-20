@@ -3,6 +3,9 @@ import quoridor.control.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * ModePanel class. Allows to choose the players names and the game mode.
+ */
 public class ModePanel extends JPanel {
 
   private final String PATH ="../img";
@@ -20,6 +23,10 @@ public class ModePanel extends JPanel {
   private JTextField player2Field;
 
 
+  /**
+   * ModePanel constructor
+   * @param state the JFrame
+   */
   public  ModePanel(GUI state){
 
     this.state = state;
@@ -82,21 +89,35 @@ public class ModePanel extends JPanel {
 
 
 
-
+  /**
+   * get the HAbutton
+   * @return get the HAbutton
+   */
 	public Button getHAButton() {
 		return this.HAButton;
 	}
 
+  /**
+   * get the HHbutton
+   * @return get the HHbutton
+   */
 	public Button getHHButton() {
 		return this.HHButton;
 	}
 
 
-
+  /**
+   * get the Player1Field
+   * @return get the Player1Field
+   */
 	public JTextField getPlayer1Field() {
 		return this.player1Field;
 	}
 
+  /**
+   * get the Player2Field
+   * @return get the Player2Field
+   */
 	public JTextField getPlayer2Field() {
 		return this.player2Field;
 	}

@@ -3,6 +3,9 @@ package quoridor.view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Create an empty Panel
+ */
 public class SpacePanel extends JPanel{
 
 

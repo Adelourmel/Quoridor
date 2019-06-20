@@ -6,7 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-
+/**
+ * LoadSavelPanel Class. Create an panel in which the user can choose an save and load it.
+ */
 public class LoadSavePanel extends JPanel {
 
   private final String PATH ="../img";
@@ -19,7 +21,10 @@ public class LoadSavePanel extends JPanel {
   private JScrollPane scrollPane;
   private JPanel savePanel;
 
-
+  /**
+   * LoadSavePanel Constructor
+   * @param state the JFrame
+   */
   public  LoadSavePanel(GUI state){
 
     this.state = state;
@@ -70,11 +75,6 @@ public class LoadSavePanel extends JPanel {
     this.savesList.setBackground(new Color(255, 255, 255));
 
     this.add(this.savePanel);
-
-
-
-
-
 
 
 

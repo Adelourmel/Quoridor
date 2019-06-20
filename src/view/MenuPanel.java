@@ -4,6 +4,7 @@ import quoridor.control.*;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class MenuPanel extends JPanel {
 
   private final String PATH ="../img";
@@ -65,11 +66,18 @@ public class MenuPanel extends JPanel {
   }
 
 
-
+  /**
+   * get the NewGame button
+   * @return the NewGame button
+   */
 	public Button getNewGameButton() {
 		return this.newGameButton;
 	}
 
+  /**
+   * get the LoadGame button
+   * @return LoadGame button
+   */
 	public Button getLoadGameButton() {
 		return this.loadGameButton;
 	}

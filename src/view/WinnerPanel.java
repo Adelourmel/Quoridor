@@ -3,6 +3,9 @@ import quoridor.control.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * WinnerPannel Class. Display the winner of the game
+ */
 public class WinnerPanel extends JPanel {
 
   private final String PATH ="../img";
@@ -17,7 +20,10 @@ public class WinnerPanel extends JPanel {
 
 
 
-
+  /**
+   * WinneerPanel constructor
+   * @param state the JFrame
+   */
   public  WinnerPanel(GUI state){
 
     this.state = state;
@@ -51,6 +57,7 @@ public class WinnerPanel extends JPanel {
 
 
   }
+
 
   public JLabel getWinnerLabel(){
     return this.winnerLabel;
