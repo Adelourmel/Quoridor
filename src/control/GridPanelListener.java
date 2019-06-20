@@ -26,9 +26,6 @@ public class GridPanelListener extends MouseAdapter {
   }
 
 
-  public void mouseEntered(MouseEvent e) {
-
-  }
 
   public void mouseReleased(MouseEvent e) {
     boolean found = false;
@@ -81,7 +78,6 @@ public class GridPanelListener extends MouseAdapter {
           while (!found && x < this.gridGUI[y].length) {
             if (this.gridGUI[y][x].contains(e.getPoint())) {
               found = true;
-              //System.out.println(x + ";" + y);
               if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
 
                 this.state.getGamePanel().repaint();
@@ -96,10 +92,6 @@ public class GridPanelListener extends MouseAdapter {
 
       }
     }
-
-
-
-
 
     this.state.repaint();
 
@@ -122,10 +114,6 @@ public class GridPanelListener extends MouseAdapter {
     }
 
 
-
   }
 
-  public void mouseExited(MouseEvent e) {
-
-  }
 }

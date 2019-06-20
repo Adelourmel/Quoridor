@@ -10,10 +10,12 @@ import java.awt.geom.*;
 public class GridPanel extends JPanel {
   private Square[][] grid;
   private Rectangle[][] gridGUI;
-  private final int SIZESQUAREPAWN = 60;
+  private final int SIZESQUAREPAWN = 55;
   private final int WIDTHWALL = 15;
   private GridPanelListener listener;
   private GUI state;
+  private final int POSGRIDX = 100;
+  private final int POSGRIDY = 100;
 
 
   public GridPanel(GUI state, Square[][] grid) {
@@ -21,8 +23,11 @@ public class GridPanel extends JPanel {
     this.grid = grid;
     this.gridGUI = new Rectangle[this.grid.length][this.grid.length];
     this.listener = new GridPanelListener(this.state, this.gridGUI);
+    setBackground(this.state.getbackColor());
     //initShape();
     int sizeGrid = ((this.grid.length/2) * (this.WIDTHWALL + this.SIZESQUAREPAWN)) + this.SIZESQUAREPAWN;
+    this.setMinimumSize(new Dimension(sizeGrid, sizeGrid));
+    this.setMaximumSize(new Dimension(sizeGrid, sizeGrid));
     this.setPreferredSize(new Dimension(sizeGrid, sizeGrid));
     this.addMouseListener(this.listener);
   }
@@ -58,8 +63,8 @@ public class GridPanel extends JPanel {
     if (Wall.class.isInstance(grid[x][y])) {
       g2d.setColor(new Color(100,100,170));
     }
-    int posX = (x/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
-    int posY = (y/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
+    int posX = (x/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDX;
+    int posY = (y/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDY;
     if (x%2 == 0) {
       posY += this.SIZESQUAREPAWN;
       this.gridGUI[y][x] = new Rectangle(posX, posY, this.SIZESQUAREPAWN, this.WIDTHWALL);
@@ -83,9 +88,9 @@ public class GridPanel extends JPanel {
 
   private void drawSquare(int x, int y, Graphics2D g2d) {
     g2d.setColor(new Color(189,189,189));
-    
-    int posX = (x/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
-    int posY = (y/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
+
+    int posX = (x/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDX;
+    int posY = (y/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDY;
 
     this.gridGUI[y][x] = new Rectangle(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
     g2d.fill(this.gridGUI[y][x]);
@@ -97,8 +102,8 @@ public class GridPanel extends JPanel {
     g2d.setColor(player.getColor());
 
 
-    int posX = (player.getPawn().getPosX()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
-    int posY = (player.getPawn().getPosY()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
+    int posX = (player.getPawn().getPosX()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDX;
+    int posY = (player.getPawn().getPosY()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDY;
 
     //g2d.fillOval(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
     g2d.fillRect(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);

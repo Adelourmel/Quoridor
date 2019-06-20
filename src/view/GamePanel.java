@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
     this.state = state;
     this.setLayout(new BorderLayout());
     this.gridPanel = new GridPanel(this.state, grid);
-    this.add(this.gridPanel);
+    this.add(this.gridPanel, BorderLayout.CENTER);
 
 
 
@@ -92,7 +92,6 @@ public class GamePanel extends JPanel {
     add(this.player1Panel, BorderLayout.WEST);
     add(this.player2Panel, BorderLayout.EAST);
 
-    this.state.pack();
 
 
   }

@@ -21,6 +21,6 @@ public class LoadSaveListener implements  ListSelectionListener{
     this.state.removeLoadSavePanel();
     SwingUtilities.updateComponentTreeUI(this.state);
 
-    this.state.pack();
+    //this.state.pack();
   }
 }

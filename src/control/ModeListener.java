@@ -25,7 +25,7 @@ public class ModeListener extends FocusAdapter implements ActionListener, CaretL
         this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
         SwingUtilities.updateComponentTreeUI(this.state);
 
-        this.state.pack();
+        //this.state.pack();
 
 
 
@@ -44,7 +44,7 @@ public class ModeListener extends FocusAdapter implements ActionListener, CaretL
         this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
         SwingUtilities.updateComponentTreeUI(this.state);
 
-        this.state.pack();
+        //this.state.pack();
       }
 
 
