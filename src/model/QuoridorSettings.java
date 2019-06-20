@@ -177,7 +177,7 @@ public class QuoridorSettings {
 	}
 
 
-
+	/
 	private void choiceGame() {
 
 		ArrayList<String> listOfGames = listFile();
@@ -320,10 +320,18 @@ public class QuoridorSettings {
 		return this.gamemode;
 	}
 
+	/**
+	 * get the size
+	 * @return return the size
+	 */
 	public int getSize(){
 		return this.SIZE;
 	}
 
+	/**
+	 * get the game
+	 * @return return the game
+	 */
 	public Game getGame() {
 		return this.game;
 	}
