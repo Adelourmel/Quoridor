@@ -42,6 +42,14 @@ public class MenuButtonListener implements ActionListener {
         SwingUtilities.updateComponentTreeUI(this.state);
       }
 
+      else if (this.state.getWinnerPanel() != null) {
+        this.state.removeWinnerPanel();
+        this.state.setMenuPanel(new MenuPanel(this.state));
+
+        //this.state.getSettings().getGame() = null;
+        SwingUtilities.updateComponentTreeUI(this.state);
+      }
+
 
 
 
