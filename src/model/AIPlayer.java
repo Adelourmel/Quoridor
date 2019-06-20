@@ -29,16 +29,28 @@ public class AIPlayer extends Player implements Serializable {
 		Pair ret;
 
 		int index;
-		int choice = (int)Math.round(Math.random());
-		if (choice ==1 ) {
-			index = (int) (Math.random()*(this.board.getCalculator().getPossibleWalls().size()-1));
+		int choice = (int)Math.round(Math.random()*10);
+		if (choice < 3 && this.getWallsNb() > 0) {
+			index = (int) (Math.random()*(this.board.getCalculator().getPossibleWalls().size()));
 			ret = this.board.getCalculator().getPossibleWalls().get(index);
 		}
 		else{
+			if (choice < 8) {
+				ret = this.getPossiblePawn().get(0);
 
-			index = (int) (Math.random()*(this.getPossiblePawn().size()-1));
-			ret = this.getPossiblePawn().get(index);
+				for (Pair elem : this.getPossiblePawn()) {
+					if (elem.getY() < ret.getY()) {
+						ret = elem;
+					}
+				}
+			}
+			else {
+				index = (int) (Math.random()*this.getPossiblePawn().size());
+				ret = this.getPossiblePawn().get(index);
+			}
 		}
+
+
 		return ret;
 	}
 
