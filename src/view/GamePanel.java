@@ -32,6 +32,9 @@ public class GamePanel extends JPanel {
 
     loadContent();
 
+    this.labelName1.setForeground(new Color(255, 255, 255));
+
+
   }
 
   public void loadContent() {
