@@ -92,16 +92,18 @@ public class GridPanel extends JPanel {
     this.gridGUI[y][x] = new Rectangle(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
     g2d.fill(this.gridGUI[y][x]);
   }
+
   private void drawPawn(Player player, Graphics g2d) {
 
 
-    g2d.setColor(Color.RED);
+    g2d.setColor(player.getColor());
 
 
     int posX = (player.getPawn().getPosX()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
     int posY = (player.getPawn().getPosY()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
 
-    g2d.fillOval(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
+    //g2d.fillOval(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
+    g2d.fillRect(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
 
   }
 

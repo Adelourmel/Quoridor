@@ -31,8 +31,8 @@ public class Game implements Serializable {
 		this.board = new Board(size, this.player1, this.player2);
 
 		if (mode == Gamemode.HH) {
-			this.player1 = new HumanPlayer(playerName1, Color.BLACK, this.board, PlayerPos.TOP);
-			this.player2 = new HumanPlayer(playerName2, Color.WHITE, this.board, PlayerPos.BOTTOM);
+			this.player1 = new HumanPlayer(playerName1, new Color(0,150,136), this.board, PlayerPos.TOP);
+			this.player2 = new HumanPlayer(playerName2, new Color(190,145,60), this.board, PlayerPos.BOTTOM);
 		}
 		else if (mode == Gamemode.HA) {
 			this.player1 = new HumanPlayer(playerName1, Color.BLACK, this.board, PlayerPos.TOP);

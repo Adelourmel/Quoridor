@@ -17,28 +17,37 @@ public class ModeListener extends FocusAdapter implements ActionListener, CaretL
 
   public void actionPerformed(ActionEvent e){
 
-
     if (e.getSource() == this.state.getModePanel().getHAButton() ) {
-      this.state.removeModePanel();
-      this.state.getSettings().setGamemode(Gamemode.HA);
-    //this.state.setGamePanel(new GamePanel());
-      //this.state.getSettings().startGame();
+      if (this.state.getSettings().getPlayerName1() != null && this.state.getSettings().getPlayerName2()!= null){
+        this.state.removeModePanel();
+        this.state.getSettings().setGamemode(Gamemode.HA);
+        this.state.getSettings().startGUIGame();
+        this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
+        SwingUtilities.updateComponentTreeUI(this.state);
+
+        this.state.pack();
+
+
+
+      }
     }
 
     else if (e.getSource() == this.state.getModePanel().getHHButton() ) {
-      this.state.removeModePanel();
-      this.state.getSettings().setGamemode(Gamemode.HH);
+      if (this.state.getSettings().getPlayerName1() != null && this.state.getSettings().getPlayerName2()!= null) {
+
+        this.state.removeModePanel();
+        this.state.getSettings().setGamemode(Gamemode.HH);
 
 
 
-      this.state.getSettings().startGUIGame();
-      this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
-      SwingUtilities.updateComponentTreeUI(this.state);
+        this.state.getSettings().startGUIGame();
+        this.state.setGamePanel(new GamePanel(this.state, this.state.getSettings().getGame().getBoard().getGrid()));
+        SwingUtilities.updateComponentTreeUI(this.state);
 
-      this.state.pack();
+        this.state.pack();
+      }
 
 
-      //this.state.setGamePanel(new GamePanel());
     }
   }
 
