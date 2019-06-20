@@ -22,6 +22,7 @@ public class GridPanelListener extends MouseAdapter {
     this.player1Play = true;
     this.endOfGame = false;
 
+
   }
 
 
@@ -49,7 +50,7 @@ public class GridPanelListener extends MouseAdapter {
 
                 if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
                   this.player1Play = false;
-                  this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 255, 0));
+                  this.state.getGamePanel().getLabelName2().setForeground(new Color(255, 255, 255));
                   this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 0, 0));
                 }
 
@@ -58,7 +59,7 @@ public class GridPanelListener extends MouseAdapter {
 
                 if (this.state.getSettings().getGame().getPlayer2().play(x,y)) {
                   this.player1Play = true;
-                  this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 255, 0));
+                  this.state.getGamePanel().getLabelName1().setForeground(new Color(255, 255, 255));
                   this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 0, 0));
                 }
               }
