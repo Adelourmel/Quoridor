@@ -72,7 +72,7 @@ public class HumanPlayer extends Player implements Serializable {
 					b= false ;
 				}
 			}
-			
+
 			if (b && !ret) {
 				b = this.board.setNewMove(x, y, this);
 			}
@@ -87,16 +87,16 @@ public class HumanPlayer extends Player implements Serializable {
 
 	}
 
+	/**
+	 * play the player move if it possible
+	 * @param  x X coordinate of the move
+	 * @param  y Y coordinate of the move
+	 * @return  true if the move is possible false if not
+	 */
 	public boolean play(int x, int y) {
-
-
 			boolean b = this.board.setNewMove(x, y, this);
 
 			return b;
-
-
-
-
 	}
 
 

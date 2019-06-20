@@ -146,6 +146,12 @@ public class Board implements Cloneable, Serializable {
 		calculator.updatePawn();
 		player.decWalls();
 	}
+
+	/**
+	 * set the players
+	 * @param p1 player1
+	 * @param p2 player2
+	 */
 	public void setPlayers(Player p1, Player p2) {
 		this.player1 = p1;
 		this.player2 = p2;
@@ -237,6 +243,11 @@ public class Board implements Cloneable, Serializable {
 		return ret;
 	}
 
+	/**
+	 * clone the board
+	 * @return the cloned board
+	 * @throws CloneNotSupportedException if clone is not supported
+	 */
 	public Board clone() throws CloneNotSupportedException {
 		Board cloneBoard = (Board) super.clone();
 		cloneBoard.player1 = this.player1.clone();
@@ -256,10 +267,18 @@ public class Board implements Cloneable, Serializable {
 		return cloneBoard;
 	}
 
+	/**
+	 * get the player1
+	 * @return the player1
+	 */
 	public Player getPlayer1() {
 		return this.player1;
 	}
 
+	/**
+	 * get the player2
+	 * @return the player2
+	 */
 	public Player getPlayer2() {
 		return this.player2;
 	}
