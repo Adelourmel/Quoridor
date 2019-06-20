@@ -36,6 +36,9 @@ public class GUI extends JFrame {
     getContentPane().setLayout(new BorderLayout());
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setTitle("QUORIDOR");
+    ImageIcon img = new ImageIcon(this.PATH+"/iconQuoridor.png");
+    this.setIconImage(img.getImage());
+
     this.header = new JPanel();
     this.header.setLayout(new BorderLayout());
     this.header.setBackground(new Color(10,34,57));
@@ -48,9 +51,10 @@ public class GUI extends JFrame {
     this.menuButton = new JButton(imageIcon);
     this.menuButton.addActionListener(new MenuButtonListener(this));
     this.menuButton.setBackground(new Color(255, 255, 255));
-    //this.menuButton.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+
     this.menuButton.setFont(new Font("Arial", Font.PLAIN, 30));
     this.menuButton.setFocusPainted(false);
+
 
 
     this.header.add(menuButton, BorderLayout.EAST);
