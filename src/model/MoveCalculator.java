@@ -12,16 +12,13 @@ import java.io.Serializable;
 public class MoveCalculator implements Cloneable, Serializable {
 
 	private ArrayList<Pair> possibleWalls;
-	private ArrayList<Pair> wallsList;
+	private Board board;
 
 	private final int[][] COEFF = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-	private Board board;
 
 	/**
 	 * MoveCalculator constructor. Initialises the two players attributes and all the game-managing ArrayLists.
-	 * @param player1 the player1 object
-	 * @param player2 the player2 object
-	 * @param grid the grid array
+	 * @param board the board where for the calcul
 	 */
 	public MoveCalculator(Board board) {
 
@@ -70,7 +67,13 @@ public class MoveCalculator implements Cloneable, Serializable {
 
 
 
-
+/**
+ * Check if there is already a wall or not
+ * @param  x the x coordinate of the future wall
+ * @param  y the y coordinate of the future wall
+ * @param  g the grid
+ * @return   true if there is not wall and false if there is wall
+ */
 	public boolean thereIsNoWall(int x, int y, Square[][] g) {
 		boolean ret = false;
 		if (y%2 != 0 && x%2 != 0) {
@@ -146,6 +149,8 @@ public class MoveCalculator implements Cloneable, Serializable {
 	 * @param x the x-coordinate of the move
 	 * @param y the y-coordinate of the move
 	 * @param player the player that made the move
+	 * @param g the grid where there is moves
+	 * @param first this method is semi recursif. First is boolean for check is there is the first call of this method or not (first time : true , second time : false)
 	 * @return false if there is no move possible
 	 */
 	private boolean checkPawnMove(int x, int y, Player player, Square[][] g, boolean first) {
@@ -211,6 +216,14 @@ public class MoveCalculator implements Cloneable, Serializable {
 		return ret;
 	}
 
+
+/**
+ * Recursif method. This method allow to check if the position of the wall is correct or not.
+ * @param  player     Check if this player can exit and win
+ * @param  cloneBoard a clone of the board (you can modify it without risk)
+ * @param  mark       ArrayList with all mark vertex
+ * @return            true if it is a good wall position and false if it isn't
+ */
 	private boolean explore(Player player, Board cloneBoard, ArrayList<Pair> mark) {
 		int x = player.getPawn().getPosX();
 		int y = player.getPawn().getPosY();
@@ -248,6 +261,11 @@ public class MoveCalculator implements Cloneable, Serializable {
 	}
 
 
+/**
+ * This method allow to clone an arrayList of Pair object
+ * @param  array The array list you want to clone
+ * @return       clone of the arraylist
+ */
 	private ArrayList<Pair> cloneArray(ArrayList<Pair> array) {
 		ArrayList<Pair> ret = new ArrayList<Pair>();
 
@@ -267,6 +285,7 @@ public class MoveCalculator implements Cloneable, Serializable {
  * Check if the x,y coordinate are in grid
  * @param  x coordinate x
  * @param  y coordinate y
+ * @param g the grid
  * @return   true if the position is good
  */
 	private boolean isInGrid(int x, int y, Square[][] g) {
@@ -284,14 +303,12 @@ public class MoveCalculator implements Cloneable, Serializable {
 		return this.possibleWalls;
 	}
 
-	/**
-	 * Returns the ArrayList containing all the walls placed on the grid.
-	 * @return the wallsList ArrayList
-	 */
-	public ArrayList<Pair> getWallsList() {
-		return this.wallsList;
-	}
 
+/**
+ * This metod allow to clone the MoveCalculator object
+ * @return Clone of the instance
+ * @throws CloneNotSupportedException Exception
+ */
 	public MoveCalculator clone() throws CloneNotSupportedException {
 		MoveCalculator cloneCal = (MoveCalculator) super.clone();
 		return cloneCal;
