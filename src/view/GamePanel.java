@@ -61,7 +61,7 @@ public class GamePanel extends JPanel {
     this.wallLabelP1 = new JLabel("Barriere Restante : " + player1.getWallsNb());
     this.wallLabelP1.setFont(new Font("Arial", Font.PLAIN, 40));
     this.wallLabelP1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, true));
-    this.player1Panel.add(new WallPanel(player2, this.gridPanel));
+    this.player1Panel.add(new WallPanel(player1, this.gridPanel));
 
 
 
@@ -92,7 +92,7 @@ public class GamePanel extends JPanel {
     add(this.player1Panel, BorderLayout.WEST);
     add(this.player2Panel, BorderLayout.EAST);
 
-
+    this.state.pack();
 
 
   }
