@@ -1,15 +1,15 @@
 package quoridor.view;
-//import controller.*;
-import javax.swing.*;
-import java.awt.*;
+
+import javax.swing.JPanel;
 
 /**
  * Create an empty Panel
  */
 public class SpacePanel extends JPanel{
 
-
-
+/**
+ * Constructor
+ */
   public SpacePanel(){
     super();
     this.setOpaque(false);

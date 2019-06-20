@@ -177,7 +177,7 @@ public class QuoridorSettings {
 	}
 
 
-	/
+	
 	private void choiceGame() {
 
 		ArrayList<String> listOfGames = listFile();

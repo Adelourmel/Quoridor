@@ -7,6 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 
+
+/**
+ * This class allow to see the grid
+ * @author Arnaud Delourmel
+ * @author Rémi Audoin
+ */
 public class GridPanel extends JPanel {
   private Square[][] grid;
   private Rectangle[][] gridGUI;
@@ -18,6 +24,11 @@ public class GridPanel extends JPanel {
   private final int POSGRIDY = 100;
 
 
+/**
+ * Constructor
+ * @param state the gui
+ * @param grid  the grid to display
+ */
   public GridPanel(GUI state, Square[][] grid) {
     this.state = state;
     this.grid = grid;
@@ -32,6 +43,11 @@ public class GridPanel extends JPanel {
     this.addMouseListener(this.listener);
   }
 
+
+/**
+ * This method allow to init the shape and call drawWall or drawPawn for draw in the Graphics component
+ * @param g2d Graphics component
+ */
   private void initShape(Graphics2D g2d) {
     for (int i = 0 ; i < this.grid.length ; i++) {
       for (int p = 0 ; p < this.grid[i].length ; p++) {
@@ -51,6 +67,12 @@ public class GridPanel extends JPanel {
     drawPawn(this.state.getSettings().getGame().getPlayer2(), g2d);
 
   }
+
+
+  /**
+   * paintComponent
+   * @param grphcs Graphics elements
+   */
   protected void paintComponent(Graphics grphcs) {
     super.paintComponent(grphcs);
     Graphics2D g2d = (Graphics2D) grphcs;
@@ -58,6 +80,14 @@ public class GridPanel extends JPanel {
 
 
   }
+
+
+  /**
+   * This method allow to draw wall
+   * @param x   x coordinate of the wall in grid element
+   * @param y   y coordinate of the wall in grid element
+   * @param g2d Graphics component
+   */
   private void drawWall(int x, int y, Graphics2D g2d) {
     g2d.setColor(Color.WHITE);
     if (Wall.class.isInstance(grid[x][y])) {
@@ -86,6 +116,14 @@ public class GridPanel extends JPanel {
     }
   }
 
+
+
+  /**
+   * This method allow to draw square
+   * @param x   x coordinate of the square in grid element
+   * @param y   y coordinate of the square in grid element
+   * @param g2d Graphics component
+   */
   private void drawSquare(int x, int y, Graphics2D g2d) {
     g2d.setColor(new Color(189,189,189));
 
@@ -96,6 +134,12 @@ public class GridPanel extends JPanel {
     g2d.fill(this.gridGUI[y][x]);
   }
 
+
+  /**
+   * This method allow to draw pawn
+   * @param player   the player
+   * @param g2d Graphics component
+   */
   private void drawPawn(Player player, Graphics g2d) {
 
 
@@ -105,14 +149,22 @@ public class GridPanel extends JPanel {
     int posX = (player.getPawn().getPosX()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDX;
     int posY = (player.getPawn().getPosY()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDY;
 
-    //g2d.fillOval(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
     g2d.fillRect(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
 
   }
 
+/**
+ * getter
+ * @return WIDTHWALL
+ */
   public int getWidthWall() {
     return this.WIDTHWALL;
   }
+
+  /**
+   * getter
+   * @return SIZESQUAREPAWN
+   */
   public int getSizeSquarePawn() {
     return this.SIZESQUAREPAWN;
   }
