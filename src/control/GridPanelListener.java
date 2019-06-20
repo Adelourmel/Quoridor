@@ -83,8 +83,9 @@ public class GridPanelListener extends MouseAdapter {
               //System.out.println(x + ";" + y);
               if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
 
-
+                this.state.getGamePanel().repaint();
                 this.state.getSettings().getGame().getPlayer2().play();
+
               }
             }
             x++;
