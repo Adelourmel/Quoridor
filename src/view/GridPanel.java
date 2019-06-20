@@ -83,9 +83,7 @@ public class GridPanel extends JPanel {
 
   private void drawSquare(int x, int y, Graphics2D g2d) {
     g2d.setColor(new Color(189,189,189));
-    if (Pawn.class.isInstance(grid[x][y])) {
-    //  g2d.setColor(Color.BLUE);
-    }
+    
     int posX = (x/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
     int posY = (y/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL);
 
@@ -106,6 +104,14 @@ public class GridPanel extends JPanel {
     g2d.fillRect(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
 
   }
+
+  public int getWidthWall() {
+    return this.WIDTHWALL;
+  }
+  public int getSizeSquarePawn() {
+    return this.SIZESQUAREPAWN;
+  }
+
 
 
 
