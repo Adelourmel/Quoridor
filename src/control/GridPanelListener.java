@@ -34,43 +34,66 @@ public class GridPanelListener extends MouseAdapter {
     int x = 0;
     int y = 0;
 
-    if (!endOfGame) {
+    if (this.state.getSettings().getGameMode() == Gamemode.HH) {
 
-      while (!found && y < this.gridGUI.length) {
-        x = 0;
-        while (!found && x < this.gridGUI[y].length) {
-          if (this.gridGUI[y][x].contains(e.getPoint())) {
-            found = true;
-            System.out.println(x + ";" + y);
+      if (!endOfGame) {
+        while (!found && y < this.gridGUI.length) {
+          x = 0;
+          while (!found && x < this.gridGUI[y].length) {
+            if (this.gridGUI[y][x].contains(e.getPoint())) {
+              found = true;
+              System.out.println(x + ";" + y);
 
-            if (player1Play) {
+              if (player1Play) {
 
-              if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
-                this.player1Play = false;
-                this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 255, 0));
-                this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 0, 0));
-              }
-
-            }
-            else {
-              if (this.state.getSettings().getGame().getPlayer2().play(x,y)) {
-                this.player1Play = true;
-                this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 255, 0));
-                this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 0, 0));
-
-
+                if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
+                  this.player1Play = false;
+                  this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 255, 0));
+                  this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 0, 0));
+                }
 
               }
+              else {
+
+                if (this.state.getSettings().getGame().getPlayer2().play(x,y)) {
+                  this.player1Play = true;
+                  this.state.getGamePanel().getLabelName1().setForeground(new Color(0, 255, 0));
+                  this.state.getGamePanel().getLabelName2().setForeground(new Color(0, 0, 0));
+                }
+              }
+
+
             }
-
-
+            x++;
           }
-          x++;
+          y++;
         }
-        y++;
+
       }
 
     }
+    else {
+      if (!endOfGame) {
+        while (!found && y < this.gridGUI.length) {
+          x = 0;
+          while (!found && x < this.gridGUI[y].length) {
+            if (this.gridGUI[y][x].contains(e.getPoint())) {
+              found = true;
+              //System.out.println(x + ";" + y);
+              if (this.state.getSettings().getGame().getPlayer1().play(x,y)) {
+
+            
+                this.state.getSettings().getGame().getPlayer2().play();
+              }
+            }
+            x++;
+          }
+          y++;
+        }
+
+      }
+    }
+
 
 
 
