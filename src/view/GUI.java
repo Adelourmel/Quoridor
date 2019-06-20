@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import quoridor.model.*;
 
+/**
+ * GUI class. Creates the JFrame of the application and manages the display of the JPanels.
+ */
 public class GUI extends JFrame {
   private JPanel header;
   private JButton menuButton;
@@ -23,7 +26,10 @@ public class GUI extends JFrame {
 
   private final String PATH ="../img";
 
-
+  /**
+   * GUI constructor
+   * @param settings QuoridorSettings parameter, it allows to use the model package
+   */
   public GUI(QuoridorSettings settings){
     this.settings = settings;
 
@@ -70,31 +76,55 @@ public class GUI extends JFrame {
 
   }
 
+  /**
+   * Set the menuPanel. Add the MenuPanel to the JFrame and set the menuPanel attribute.
+   * @param m the new menuPanel to display
+   */
   public void setMenuPanel(MenuPanel m){
     this.menuPanel = m;
     this.add(m);
   }
 
+  /**
+   * Set the LoadSavePanel. Add the LoadSavePanel to the JFrame and set the LoadSavePanel attribute.
+   * @param l the new LoadSavePanel to display
+   */
   public void setLoadSavePanel(LoadSavePanel l){
     this.loadSavePanel = l;
     this.add(l);
   }
 
+  /**
+   * Set the ModePanel. Add the ModePanel to the JFrame and set the ModePanel attribute.
+   * @param m the new ModePanel to display
+   */
   public void setModePanel(ModePanel m){
     this.modePanel = m;
     this.add(m);
   }
 
+  /**
+   * Set the GamePanel. Add the GamePanel to the JFrame and set the GamePanel attribute.
+   * @param g the new GamePanel to display
+   */
   public void setGamePanel(GamePanel g){
     this.gamePanel = g;
     this.add(g);
   }
 
+  /**
+   * Set the QuitPanel. Add the QuitPanel to the JFrame and set the QuitPanel attribute.
+   * @param q the new QuitPanel to display
+   */
   public void setQuitPanel(QuitPanel q){
     this.quitPanel = q;
     this.add(q);
   }
 
+  /**
+   * Set the WinnerPanel. Add the WinnerPanel to the JFrame and set the WinnerPanel attribute.
+   * @param w the new WinnerPanel to display
+   */
   public void setWinnerPanel(WinnerPanel w){
     this.winnerPanel = w;
     this.add(w);
@@ -103,37 +133,56 @@ public class GUI extends JFrame {
 
 
 
-
+  /**
+   * get the background color
+   * @return the background color
+   */
   public Color getbackColor() {
     return this.backColor;
   }
 
+  /**
+   * remove the MenuPanel of the JFrame and set the attibute at null
+   */
   public void removeMenuPanel(){
     this.remove(this.menuPanel);
     this.menuPanel = null;
   }
 
+  /**
+   * remove the MenuPanel of the JFrame and set the attibute at null
+   */
   public void removeLoadSavePanel(){
     this.remove(this.loadSavePanel);
     this.loadSavePanel = null;
   }
 
-
+  /**
+   * remove the ModePanel of the JFrame and set the attibute at null
+   */
   public void removeModePanel(){
     this.remove(this.modePanel);
     this.modePanel = null;
   }
 
+  /**
+   * remove the GamePanel of the JFrame and set the attibute at null
+   */
   public void removeGamePanel(){
     this.remove(this.gamePanel);
     this.gamePanel = null;
   }
 
+  /**
+   * remove the QuitPanel of the JFrame and set the attibute at null
+   */
   public void removeQuitPanel(){
     this.remove(this.quitPanel);
     this.quitPanel = null;
   }
-
+  /**
+   * remove the WinnerPanel of the JFrame and set the attibute at null
+   */
   public void removeWinnerPanel(){
     this.remove(this.winnerPanel);
     this.winnerPanel = null;
@@ -141,45 +190,76 @@ public class GUI extends JFrame {
 
 
 
-
+  /**
+   * get the Header of the JFrame
+   * @return Header of the JFrame
+   */
   public JPanel getHeader(){
     return this.header;
   }
 
+  /**
+   * get the MenuPanel of the JFrame
+   * @return MenuPanel of the JFrame
+   */
   public MenuPanel getMenuPanel(){
     return this.menuPanel;
   }
 
+  /**
+   * get the LoadSavePanel of the JFrame
+   * @return LoadSavePanel of the JFrame
+   */
   public LoadSavePanel getloadSavePanel(){
     return this.loadSavePanel;
   }
 
+  /**
+   * get the ModePanel of the JFrame
+   * @return ModePanel of the JFrame
+   */
   public ModePanel getModePanel(){
     return this.modePanel;
   }
 
+  /**
+   * get the GamePanel of the JFrame
+   * @return GamePanel of the JFrame
+   */
   public GamePanel getGamePanel(){
     return this.gamePanel;
   }
 
+  /**
+   * get the QuitPanel of the JFrame
+   * @return QuitPanel of the JFrame
+   */
   public QuitPanel getQuitPanel(){
     return this.quitPanel;
   }
 
+  /**
+   * get the WinnerPanel of the JFrame
+   * @return WinnerPanel of the JFrame
+   */
   public WinnerPanel getWinnerPanel(){
     return this.winnerPanel;
   }
 
 
-
+  /**
+   * get the MenuButton of the Header
+   * @return MenuButton of the Header
+   */
   public JButton getMenuButton(){
     return this.menuButton;
   }
 
-  public JButton getQuitButton(){
-    return this.quitButton;
-  }
 
+  /**
+   * get the settings of the JFrame
+   * @return settings of the JFrame
+   */
   public QuoridorSettings getSettings(){
     return this.settings;
   }
