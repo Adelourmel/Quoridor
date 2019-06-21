@@ -4,7 +4,9 @@ import quoridor.model.*;
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * This is panel of the game
+ */
 public class GamePanel extends JPanel {
 
   private GridPanel gridPanel;
@@ -22,6 +24,11 @@ public class GamePanel extends JPanel {
   private GUI state;
 
 
+/**
+ * Constructor
+ * @param state The gui
+ * @param grid  the grid
+ */
   public  GamePanel(GUI state, Square[][] grid){
     this.state = state;
     this.setLayout(new BorderLayout());
@@ -37,6 +44,10 @@ public class GamePanel extends JPanel {
 
   }
 
+
+/**
+ * Load the side panel
+ */
   public void loadContent() {
     Player player1 = this.state.getSettings().getGame().getPlayer1();
     Player player2 = this.state.getSettings().getGame().getPlayer2();
@@ -99,22 +110,42 @@ public class GamePanel extends JPanel {
 
 
 
-
+  /**
+   * get labeelName1
+   * @return labelName1
+   */
   public JLabel getLabelName1() {
     return this.labelName1;
   }
+
+  /**
+   * get labeelName2
+   * @return labelName2
+   */
   public JLabel getLabelName2() {
     return this.labelName2;
   }
 
+/**
+ * get wallLabelP1
+ * @return wallLabelP1
+ */
   public JLabel getWallLabelP1() {
     return this.wallLabelP1;
   }
 
+  /**
+   * get wallLabelP2
+   * @return wallLabelP2
+   */
   public JLabel getWallLabelP2() {
     return this.wallLabelP2;
   }
 
+/**
+ * get gridPanel
+ * @return gridPanel
+ */
   public JPanel getGridPanel() {
     return this.gridPanel;
   }

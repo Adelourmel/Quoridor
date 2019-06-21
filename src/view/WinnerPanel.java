@@ -59,6 +59,10 @@ public class WinnerPanel extends JPanel {
   }
 
 
+/**
+ * get winnerLabel
+ * @return winnerLabel
+ */
   public JLabel getWinnerLabel(){
     return this.winnerLabel;
   }

@@ -64,13 +64,11 @@ public class GUI extends JFrame {
 
 
     this.setMenuPanel(new MenuPanel(this));
-    //this.add(new WinnerPanel(this));
-    //this.add(new LoadSavePanel(this));
 
 
 
     this.setSize(1300, 1000);
-    //this.setResizable(false);
+    this.setResizable(false);
 
 
 
