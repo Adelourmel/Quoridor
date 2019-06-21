@@ -82,4 +82,16 @@
         </junit>
     </target>
 
+    <target name="jar" depends="compile ">
+        <jar jarfile="${dist}/lib/Quoridor-${DSTAMP}.jar" basedir="${class}">
+
+            <fileset dir="../">
+                <include name="img/*" />
+            </fileset>
+            <manifest>
+                <attribute name="Main-Class" value="quoridor.Launcher"/>
+            </manifest>
+        </jar>
+    </target>
+
 </project>
