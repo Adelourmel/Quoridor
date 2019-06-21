@@ -4,7 +4,9 @@ import quoridor.control.*;
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * This class display the menu
+ */
 public class MenuPanel extends JPanel {
 
   private final String PATH ="../img";
@@ -16,6 +18,10 @@ public class MenuPanel extends JPanel {
   private JLabel logoLabel;
 
 
+/**
+ * Constructor
+ * @param state the gui
+ */
   public  MenuPanel(GUI state){
     this.state = state;
     this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
