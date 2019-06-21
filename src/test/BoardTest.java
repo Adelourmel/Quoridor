@@ -10,7 +10,7 @@ import org.junit.*;
 
 
 
-@Ignore
+
 public class BoardTest {
   public Board board;
   public HumanPlayer player1;

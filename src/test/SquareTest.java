@@ -9,7 +9,7 @@ import org.junit.*;
 
 
 
-@Ignore
+
 public class SquareTest {
 
 

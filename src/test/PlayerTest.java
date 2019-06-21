@@ -10,7 +10,7 @@ import org.junit.*;
 import java.awt.Color;
 
 
-@Ignore
+
 public class PlayerTest {
   private Player player1;
   private Player player2;

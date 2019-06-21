@@ -4,7 +4,7 @@ import quoridor.model.*;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-@Ignore
+
 public class MoveCalculatorTest {
   private Player player1;
   private Player player2;

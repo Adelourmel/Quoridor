@@ -5,12 +5,12 @@ import quoridor.model.*;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-@Ignore
+
 public class QuoridorSettingsTest {
   private QuoridorSettings settings;
 
 
-  @Ignore
+
   @Test
 	public final void testQuoridorSettings() {
     QuoridorSettings settings = new QuoridorSettings();

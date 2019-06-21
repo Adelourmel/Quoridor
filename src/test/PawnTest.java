@@ -6,7 +6,7 @@ import java.awt.Color;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-@Ignore
+
 public class PawnTest {
 
 
