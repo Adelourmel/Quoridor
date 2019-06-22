@@ -48,7 +48,6 @@ public class GridPanelListener extends MouseAdapter {
           while (!found && x < this.gridGUI[y].length) {
             if (this.gridGUI[y][x].contains(e.getPoint())) {
               found = true;
-              System.out.println(x + ";" + y);
 
               if (player1Play) {
 

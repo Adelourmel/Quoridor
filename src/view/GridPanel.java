@@ -127,6 +127,9 @@ public class GridPanel extends JPanel {
   private void drawSquare(int x, int y, Graphics2D g2d) {
     g2d.setColor(new Color(189,189,189));
 
+
+    checkPossibleMove(x, y, g2d);
+
     int posX = (x/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDX;
     int posY = (y/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDY;
 
@@ -145,12 +148,29 @@ public class GridPanel extends JPanel {
 
     g2d.setColor(player.getColor());
 
-
     int posX = (player.getPawn().getPosX()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDX;
     int posY = (player.getPawn().getPosY()/2)*(this.SIZESQUAREPAWN + this.WIDTHWALL) + this.POSGRIDY;
 
     g2d.fillRect(posX, posY, this.SIZESQUAREPAWN, this.SIZESQUAREPAWN);
 
+  }
+
+
+  private void checkPossibleMove(int x, int y, Graphics2D g2d) {
+    boolean found = false;
+    for (Pair elem : this.state.getSettings().getGame().getPlayer1().getPossiblePawn()) {
+      if (elem.getY() == y && elem.getX() == x) {
+        found = true;
+      }
+    }
+    for (Pair elem : this.state.getSettings().getGame().getPlayer2().getPossiblePawn()) {
+      if (elem.getY() == y && elem.getX() == x) {
+        found = true;
+      }
+    }
+    if (found) {
+      g2d.setColor(new Color(150,150,150));
+    }
   }
 
 /**
