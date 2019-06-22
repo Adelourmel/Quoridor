@@ -1,8 +1,10 @@
 package test;
 
-import quoridor.model.*;
+
 
 import java.awt.Color;
+import quoridor.model.*;
+
 import static org.junit.Assert.*;
 import org.junit.*;
 
@@ -18,12 +20,13 @@ public class WallTest {
   @Before
   public void setup() {
 
-    this.player1 = new AIPlayer("Test1", Color.BLACK, this.board, PlayerPos.BOTTOM);
-    this.player2 =  new AIPlayer("Test2", Color.WHITE, this.board, PlayerPos.BOTTOM);
+    this.player1 = new HumanPlayer("Test1", Color.BLACK, this.board, PlayerPos.BOTTOM);
+    this.player2 =  new HumanPlayer("Test2", Color.WHITE, this.board, PlayerPos.BOTTOM);
     this.board = new Board(11, this.player1, this.player2);
 
     this.wall = new Wall(1, 2, player1);
   }
+
 
   @Test
   public final void testWall(){
@@ -46,9 +49,8 @@ public class WallTest {
 
 
   @Test
-  // TODO - Modifier le toString en fonction.
   public final void testToString(){
-    assertEquals("", this.wall.toString());
+    assertEquals("X", this.wall.toString());
   }
 
 

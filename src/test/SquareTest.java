@@ -58,7 +58,7 @@ public class SquareTest {
   @Test
   public final void testGetSquareType(){
     Square square = new Square(3, 2, SquareType.PAWN_ONLY);
-    assertEquals(SquareType.WALL_ONLY, square.getSquareType());
+    assertEquals(SquareType.PAWN_ONLY, square.getSquareType());
   }
 
 
@@ -74,12 +74,12 @@ public class SquareTest {
 
   @Test
   public final void testToString(){
-    // TODO - Modifier le toString en fonction
-    Square square1 = new Square(3, 2, SquareType.PAWN_ONLY);
-    assertEquals("[]", square1.toString());
 
-    // TODO - Modifier le toString en fonction
+    Square square1 = new Square(3, 2, SquareType.PAWN_ONLY);
+    assertEquals("O", square1.toString());
+
+
     Square square2 = new Square(3, 2, SquareType.WALL_ONLY);
-    assertEquals("", square2.toString());
+    assertEquals(" ", square2.toString());
   }
 }
