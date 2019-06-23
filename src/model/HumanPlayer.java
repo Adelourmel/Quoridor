@@ -38,6 +38,7 @@ public class HumanPlayer extends Player implements Serializable {
     int y = 0;
 		String tmp;
 		System.out.println(this.board.toString());
+		System.out.println("Au tour de "+ this.playerName);
     boolean b = true;
     do {
 			b = true;
@@ -76,6 +77,7 @@ public class HumanPlayer extends Player implements Serializable {
 			if (b && !ret) {
 				b = this.board.setNewMove(x, y, this);
 			}
+			System.out.print(b);
 			if (!b) {
 				System.out.println("Incorrect !");
 			}
