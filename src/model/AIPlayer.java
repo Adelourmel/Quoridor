@@ -25,29 +25,16 @@ public class AIPlayer extends Player implements Serializable {
 	 * @return the Pair of coordinates of the next move
 	 */
 	public Pair computeNextMove() {
-		this.board.getCalculator().updatePossibleWalls();
 		Pair ret;
 
 		int index;
 		int choice = (int)Math.round(Math.random()*10);
-		if (choice < 3 && this.getWallsNb() > 0) {
-			index = (int) (Math.random()*(this.board.getCalculator().getPossibleWalls().size()));
-			ret = this.board.getCalculator().getPossibleWalls().get(index);
+		if (choice < -1 && this.getWallsNb() > 0) {
+			ret = setWall();
+
 		}
 		else{
-			if (choice < 8) {
-				ret = this.getPossiblePawn().get(0);
-
-				for (Pair elem : this.getPossiblePawn()) {
-					if (elem.getY() < ret.getY()) {
-						ret = elem;
-					}
-				}
-			}
-			else {
-				index = (int) (Math.random()*this.getPossiblePawn().size());
-				ret = this.getPossiblePawn().get(index);
-			}
+			ret = setPawn();
 		}
 
 
@@ -71,6 +58,53 @@ public class AIPlayer extends Player implements Serializable {
 	 */
 	public boolean play(int x, int y){
 		return true;
+	}
+
+
+/**
+ * This method choose where the pawn is set up
+ * @return pair with coordinate
+ */
+	private Pair setPawn() {
+
+		Pair ret = this.getPossiblePawn().get(0);
+
+		for (Pair elem : this.getPossiblePawn()) {
+			if (elem.getY() < ret.getY()) {
+				ret = elem;
+			}
+		}
+
+		int index = (int) (Math.random()*this.getPossiblePawn().size());
+		ret = this.getPossiblePawn().get(index);
+
+		return ret;
+
+	}
+
+
+/**
+ * This method chose where the pawn is set up
+ * @return pair whith coordinate
+ */
+	private Pair setWall() {
+	/*	this.board.getCalculator().updatePossibleWalls();
+		int index = (int) (Math.random()*(this.board.getCalculator().getPossibleWalls().size()));
+		ArrayList<Pair> possibleWalls = this.board.getCalculator().getPossibleWalls();
+
+		Pair ret = possibleWalls.get(0);
+
+		for (Pair elem : possibleWalls) {
+			if (elem.getY() == this.board.getPlayer1().getY() && (elem.getX() >= this.board.getPlayer1().getX() && elem.getX() <= this.board.getPlayer1().getX())) {
+				ret = elem;
+				break;
+			}
+		}
+*/
+
+
+
+		return null;
 	}
 
 }
