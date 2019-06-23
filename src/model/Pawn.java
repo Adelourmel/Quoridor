@@ -44,6 +44,12 @@ public class Pawn extends Square implements Serializable {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+
+	/**
+	 * clone the pawn
+	 * @return the cloned pawn
+	 * @throws CloneNotSupportedException if clone is not supported
+	 */
 	public Pawn clone() throws CloneNotSupportedException {
 		Pawn cloneObj = (Pawn) super.clone();
 

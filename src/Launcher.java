@@ -6,11 +6,11 @@ public class Launcher {
 
 	/**
 	 *
-	 * @param args
+	 * @param args launcher args
 	 */
 	public static void main(String[] args) {
 		QuoridorSettings quori = new QuoridorSettings();
-		
+
 	}
 
 }

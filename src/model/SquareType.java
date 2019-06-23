@@ -10,10 +10,18 @@ public enum SquareType {
 
 	private String description;
 
+/**
+ * constructor
+ * @param description description of the pawn
+ */
 	private SquareType(String description) {
 		this.description = description;
 	}
 
+/**
+ * Allow to view the description
+ * @return description
+ */
 	public String toString() {
 		return this.description;
 	}

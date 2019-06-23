@@ -28,12 +28,12 @@ public class Wall extends Square implements Serializable{
 		return "X";
 	}
 
-	/**
-	 * Return the owner of the wall
-	 * @return the owner of the wall
-	 */
-	
 
+	/**
+	 * clone the wall
+	 * @return the cloned wall
+	 * @throws CloneNotSupportedException if clone is not supported
+	 */
 	public Wall clone() throws CloneNotSupportedException {
 		Wall cloneObj = (Wall) super.clone();
 

@@ -177,7 +177,9 @@ public class QuoridorSettings {
 	}
 
 
-	
+	/**
+	 * User choice the game in console
+	 */
 	private void choiceGame() {
 
 		ArrayList<String> listOfGames = listFile();

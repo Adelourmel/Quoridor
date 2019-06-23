@@ -30,7 +30,7 @@ public class AIPlayer extends Player implements Serializable {
 		int index;
 		int choice;
 
-		int diff = this.board.getPlayer1().getPawn().getPosY() - this.board.getPlayer1().getPosFinal();
+		int diff = this.board.getPlayer1().getPosFinal() - this.board.getPlayer1().getPawn().getPosY();
 		if (diff < 8) {
 			choice = (int)Math.round(Math.random()*5);
 		}

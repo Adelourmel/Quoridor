@@ -81,6 +81,11 @@ public class Square implements Cloneable, Serializable {
 		this.posY = posY;
 	}
 
+	/**
+	 * clone the square
+	 * @return the cloned square
+	 * @throws CloneNotSupportedException if clone is not supported
+	 */
 	public Square clone() throws CloneNotSupportedException {
 		Square cloneObj = (Square) super.clone();
 
