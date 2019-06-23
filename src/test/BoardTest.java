@@ -19,9 +19,9 @@ public class BoardTest {
   @Before
   public void setup() {
 
+    this.board = new Board(11, player1, player1);
     this.player1 =  new HumanPlayer("dvdfv", Color.BLACK, this.board, PlayerPos.TOP);
 
-    this.board = new Board(11, player1, player1);
 
   }
 
@@ -41,7 +41,7 @@ public class BoardTest {
   @Test
   public void setNewMove() {
 
-    assertFalse(this.board.setNewMove(-1, -1, player1));
+    assertFalse(this.board.setNewMove(1, 1, this.player1));
 
   }
 
