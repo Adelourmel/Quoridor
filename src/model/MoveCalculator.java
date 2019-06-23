@@ -324,6 +324,11 @@ public class MoveCalculator implements Cloneable, Serializable {
 	}
 
 
+	/**
+	 * clone the calculator
+	 * @return the cloned calculator
+	 * @throws CloneNotSupportedException if clone is not supported
+	 */
 	private Board cloneTheBoard() {
 		Board cloneBoard = null;
 		boolean ret;

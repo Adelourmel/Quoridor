@@ -120,8 +120,6 @@ public class AIPlayer extends Player implements Serializable {
 		}
 
 
-
-
 		return ret;
 	}
 

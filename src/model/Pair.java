@@ -61,6 +61,11 @@ public class Pair implements Serializable, Cloneable {
 		return "(" + this.x + ";" + this.y + ")";
 	}
 
+	/**
+	 * clone the pair
+	 * @return the cloned pair
+	 * @throws CloneNotSupportedException if clone is not supported
+	 */
 	public Pair clone() throws CloneNotSupportedException {
 		Pair clonePair = (Pair) super.clone();
 
