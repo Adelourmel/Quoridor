@@ -29,7 +29,7 @@ public class AIPlayer extends Player implements Serializable {
 
 		int index;
 		int choice = (int)Math.round(Math.random()*10);
-		if (choice < -1 && this.getWallsNb() > 0) {
+		if (choice < 3 && this.getWallsNb() > 0) {
 			ret = setWall();
 
 		}
@@ -88,23 +88,23 @@ public class AIPlayer extends Player implements Serializable {
  * @return pair whith coordinate
  */
 	private Pair setWall() {
-	/*	this.board.getCalculator().updatePossibleWalls();
+		this.board.getCalculator().updatePossibleWalls();
 		int index = (int) (Math.random()*(this.board.getCalculator().getPossibleWalls().size()));
 		ArrayList<Pair> possibleWalls = this.board.getCalculator().getPossibleWalls();
 
 		Pair ret = possibleWalls.get(0);
 
 		for (Pair elem : possibleWalls) {
-			if (elem.getY() == this.board.getPlayer1().getY() && (elem.getX() >= this.board.getPlayer1().getX() && elem.getX() <= this.board.getPlayer1().getX())) {
+			if (elem.getY() == this.board.getPlayer1().getPawn().getPosY() +1 && (elem.getX() >= this.board.getPlayer1().getPawn().getPosX() && elem.getX() <= this.board.getPlayer1().getPawn().getPosX() + this.board.getSizeWall())) {
 				ret = elem;
 				break;
 			}
 		}
-*/
 
 
 
-		return null;
+
+		return ret;
 	}
 
 }

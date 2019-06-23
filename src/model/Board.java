@@ -169,7 +169,7 @@ public class Board implements Cloneable, Serializable {
 	*/
 	public boolean setNewMove(int x, int y, HumanPlayer player) {
 		boolean ret = false;
-		if (x>0 && y>0) {
+		if (x >= 0 && y >= 0) {
 			if (grid[x][y].getSquareType() == SquareType.WALL_ONLY) {
 				if (this.calculator.isLegalWall(x, y)) {
 					if (player.getWallsNb() > 0) {
