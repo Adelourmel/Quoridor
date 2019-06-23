@@ -24,7 +24,7 @@ public class MoveCalculatorTest {
 
   @Test
   public void testGetPossibleWalls() {
-    assertNotNull(this.calcul.getPossibleWalls());
+    assertNull(this.calcul.getPossibleWalls());
   }
 
 }
