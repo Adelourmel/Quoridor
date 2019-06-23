@@ -88,6 +88,7 @@
             <fileset dir="./">
                 <include name="img/*" />
             </fileset>
+            
             <manifest>
                 <attribute name="Main-Class" value="quoridor.Launcher"/>
             </manifest>

@@ -229,11 +229,21 @@ public class QuoridorSettings {
 	public void saveGame() {
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
     Date date = new Date();
+
+		File directory = new File("../data/");
+
+		if (!directory.exists()) {
+			directory.mkdir();
+		}
+
 		File file = new File("../data/"+this.playerName1+"-"+this.playerName2+"-"+formater.format(date)+".ser");
+
+
 		ObjectOutputStream oos;
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream(file));
 			oos.writeObject(this.game);
+			oos.close();
 		} catch(IOException  e) {
 			System.out.println(e.getMessage());
 		}
@@ -249,6 +259,7 @@ public class QuoridorSettings {
 			ois = new ObjectInputStream(new FileInputStream(fileName));
 			try {
 				this.game = (Game)ois.readObject();
+				ois.close();
 				startConsoleGame();
 			} catch(ClassNotFoundException e) {
 				System.out.println(e.getMessage());
