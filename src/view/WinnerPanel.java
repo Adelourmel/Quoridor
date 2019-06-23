@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class WinnerPanel extends JPanel {
 
-  private final String PATH ="../img";
+  private final String PATH ="/img";
 
   private GUI state;
   private JPanel buttonPanel;
@@ -30,7 +30,7 @@ public class WinnerPanel extends JPanel {
     this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     this.setBackground(new Color(115,192,186));
 
-    ImageIcon imageIcon = new ImageIcon(this.PATH+"/368.jpg"); // load the image to a imageIcon
+    ImageIcon imageIcon = new ImageIcon(this.getClass().getResource(this.PATH+"/368.jpg")); // load the image to a imageIcon
     Image image = imageIcon.getImage(); // transform it
     Image newimg = image.getScaledInstance(600, 600,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
     imageIcon = new ImageIcon(newimg);

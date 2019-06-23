@@ -24,7 +24,7 @@ public class GUI extends JFrame {
   private final Color backColor = new Color(108,128,154);
 
 
-  private final String PATH ="../img";
+  private final String PATH ="/img";
 
   /**
    * GUI constructor
@@ -36,7 +36,7 @@ public class GUI extends JFrame {
     getContentPane().setLayout(new BorderLayout());
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setTitle("QUORIDOR");
-    ImageIcon img = new ImageIcon(this.PATH+"/iconQuoridor.png");
+    ImageIcon img = new ImageIcon(this.getClass().getResource(this.PATH +"/iconQuoridor.png"));
     this.setIconImage(img.getImage());
 
     this.header = new JPanel();
@@ -44,7 +44,7 @@ public class GUI extends JFrame {
     this.header.setBackground(new Color(10,34,57));
 
 
-    ImageIcon imageIcon = new ImageIcon(this.PATH+"/menu.png"); // load the image to a imageIcon
+    ImageIcon imageIcon = new ImageIcon(this.getClass().getResource(this.PATH + "/menu.png")); // load the image to a imageIcon
     Image image = imageIcon.getImage(); // transform it
     Image newimg = image.getScaledInstance(75, 75,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
     imageIcon = new ImageIcon(newimg);

@@ -20,7 +20,7 @@ public class GamePanel extends JPanel {
   private JLabel wallLabelP1;
   private JLabel wallLabelP2;
 
-  private final String PATH ="../img";
+  private final String PATH ="/img";
   private GUI state;
 
 

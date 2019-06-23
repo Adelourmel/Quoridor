@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class LoadSavePanel extends JPanel {
 
-  private final String PATH ="../img";
+  private final String PATH ="/img";
 
   private GUI state;
 
@@ -33,7 +33,7 @@ public class LoadSavePanel extends JPanel {
 
 
 
-    ImageIcon imageIcon = new ImageIcon(this.PATH+"/logoQuoridor.png");
+    ImageIcon imageIcon = new ImageIcon(this.getClass().getResource(this.PATH+"/logoQuoridor.png"));
     Image image = imageIcon.getImage();
     Image newimg = image.getScaledInstance(800, 500,  java.awt.Image.SCALE_SMOOTH);
     imageIcon = new ImageIcon(newimg);

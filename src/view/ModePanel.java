@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class ModePanel extends JPanel {
 
-  private final String PATH ="../img";
+  private final String PATH ="/img";
 
   private GUI state;
   private JPanel buttonPanel;
@@ -33,7 +33,7 @@ public class ModePanel extends JPanel {
     this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     this.setBackground(new Color(108,128,154));
 
-    ImageIcon imageIcon = new ImageIcon(this.PATH+"/logoQuoridor.png"); // load the image to a imageIcon
+    ImageIcon imageIcon = new ImageIcon(this.getClass().getResource(this.PATH+"/logoQuoridor.png")); // load the image to a imageIcon
     Image image = imageIcon.getImage(); // transform it
     Image newimg = image.getScaledInstance(800, 500,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
     imageIcon = new ImageIcon(newimg);
