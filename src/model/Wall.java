@@ -8,25 +8,17 @@ import java.io.Serializable;
  */
 public class Wall extends Square implements Serializable{
 
-	private Player player;
+
 
 	/**
 	 * Wall constructor. Initialises the initial coordinates by calling the super-class constructor.
 	 * @param posX the x-coordinate of the wall on the grid
 	 * @param posY the y-coordinate of the wall on the grid
-	 * @param player the player that placed the wall
 	 */
-	public Wall(int posX, int posY, Player player) {
+	public Wall(int posX, int posY) {
 		super(posX, posY, SquareType.WALL_ONLY);
 	}
 
-	/**
-	 * Returns the player that placed this wall.
-	 * @return the player that placed this wall
-	 */
-	/*public Player getPlayer() {
-		// TODO - implement Wall.getPlayer
-	}*/
 
 	/**
 	 * Returns a String representation of this wall, containing its coordinates on the game grid.
@@ -40,9 +32,8 @@ public class Wall extends Square implements Serializable{
 	 * Return the owner of the wall
 	 * @return the owner of the wall
 	 */
-	public Player getPlayer() {
-		return this.player;
-	}
+	
+
 	public Wall clone() throws CloneNotSupportedException {
 		Wall cloneObj = (Wall) super.clone();
 

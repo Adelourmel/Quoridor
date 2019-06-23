@@ -139,7 +139,7 @@ public class Board implements Cloneable, Serializable {
 		}
 
 		for (int i = 0 ; i < this.SIZEWALL ; i++) {
-			this.grid[posX][posY] = new Wall(posX, posY, player);
+			this.grid[posX][posY] = new Wall(posX, posY);
 			posX += coeffX;
 			posY += coeffY;
 		}
