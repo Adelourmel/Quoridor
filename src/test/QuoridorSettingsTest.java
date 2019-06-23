@@ -17,24 +17,24 @@ public class QuoridorSettingsTest {
     assertNotNull("instance non creee", settings);
 	}
 
-  @Ignore
+
   @Test
-	public final void testSetPlayerName1(String playerName1) {
+	public final void testSetPlayerName1() {
     QuoridorSettings settings = new QuoridorSettings();
     settings.setPlayerName1("a");
     assertEquals("a", settings.getPlayerName1());
 
 	}
-  @Ignore
+
   @Test
-	public final void testSetPlayerName2(String playerName2) {
+	public final void testSetPlayerName2() {
     QuoridorSettings settings = new QuoridorSettings();
     settings.setPlayerName2("b");
     assertEquals("b", settings.getPlayerName2());
 	}
-  @Ignore
+
   @Test
-	public final void testSetGamemode(Gamemode gamemode) {
+	public final void testSetGamemode() {
 		QuoridorSettings settings = new QuoridorSettings();
     settings.setGamemode(Gamemode.HH);
     assertEquals(Gamemode.HH, settings.getGameMode());

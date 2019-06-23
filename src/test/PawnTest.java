@@ -21,6 +21,6 @@ public class PawnTest {
   @Test
   public final void testToString(){
     Pawn pawn1 = new Pawn(1, 2, Color.WHITE);
-    assertEquals("PAWN", pawn1.toString());
+    assertEquals("P", pawn1.toString());
   }
 }

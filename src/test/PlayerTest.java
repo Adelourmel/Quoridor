@@ -20,11 +20,13 @@ public class PlayerTest {
   public void setup() {
 
 
+    this.board = new Board(11, this.player1, this.player2);
 
     this.player1 =  new AIPlayer("Test1", Color.BLACK, this.board, PlayerPos.TOP);
+    System.out.println(this.player1.getWallsNb());
+
     this.player2 =  new AIPlayer("Test2", Color.WHITE, this.board, PlayerPos.BOTTOM);
 
-    this.board = new Board(11, this.player1, this.player2);
   }
 
   @Test
@@ -36,7 +38,9 @@ public class PlayerTest {
   @Test
   public void TestDecWalls() {
 
+
     assertEquals(10, this.player1.getWallsNb());
+
 
     while (this.player1.getWallsNb() != 1) {
 
@@ -46,12 +50,12 @@ public class PlayerTest {
 
       int tmp =  player1.getWallsNb();
 
-      assertEquals(i, tmp -1);
+      assertEquals(i-1, tmp);
     }
 
     int tmp = this.player1.getWallsNb();
 
-    assertEquals(0, tmp);
+    assertEquals(1, tmp);
 
   }
 
