@@ -69,4 +69,23 @@ public class PlayerTest {
     assertEquals("Test1", this.player1.getPlayerName());
     assertEquals("Test2", this.player2.getPlayerName());
   }
+
+  @Test
+  public void TestGetColor() {
+    assertEquals(Color.BLACK, this.player1.getColor());
+    assertEquals(Color.WHITE, this.player2.getColor());
+  }
+
+  @Test
+  public void TestSetColor() {
+    this.player1.setColor(Color.GREEN);
+    assertEquals(Color.GREEN, this.player1.getColor());
+  }
+
+  @Test
+  public void TestgetPosFinal() {
+
+    assertEquals(10, this.player1.getPosFinal());
+    assertEquals(0, this.player2.getPosFinal());
+  }
 }

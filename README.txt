@@ -1,12 +1,12 @@
 Projet Quoridor
 
-Pour compiler le projet placez vous dans le répertoire ws et tapez la commande suivante :
+Pour compiler le projet placez vous dans le rï¿½pertoire ws et tapez la commande suivante :
 
 ant compile
 
-Attention ant doit être installé sur votre machine
+Attention ant doit ï¿½tre installï¿½ sur votre machine
 
-Les fichiers compilés se trouve donc dans le fichier class
+Les fichiers compilï¿½s se trouvent donc dans le fichier class
 
 
 
@@ -16,9 +16,8 @@ java quoridor.Launcher
 
 
 
-Si vous souhaitez créer une archive jar vous pouvez taper la commande :
+Si vous souhaitez crï¿½er une archive jar vous pouvez taper la commande :
 
 ant jar
 
-Ensuite une archive jar est créée dans le fichier dist/lib/
-
+Ensuite une archive jar est crï¿½ï¿½e dans le fichier dist/lib/

@@ -136,6 +136,8 @@ public abstract class Player implements Cloneable, Serializable {
 	public ArrayList<Pair> getPossiblePawn() {
 		return this.possiblePawn;
 	}
+
+
 	public Player clone() throws CloneNotSupportedException {
 		Player clonePlayer = (Player) super.clone();
 
@@ -152,7 +154,7 @@ public abstract class Player implements Cloneable, Serializable {
 	}
 
 /**
- * Return the final postion of the player the win position
+ * Return the final position of the player the win position
  * @return final position of the player
  */
 	public int getPosFinal() {
