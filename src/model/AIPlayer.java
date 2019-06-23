@@ -28,7 +28,16 @@ public class AIPlayer extends Player implements Serializable {
 		Pair ret;
 
 		int index;
-		int choice = (int)Math.round(Math.random()*10);
+		int choice;
+
+		int diff = this.board.getPlayer1().getPawn().getPosY() - this.board.getPlayer1().getPosFinal();
+		if (diff < 8) {
+			choice = (int)Math.round(Math.random()*5);
+		}
+		else {
+			choice = (int)Math.round(Math.random()*10);
+		}
+
 		if (choice < 3 && this.getWallsNb() > 0) {
 			ret = setWall();
 
@@ -68,15 +77,20 @@ public class AIPlayer extends Player implements Serializable {
 	private Pair setPawn() {
 
 		Pair ret = this.getPossiblePawn().get(0);
-
-		for (Pair elem : this.getPossiblePawn()) {
-			if (elem.getY() < ret.getY()) {
-				ret = elem;
+		int i = (int) (Math.random()*10);
+		if (i > 3) {
+			for (Pair elem : this.getPossiblePawn()) {
+				if (elem.getY() < ret.getY()) {
+					ret = elem;
+				}
 			}
-		}
 
-		int index = (int) (Math.random()*this.getPossiblePawn().size());
-		ret = this.getPossiblePawn().get(index);
+		}
+		else {
+
+			int index = (int) (Math.random()*this.getPossiblePawn().size());
+			ret = this.getPossiblePawn().get(index);
+		}
 
 		return ret;
 
@@ -92,13 +106,17 @@ public class AIPlayer extends Player implements Serializable {
 		int index = (int) (Math.random()*(this.board.getCalculator().getPossibleWalls().size()));
 		ArrayList<Pair> possibleWalls = this.board.getCalculator().getPossibleWalls();
 
-		Pair ret = possibleWalls.get(0);
+		Pair ret = possibleWalls.get(index);
 
 		for (Pair elem : possibleWalls) {
-			if (elem.getY() == this.board.getPlayer1().getPawn().getPosY() +1 && (elem.getX() >= this.board.getPlayer1().getPawn().getPosX() && elem.getX() <= this.board.getPlayer1().getPawn().getPosX() + this.board.getSizeWall())) {
+			if (elem.getY() == this.board.getPlayer1().getPawn().getPosY() +1 && (elem.getX() == this.board.getPlayer1().getPawn().getPosX()  || elem.getX() == this.board.getPlayer1().getPawn().getPosX() - 2 )) {
 				ret = elem;
 				break;
 			}
+			else if ((elem.getX() == this.board.getPlayer1().getPawn().getPosX() +1 || elem.getX() == this.board.getPlayer1().getPawn().getPosX() -1 ) && (elem.getY() == this.board.getPlayer1().getPawn().getPosY() || elem.getY() == this.board.getPlayer1().getPawn().getPosY() - 2))  {
+				ret = elem;
+			}
+
 		}
 
 
